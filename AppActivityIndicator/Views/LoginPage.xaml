@@ -17,7 +17,11 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_SignUp"/>
                 </Label.GestureRecognizers>
             </Label>
-            <Label Text="Quên mật khẩu?" />
+            <Label Text="Quên mật khẩu?">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Reset"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
