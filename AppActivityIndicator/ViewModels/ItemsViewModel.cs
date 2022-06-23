@@ -36,7 +36,7 @@ namespace AppActivityIndicator.ViewModels
             {
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                foreach (Item item in items)
                 {
                     Items.Add(item);
                 }
@@ -62,7 +62,7 @@ namespace AppActivityIndicator.ViewModels
             get => _selectedItem;
             set
             {
-                SetProperty(ref _selectedItem, value);
+                _ = SetProperty(ref _selectedItem, value);
                 OnItemSelected(value);
             }
         }
@@ -72,10 +72,12 @@ namespace AppActivityIndicator.ViewModels
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        async void OnItemSelected(Item item)
+        private async void OnItemSelected(Item item)
         {
             if (item == null)
+            {
                 return;
+            }
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");

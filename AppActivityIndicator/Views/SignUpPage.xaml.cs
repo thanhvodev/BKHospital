@@ -10,17 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace AppActivityIndicator.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SignUpPage : ContentPage
     {
-        public LoginPage()
+        public SignUpPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
-        }
-
-        private async void TapGestureRecognizer_Tapped_SignUp(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new SignUpPage());
+            BindingContext = new SignUpViewModel();
         }
     }
 }
