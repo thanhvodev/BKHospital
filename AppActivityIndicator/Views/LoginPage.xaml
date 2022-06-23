@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AppActivityIndicator.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Title="Trang đăng nhập">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20">
             <Image Source="bklogobig.png"  WidthRequest="100"/>

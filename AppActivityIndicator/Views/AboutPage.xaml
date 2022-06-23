@@ -55,7 +55,7 @@
                         </StackLayout>
                     </Frame>
                 </Grid>
-                <Button Margin="0,10,0,0" Text="🩺 ĐẶT LỊCH KHÁM" 
+                <Button Margin="0,10,0,0" Text="ĐẶT LỊCH KHÁM" 
                         
                         BackgroundColor="{StaticResource Alert}"
                         TextColor="White" 

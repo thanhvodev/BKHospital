@@ -41,6 +41,7 @@ namespace AppActivityIndicator.ViewModels
                 Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
                 Email = "";
                 Password = "";
+                //await Application.Current.MainPage.DisplayAlert("Alert", serializedcontnet, "OK");
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
             }
             catch (Exception)
