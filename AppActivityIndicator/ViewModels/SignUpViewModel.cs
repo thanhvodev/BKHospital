@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace AppActivityIndicator.ViewModels
 {
-    class SignUpViewModel : BaseViewModel
+    internal class SignUpViewModel : BaseViewModel
     {
         public Command SignUpCommand { get; }
         private string email;

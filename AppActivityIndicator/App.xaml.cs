@@ -1,6 +1,7 @@
 ﻿using AppActivityIndicator.Services;
 using AppActivityIndicator.Views;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +15,14 @@ namespace AppActivityIndicator
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            if (!string.IsNullOrEmpty(Preferences.Get("MyFirebaseRefreshToken", "")))
+            {
+                MainPage = new AppShell();
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
         }
 
         protected override void OnStart()

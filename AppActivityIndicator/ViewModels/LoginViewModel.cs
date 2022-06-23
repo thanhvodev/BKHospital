@@ -1,7 +1,10 @@
 ﻿using AppActivityIndicator.Views;
+using Firebase.Auth;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppActivityIndicator.ViewModels
@@ -9,8 +12,18 @@ namespace AppActivityIndicator.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         public Command LoginCommand { get; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        private string email;
+        public string Email
+        {
+            get => email;
+            set => _ = SetProperty(ref email, value);
+        }
+        private string password;
+        public string Password
+        {
+            get => password;
+            set => _ = SetProperty(ref password, value);
+        }
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
@@ -19,7 +32,21 @@ namespace AppActivityIndicator.ViewModels
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
+            try
+            {
+                FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(Email, Password);
+                FirebaseAuthLink content = await auth.GetFreshAuthAsync();
+                string serializedcontnet = JsonConvert.SerializeObject(content);
+                Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
+                Email = "";
+                Password = "";
+                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", "Invalid useremail or password", "OK");
+            }
         }
     }
 }
