@@ -2,6 +2,7 @@
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,15 +28,19 @@ namespace AppActivityIndicator.Views
         private async void TapGestureRecognizer_Tapped_Reset(object sender, EventArgs e)
         {
             string result = await DisplayPromptAsync("Email", "Nhập Email của bạn để đổi mật khẩu");
+            Debug.WriteLine(result);
             FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
-            try
+            if (!string.IsNullOrEmpty(result))
             {
-                await authProvider.SendPasswordResetEmailAsync(result);
-                await DisplayAlert("Thành công", "Vào hộp thư của bạn để đổi mật khẩu", "OK");
-            }
-            catch (Exception)
-            {
-                await DisplayAlert("Có lỗi xảy ra", "Kiểm tra lại Email của bạn", "OK");
+                try
+                {
+                    await authProvider.SendPasswordResetEmailAsync(result);
+                    await DisplayAlert("Thành công", "Vào hộp thư của bạn để đổi mật khẩu", "OK");
+                }
+                catch (Exception)
+                {
+                    await DisplayAlert("Có lỗi xảy ra", "Kiểm tra lại Email mà bạn đã nhập", "OK");
+                }
             }
         }
     }
