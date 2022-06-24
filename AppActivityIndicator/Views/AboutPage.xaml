@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.AboutPage"
              xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels"
-             Title="{Binding Title}">
-
+            >
+    <Shell.TitleView>
+        <Label Text="HCMUT" FontSize="Title" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+    </Shell.TitleView>
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
