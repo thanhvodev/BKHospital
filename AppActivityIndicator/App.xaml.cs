@@ -19,7 +19,9 @@ namespace AppActivityIndicator
             }
             else
             {
-                MainPage = new NavigationPage(new LoginPage());
+                MainPage = new AppShell();
+               // MainPage = new NavigationPage(new LoginPage());
+                Shell.Current.GoToAsync("//LoginPage");
             }
         }
 
