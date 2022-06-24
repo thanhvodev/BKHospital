@@ -2,8 +2,6 @@
 using Firebase.Auth;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -44,9 +42,9 @@ namespace AppActivityIndicator.ViewModels
                 //await Application.Current.MainPage.DisplayAlert("Alert", serializedcontnet, "OK");
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                await Application.Current.MainPage.DisplayAlert("Alert", "Invalid useremail or password", "OK");
+                await Application.Current.MainPage.DisplayAlert("Alert", e.Message, "OK");
             }
         }
     }

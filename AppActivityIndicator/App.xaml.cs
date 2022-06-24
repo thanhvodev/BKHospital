@@ -1,9 +1,7 @@
 ﻿using AppActivityIndicator.Services;
 using AppActivityIndicator.Views;
-using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace AppActivityIndicator
 {

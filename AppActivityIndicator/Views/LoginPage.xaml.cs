@@ -17,7 +17,7 @@ namespace AppActivityIndicator.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            BindingContext = new LoginViewModel();
         }
 
         private async void TapGestureRecognizer_Tapped_SignUp(object sender, EventArgs e)
