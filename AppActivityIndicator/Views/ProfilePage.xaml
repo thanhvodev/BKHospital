@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppActivityIndicator.Views.ProfilePage"
+             Title="Hồ sơ bệnh nhân"
+             BackgroundColor="{StaticResource PageBackground}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Chỉnh sửa"
+                 Order="Secondary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <TableView Intent="Form" Margin="10" BackgroundColor="White">
+            <TableRoot>
+                <TableSection Title="Thông tin bệnh nhân">
+                    <ViewCell>
+                        <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                            <Label Text="Họ tên" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                            <Label Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center"/>
+                        </Grid>
+                    </ViewCell>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                            <Label Text="Mã số bệnh nhân" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                            <Label Text="N22-0170770" Grid.Column="1" VerticalOptions="Center"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

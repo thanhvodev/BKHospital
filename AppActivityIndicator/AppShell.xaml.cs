@@ -29,5 +29,11 @@ namespace AppActivityIndicator
             Current.FlyoutIsPresented = false;
             await Navigation.PushAsync(new ItemsPage());
         }
+
+        private async void ProfileItem_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Navigation.PushAsync(new ProfilePage());
+        }
     }
 }
