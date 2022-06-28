@@ -8,6 +8,7 @@ using AppActivityIndicator.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppActivityIndicator.Services;
+using System.Diagnostics;
 
 namespace AppActivityIndicator.Views
 {
@@ -26,9 +27,16 @@ namespace AppActivityIndicator.Views
             };
 
             Sex.SetBinding(Picker.SelectedItemProperty, new Binding("Sex", source: BindingContext));
+            GetProvinces();
         }
 
+        
         private async void Province_Focused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private async void GetProvinces()
         {
             try
             {
