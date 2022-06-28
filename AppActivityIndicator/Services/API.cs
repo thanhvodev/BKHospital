@@ -50,5 +50,28 @@ namespace AppActivityIndicator.Services
 
             return repositories;
         }
+
+        public async Task<List<District>> GetDistrictsAsync(string uri)
+        {
+            List<District> repositories = null;
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    int fisrtChIndex = content.IndexOf("[");
+                    string newContent = content.Substring(fisrtChIndex, content.Length - fisrtChIndex - 1);
+                    repositories = JsonConvert.DeserializeObject<List<District>>(newContent);
+                    Debug.WriteLine(newContent);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\tERROR {0}", ex.Message);
+            }
+
+            return repositories;
+        }
     }
 }

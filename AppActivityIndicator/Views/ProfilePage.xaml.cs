@@ -30,12 +30,6 @@ namespace AppActivityIndicator.Views
             GetProvinces();
         }
 
-        
-        private async void Province_Focused(object sender, FocusEventArgs e)
-        {
-
-        }
-
         private async void GetProvinces()
         {
             try
@@ -52,6 +46,11 @@ namespace AppActivityIndicator.Views
             {
                 await DisplayAlert("Alert", ex.Message, "OK");
             }
+        }
+
+        private async void Province_Focused(object sender, FocusEventArgs e)
+        {
+            await api.GetDistrictsAsync("https://provinces.open-api.vn/api/p/1?depth=2");
         }
     }
 }
