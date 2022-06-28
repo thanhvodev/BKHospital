@@ -4,29 +4,85 @@
              x:Class="AppActivityIndicator.Views.ProfilePage"
              Title="Hồ sơ bệnh nhân"
              BackgroundColor="{StaticResource PageBackground}">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Chỉnh sửa"
-                 Order="Secondary"
-                 Priority="0" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <TableView Intent="Form" Margin="10" BackgroundColor="White">
-            <TableRoot>
-                <TableSection Title="Thông tin bệnh nhân">
-                    <ViewCell>
-                        <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                            <Label Text="Họ tên" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            <Label Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center"/>
-                        </Grid>
-                    </ViewCell>
-                    <ViewCell>
-                        <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                            <Label Text="Mã số bệnh nhân" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            <Label Text="N22-0170770" Grid.Column="1" VerticalOptions="Center"/>
-                        </Grid>
-                    </ViewCell>
-                </TableSection>
-            </TableRoot>
-        </TableView>
+        <StackLayout>
+            <TableView Intent="Form" Margin="10" BackgroundColor="White">
+                <TableRoot>
+                    <TableSection Title="Thông tin bệnh nhân">
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Họ tên" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Mã số bệnh nhân" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="Ns2437324" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Ngày sinh" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <DatePicker MinimumDate="01/01/1920"
+                                            MaximumDate="12/31/2022"
+                                            Date="06/21/2018"  Grid.Column="1" IsEnabled="{Binding IsEditing}" Format="dd/MM/yyyy"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Giới tính" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Sex">
+                                </Picker>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="CMND/CCCD" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="064201011452" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}" Keyboard="Numeric"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Nghề nghiệp" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="Sinh viên" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Quốc gia" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="Việt Nam" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Dân tộc" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="Kinh" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Số điện thoại" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="0365458112" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}" Keyboard="Telephone"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Email" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="vodinhthanh123@gmail.com" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Địa chỉ" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Entry Text="KTX khu A ĐHQG, P.Linh Trùng, Q.Thủ Đức, TP.HCM" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="{Binding BottomButtonText}" Margin="10, 0,10,10" Command="{Binding EditingCommand}"/>
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>
