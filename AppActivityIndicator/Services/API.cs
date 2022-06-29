@@ -60,11 +60,9 @@ namespace AppActivityIndicator.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Debug.WriteLine(content);
                     int fisrtChIndex = content.IndexOf("[");
                     string newContent = content.Substring(fisrtChIndex, content.Length - fisrtChIndex - 1);
                     repositories = JsonConvert.DeserializeObject<List<District>>(newContent);
-                    Debug.WriteLine(newContent);
                 }
             }
             catch (Exception ex)
@@ -84,11 +82,29 @@ namespace AppActivityIndicator.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Debug.WriteLine(content);
                     int fisrtChIndex = content.IndexOf("[");
                     string newContent = content.Substring(fisrtChIndex, content.Length - fisrtChIndex - 1);
                     repositories = JsonConvert.DeserializeObject<List<Ward>>(newContent);
-                    Debug.WriteLine(newContent);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("\tERROR {0}", ex.Message);
+            }
+
+            return repositories;
+        }
+
+        public async Task<List<Country>> GetCountrysAsync(string uri)
+        {
+            List<Country> repositories = null;
+            try
+            {
+                HttpResponseMessage response = await _client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    repositories = JsonConvert.DeserializeObject<List<Country>>(content);
                 }
             }
             catch (Exception ex)

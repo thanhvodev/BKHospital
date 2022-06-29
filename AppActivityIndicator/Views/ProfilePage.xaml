@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:AppActivityIndicator.Services"
              x:Class="AppActivityIndicator.Views.ProfilePage"
              Title="Hồ sơ bệnh nhân"
              BackgroundColor="{StaticResource PageBackground}">
@@ -13,7 +12,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Họ tên*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <local:MyEntry Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center" 
+                                <Entry Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center" 
                                                IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
                             </Grid>
                         </ViewCell>
@@ -53,7 +52,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Quốc gia*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Entry Text="Việt Nam" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"  IsSpellCheckEnabled="False"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Country"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -78,20 +77,24 @@
                     <TableSection Title="Địa chỉ">
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Tỉnh thành" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Province" SelectedIndexChanged="Province_SelectedIndexChanged"/>
+                                <Label Text="Tỉnh thành*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Province" 
+                                        SelectedIndexChanged="Province_SelectedIndexChanged"
+                                        ItemDisplayBinding="{Binding Name}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Quận huyện" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="District" SelectedIndexChanged="District_SelectedIndexChanged"/>
+                                <Label Text="Quận huyện*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="District" SelectedIndexChanged="District_SelectedIndexChanged"
+                                        ItemDisplayBinding="{Binding Name}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Phường xã" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Ward" />
+                                <Label Text="Phường xã*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Ward" SelectedIndexChanged="Ward_SelectedIndexChanged"
+                                        ItemDisplayBinding="{Binding Name}" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
