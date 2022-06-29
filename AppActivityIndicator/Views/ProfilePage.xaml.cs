@@ -35,11 +35,6 @@ namespace AppActivityIndicator.Views
             try
             {
                 List<Province> repositories = await api.GetProvincesAsync($"{Constants.ProvinceAPIEndpoint}/api/p/");
-                List<string> src = new List<string>();
-                foreach (var repo in repositories)
-                {
-                    src.Add(repo.Name);
-                }
                 Province.ItemsSource = repositories;
                 Province.ItemDisplayBinding = new Binding("Name");
             }
@@ -53,14 +48,23 @@ namespace AppActivityIndicator.Views
         {
             try
             {
-                Debug.WriteLine($"{Constants.ProvinceAPIEndpoint}/api/p/{(Province.SelectedItem as Province).Code}/?depth=2");
                 List<District> repositories = await api.GetDistrictsAsync($"{Constants.ProvinceAPIEndpoint}/api/p/{(Province.SelectedItem as Province).Code}/?depth=2");
-                List<string> src = new List<string>();
-                foreach (var repo in repositories)
-                {
-                    src.Add(repo.Name);
-                }
-                District.ItemsSource = src;
+                District.ItemsSource = repositories;
+                District.ItemDisplayBinding = new Binding("Name");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Alert", ex.Message, "OK");
+            }
+        }
+
+        private async void District_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Ward> repositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
+                Ward.ItemsSource = repositories;
+                Ward.ItemDisplayBinding = new Binding("Name");
             }
             catch (Exception ex)
             {

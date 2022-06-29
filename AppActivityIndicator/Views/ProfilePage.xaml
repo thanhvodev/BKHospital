@@ -72,6 +72,8 @@
                                 <Entry Text="vodinhthanh123@gmail.com" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
                             </Grid>
                         </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Địa chỉ">
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Tỉnh thành" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
@@ -81,7 +83,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Quận huyện" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="District" />
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="District" SelectedIndexChanged="District_SelectedIndexChanged"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
