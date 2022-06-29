@@ -60,6 +60,7 @@ namespace AppActivityIndicator.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
+                    Debug.WriteLine(content);
                     int fisrtChIndex = content.IndexOf("[");
                     string newContent = content.Substring(fisrtChIndex, content.Length - fisrtChIndex - 1);
                     repositories = JsonConvert.DeserializeObject<List<District>>(newContent);
