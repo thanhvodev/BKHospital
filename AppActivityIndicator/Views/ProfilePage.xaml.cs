@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppActivityIndicator.Services;
 using System.Diagnostics;
+using System.Threading;
 
 namespace AppActivityIndicator.Views
 {
@@ -95,7 +96,7 @@ namespace AppActivityIndicator.Views
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //await DisplayAlert("Alert", ex.Message, "OK");
             }
@@ -135,8 +136,12 @@ namespace AppActivityIndicator.Views
             }
             else
             {
-                //(BindingContext as ProfileViewModel).Ward = (Ward.SelectedItem as Ward).Name;
-                (BindingContext as ProfileViewModel).WardInx = Ward.SelectedIndex;
+                Thread.Sleep(500);
+                if (Ward.SelectedIndex != -1)
+                {
+                    (BindingContext as ProfileViewModel).Ward = (Ward.SelectedItem as Ward).Name;
+                    (BindingContext as ProfileViewModel).WardInx = Ward.SelectedIndex;
+                }
             }
         }
     }
