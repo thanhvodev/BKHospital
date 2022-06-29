@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppActivityIndicator.Services"
              x:Class="AppActivityIndicator.Views.ProfilePage"
              Title="Hồ sơ bệnh nhân"
              BackgroundColor="{StaticResource PageBackground}">
@@ -12,7 +13,8 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Họ tên*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Entry Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
+                                <local:MyEntry Text="Võ Đình Thanh" Grid.Column="1" VerticalOptions="Center" 
+                                               IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>

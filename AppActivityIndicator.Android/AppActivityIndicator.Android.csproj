@@ -58,6 +58,9 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\DatePickerRenderer.cs" />
+    <Compile Include="CustomRenderers\EntryRender.cs" />
+    <Compile Include="CustomRenderers\PickerRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
