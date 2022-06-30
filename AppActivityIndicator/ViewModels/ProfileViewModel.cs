@@ -1,12 +1,81 @@
-﻿using System;
+﻿using AppActivityIndicator.Models;
+using AppActivityIndicator.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace AppActivityIndicator.ViewModels
 {
     internal class ProfileViewModel: BaseViewModel
     {
+        private readonly DBFirebase services;
+
+        private string street;
+        public string Street
+        {
+            get => street;
+            set => _ = SetProperty(ref street, value);
+        }
+
+        private string email;
+        public string Email
+        {
+            get => email;
+            set => _ = SetProperty(ref email, value);
+        }
+
+        private string phoneNo;
+        public string PhoneNo
+        {
+            get => phoneNo;
+            set => _ = SetProperty(ref phoneNo, value);
+        }
+
+        private string ethic;
+        public string Ethic
+        {
+            get => ethic;
+            set => _ = SetProperty(ref ethic, value);
+        }
+
+        private string nation;
+        public string Nation
+        {
+            get => nation;
+            set => _ = SetProperty(ref nation, value);
+        }
+
+        private string carrer;
+        public string Career
+        {
+            get => carrer;
+            set => _ = SetProperty(ref carrer, value);
+        }
+
+        private string cmnd;
+        public string CMND
+        {
+            get => cmnd;
+            set => _ = SetProperty(ref cmnd, value);
+        }
+
+        private DateTime dateOfBirth;
+        public DateTime DateOfBirth
+        {
+            get => dateOfBirth;
+            set => _ = SetProperty(ref dateOfBirth, value);
+        }
+
+        private string id;
+        public string Id
+        {
+            get => id;
+            set => _ = SetProperty(ref id, value);
+        }
+
         private string sex;
         public string Sex
         {
@@ -89,15 +158,41 @@ namespace AppActivityIndicator.ViewModels
         {
             IsEditing = false;
             BottomButtonText = "Chỉnh sửa";
-            Sex = "Nam";
-            Country = "Vietnam";
-            ProvinceInx = 0;
-            Province = "Thành phố Hà Nội"; 
-            DistrictInx = 0;
-            District = "Quận Ba Đình";
-            WardInx = 0;
-            Ward = "Phường Phúc Xá";
+            services = new DBFirebase();
+            FetchUserData();
             EditingCommand = new Command(OnClickEditing);
+        }
+
+        private async void FetchUserData()
+        {
+            try
+            {
+                var users = await services.GetUsers();
+                var user = users.Where(i => i.Email == Preferences.Get("UserEmail", "")).FirstOrDefault();
+                Id = user.Id;
+                Name = user.Name;
+                DateOfBirth = user.DateOfBirth;
+                Sex = user.Sex;
+                CMND = user.CMND;
+                Career = user.Career;
+                Nation = user.Nation;
+                Ethic = user.Ethic;
+                PhoneNo = user.PhoneNo;
+                Email = user.Email;
+                Province = user.Province;
+                ProvinceInx = user.ProvinceInx;
+                District = user.District;
+                DistrictInx = user.DistrictInx;
+                Ward = user.Ward;
+                WardInx = user.WardInx;
+                Street = user.Street;
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("C", ex.Message, "OK");
+            }
+
+            
         }
 
         private void OnClickEditing()

@@ -37,6 +37,7 @@ namespace AppActivityIndicator.ViewModels
                 FirebaseAuthLink content = await auth.GetFreshAuthAsync();
                 string serializedcontnet = JsonConvert.SerializeObject(content);
                 Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
+                Preferences.Set("UserEmail", content.User.Email);
                 Email = "";
                 Password = "";
                 //await Application.Current.MainPage.DisplayAlert("Alert", serializedcontnet, "OK");

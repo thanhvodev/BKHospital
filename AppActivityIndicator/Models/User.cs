@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AppActivityIndicator.Models
 {
-    internal class User
+    public class User
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string Sex { get; set; }
         public string CMND { get; set; }
         public string Career { get; set; }
@@ -17,8 +17,11 @@ namespace AppActivityIndicator.Models
         public string PhoneNo { get; set;}
         public string Email { get; set; }
         public string Province { get; set; }
+        public int ProvinceInx { get; set; }
         public string District { get; set; }
+        public int DistrictInx { get; set; }
         public string Ward { get; set; }
+        public int WardInx { get; set; }
         public string Street { get; set; }
     }
 }
