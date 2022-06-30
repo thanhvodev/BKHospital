@@ -80,21 +80,21 @@
                                 <Label Text="Tỉnh thành*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                                 <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Province" 
                                         SelectedIndexChanged="Province_SelectedIndexChanged"
-                                        ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding ProvinceInx}"/>
+                                        ItemDisplayBinding="{Binding Name}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Quận huyện*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                                 <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="District" SelectedIndexChanged="District_SelectedIndexChanged"
-                                        ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding DistrictInx}"/>
+                                        ItemDisplayBinding="{Binding Name}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Phường xã*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                                 <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Ward" SelectedIndexChanged="Ward_SelectedIndexChanged"
-                                        ItemDisplayBinding="{Binding Name}" SelectedIndex="{Binding WardInx}"/>
+                                        ItemDisplayBinding="{Binding Name}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>

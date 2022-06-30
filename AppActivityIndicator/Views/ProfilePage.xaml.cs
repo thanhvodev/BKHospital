@@ -59,17 +59,8 @@ namespace AppActivityIndicator.Views
             {
                 List<Province> repositories = await api.GetProvincesAsync($"{Constants.ProvinceAPIEndpoint}/api/p/");
                 Province.ItemsSource = repositories;
-                Province.SelectedIndex = (BindingContext as ProfileViewModel).ProvinceInx;
-                Debug.WriteLine(Province.SelectedIndex);
+                Province.SetBinding(Picker.SelectedIndexProperty, new Binding("ProvinceInx", source: BindingContext));
 
-                //List<District> drepositories = await api.GetDistrictsAsync($"{Constants.ProvinceAPIEndpoint}/api/p/{(Province.SelectedItem as Province).Code}/?depth=2");
-                //District.ItemsSource = drepositories;
-                //District.SelectedIndex = (BindingContext as ProfileViewModel).DistrictInx;
-                //Debug.WriteLine(District.SelectedIndex);
-
-                //List<Ward> wrepositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
-                //Ward.ItemsSource = wrepositories;
-                //Ward.SelectedIndex = (BindingContext as ProfileViewModel).WardInx;
             }
             catch (Exception)
             {
@@ -85,14 +76,25 @@ namespace AppActivityIndicator.Views
                 {
                     List<District> repositories = await api.GetDistrictsAsync($"{Constants.ProvinceAPIEndpoint}/api/p/{(Province.SelectedItem as Province).Code}/?depth=2");
                     District.ItemsSource = repositories;
-                    District.SelectedIndex = (BindingContext as ProfileViewModel).DistrictInx;
+                    if (District.SelectedIndex == -1)
+                    {
+                        District.SelectedIndex = (BindingContext as ProfileViewModel).DistrictInx;
+                        List<Ward> wrepositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
+                        Ward.ItemsSource = wrepositories;
+                        if (Ward.SelectedIndex == -1)
+                        {
+                            Ward.SelectedIndex = (BindingContext as ProfileViewModel).WardInx;
+
+                        }
+                        //await DisplayAlert("Nani", "vcv", "OK");
+                    }
+
                 }
-                else {
+                else
+                {
                     List<District> repositories = await api.GetDistrictsAsync($"{Constants.ProvinceAPIEndpoint}/api/p/{(Province.SelectedItem as Province).Code}/?depth=2");
                     District.ItemsSource = repositories;
                     District.SelectedIndex = 0;
-                    (BindingContext as ProfileViewModel).Province = (Province.SelectedItem as Province).Name;
-                    (BindingContext as ProfileViewModel).ProvinceInx = Province.SelectedIndex;
                 }
 
             }
@@ -108,17 +110,18 @@ namespace AppActivityIndicator.Views
             {
                 if (isLoadFirstTime)
                 {
-                    List<Ward> repositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
-                    Ward.ItemsSource = repositories;
-                    Ward.SelectedIndex = (BindingContext as ProfileViewModel).WardInx;
+                    //if (Ward.SelectedIndex == -1)
+                    //{
+                    //    Ward.SelectedIndex = (BindingContext as ProfileViewModel).WardInx;
+                    //    await DisplayAlert("Nani", "Ward", "OK");
+                    //    Ward.SetBinding(Picker.SelectedIndexProperty, new Binding("WardInx", source: BindingContext));
+                    //}
                 }
                 else
                 {
                     List<Ward> repositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
                     Ward.ItemsSource = repositories;
                     Ward.SelectedIndex = 0;
-                    (BindingContext as ProfileViewModel).District = (District.SelectedItem as District).Name;
-                    (BindingContext as ProfileViewModel).DistrictInx = District.SelectedIndex;
                 }
 
             }
@@ -136,12 +139,8 @@ namespace AppActivityIndicator.Views
             }
             else
             {
-                Thread.Sleep(500);
-                if (Ward.SelectedIndex != -1)
-                {
-                    (BindingContext as ProfileViewModel).Ward = (Ward.SelectedItem as Ward).Name;
-                    (BindingContext as ProfileViewModel).WardInx = Ward.SelectedIndex;
-                }
+                Ward.SetBinding(Picker.SelectedIndexProperty, new Binding("WardInx", source: BindingContext));
+                District.SetBinding(Picker.SelectedIndexProperty, new Binding("DistrictInx", source: BindingContext));
             }
         }
     }
