@@ -44,7 +44,7 @@ namespace AppActivityIndicator.Views
                     src.Add(country.Name);
                 }
                 Country.ItemsSource = src;
-                Country.SetBinding(Picker.SelectedItemProperty, new Binding("Country", source: BindingContext));
+                Country.SetBinding(Picker.SelectedItemProperty, new Binding("Nation", source: BindingContext));
             }
             catch (Exception ex)
             {

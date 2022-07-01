@@ -126,13 +126,6 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref wardInx, value);
         }
 
-        private string country;
-        public string Country
-        {
-            get => country;
-            set => _ = SetProperty(ref country, value);
-        }
-
         private string name;
         public string Name
         {
