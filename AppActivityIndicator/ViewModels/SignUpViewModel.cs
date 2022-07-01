@@ -13,7 +13,6 @@ namespace AppActivityIndicator.ViewModels
 {
     internal class SignUpViewModel : BaseViewModel
     {
-        private readonly DBFirebase services;
         private string email;
         private string password;
 
@@ -31,7 +30,6 @@ namespace AppActivityIndicator.ViewModels
 
         public SignUpViewModel()
         {
-            services = new DBFirebase();
             SignUpCommand = new Command(OnSignUpClicked);
         }
 
@@ -48,7 +46,7 @@ namespace AppActivityIndicator.ViewModels
                 string gettoken = auth.FirebaseToken;
                 await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đăng ký tài khoản với Email {Email} thành công", "Quay lại trang đăng nhập");
                 await Shell.Current.GoToAsync("//LoginPage");
-                await services.AddUser(email);
+                await App.SqlBD.AddUser(email);
             }
             catch (Exception ex)
             {

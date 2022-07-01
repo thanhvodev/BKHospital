@@ -1,5 +1,7 @@
 ﻿using AppActivityIndicator.Services;
 using AppActivityIndicator.Views;
+using System;
+using System.IO;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -7,6 +9,36 @@ namespace AppActivityIndicator
 {
     public partial class App : Application
     {
+
+        private static DBSqlite sqlDB;
+
+        // Create the database connection as a singleton.
+        public static DBSqlite SqlBD
+        {
+            get
+            {
+                if (sqlDB == null)
+                {
+                    sqlDB = new DBSqlite(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "User.db3"));
+                }
+                return sqlDB;
+            }
+        }
+
+        private static DBFirebase fireDB;
+
+        // Create the database connection as a singleton.
+        public static DBFirebase FireDB
+        {
+            get
+            {
+                if (fireDB == null)
+                {
+                    fireDB = new DBFirebase();
+                }
+                return fireDB;
+            }
+        }
 
         public App()
         {
