@@ -16,11 +16,8 @@ namespace AppActivityIndicator.Models
         public string Ethic { get; set; }
         public string PhoneNo { get; set;}
         public string Email { get; set; }
-        public string Province { get; set; }
         public int ProvinceInx { get; set; }
-        public string District { get; set; }
         public int DistrictInx { get; set; }
-        public string Ward { get; set; }
         public int WardInx { get; set; }
         public string Street { get; set; }
     }

@@ -13,6 +13,7 @@ namespace AppActivityIndicator.ViewModels
     {
         private readonly DBFirebase services;
 
+        #region bind user data
         private string street;
         public string Street
         {
@@ -138,7 +139,7 @@ namespace AppActivityIndicator.ViewModels
             get => name;
             set => _ = SetProperty(ref name, value);
         }
-
+        #endregion bind user data
         private bool isEditing;
         public bool IsEditing
         {
@@ -179,24 +180,31 @@ namespace AppActivityIndicator.ViewModels
                 Ethic = user.Ethic;
                 PhoneNo = user.PhoneNo;
                 Email = user.Email;
-                Province = user.Province;
                 ProvinceInx = user.ProvinceInx;
-                District = user.District;
                 DistrictInx = user.DistrictInx;
-                Ward = user.Ward;
                 WardInx = user.WardInx;
                 Street = user.Street;
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("C", ex.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Lấy dữ liệu bị lỗi", ex.Message, "OK");
             }
-
-            
         }
 
-        private void OnClickEditing()
+        private async void OnClickEditing()
         {
+            if (IsEditing)
+            {
+                try
+                {
+                    await services.UpdateUser(Id, Name, DateOfBirth, Sex, CMND, Career, Nation, Ethic, PhoneNo, Email, ProvinceInx, DistrictInx, WardInx, Street);
+                    await Application.Current.MainPage.DisplayAlert("Thành công", "Lưu thông tin thành công", "OK");
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Thất bại", "Lưu thông tin thất bại", "OK");
+                }
+            }
             IsEditing = !IsEditing;
             BottomButtonText = IsEditing ? "Lưu" : "Chỉnh sửa";
         }

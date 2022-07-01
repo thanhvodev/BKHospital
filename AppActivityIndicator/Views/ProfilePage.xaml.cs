@@ -60,11 +60,10 @@ namespace AppActivityIndicator.Views
                 List<Province> repositories = await api.GetProvincesAsync($"{Constants.ProvinceAPIEndpoint}/api/p/");
                 Province.ItemsSource = repositories;
                 Province.SetBinding(Picker.SelectedIndexProperty, new Binding("ProvinceInx", source: BindingContext));
-
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //await DisplayAlert("Alert", ex.Message, "OK");
+                await DisplayAlert("Error", ex.Message, "OK");
             }
         }
 
@@ -108,22 +107,12 @@ namespace AppActivityIndicator.Views
         {
             try
             {
-                if (isLoadFirstTime)
-                {
-                    //if (Ward.SelectedIndex == -1)
-                    //{
-                    //    Ward.SelectedIndex = (BindingContext as ProfileViewModel).WardInx;
-                    //    await DisplayAlert("Nani", "Ward", "OK");
-                    //    Ward.SetBinding(Picker.SelectedIndexProperty, new Binding("WardInx", source: BindingContext));
-                    //}
-                }
-                else
+                if (!isLoadFirstTime)
                 {
                     List<Ward> repositories = await api.GetWardsAsync($"{Constants.ProvinceAPIEndpoint}/api/d/{(District.SelectedItem as District).Code}/?depth=2");
                     Ward.ItemsSource = repositories;
                     Ward.SelectedIndex = 0;
                 }
-
             }
             catch (Exception)
             {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AppActivityIndicator.Services
+namespace AppActivityIndicator.Models
 {
     internal class Country
     {

@@ -23,7 +23,7 @@ namespace AppActivityIndicator.Services
         {
             Random rnd = new Random();
             int num = rnd.Next();
-            User s = new User() { Id = $"Ns-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, District = "", Career = "", Nation = "", Ethic = "", PhoneNo = "", Province = "", Ward = "", DistrictInx = -1, ProvinceInx = -1, WardInx = -1 };
+            User s = new User() { Id = $"Ns-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
             await client.Child("Users").PostAsync(s);
         }
 
@@ -41,14 +41,34 @@ namespace AppActivityIndicator.Services
                 Ethic = item.Object.Ethic,
                 PhoneNo = item.Object.PhoneNo,
                 Email = item.Object.Email,
-                Province = item.Object.Province,
                 ProvinceInx = item.Object.ProvinceInx,
-                District = item.Object.District,
                 DistrictInx = item.Object.DistrictInx,
-                Ward = item.Object.Ward,
                 WardInx = item.Object.WardInx,
                 Street = item.Object.Street
             }).ToList();
+        }
+
+        public async Task UpdateUser(string id, string name, DateTime dateOfBirth, string sex, string cmnd, string career, string nation, string ethic, string phoneNo, string email, int provinceInx, int districtInx,  int wardInx, string street)
+        {
+            var toUpdateUser = (await client.Child("Users").OnceAsync<User>()).FirstOrDefault(u => u.Object.Email == email);
+            User user = new User()
+            {
+                Id = id,
+                Name = name.ToUpper(),
+                DateOfBirth = dateOfBirth,
+                Sex = sex,
+                Career = career,
+                Nation = nation,
+                Ethic = ethic,
+                PhoneNo = phoneNo,
+                Email = email,
+                CMND = cmnd,
+                ProvinceInx = provinceInx,
+                DistrictInx = districtInx,
+                WardInx = wardInx,
+                Street = street
+            };
+            await client.Child("Users").Child(toUpdateUser.Key).PutAsync(user);
         }
     }
 }

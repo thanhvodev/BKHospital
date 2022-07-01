@@ -45,20 +45,19 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Nghề nghiệp" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Entry Text="{Binding Career}" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"  IsSpellCheckEnabled="False"/>
+                                <Entry Keyboard="Chat" Text="{Binding Career}" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"  IsSpellCheckEnabled="False"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Quốc gia*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Country"
-                                        SelectedItem="{Binding Country}"/>
+                                <Picker Grid.Column="1" IsEnabled="{Binding IsEditing}" x:Name="Country"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Dân tộc" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Entry Text="{Binding Ethic}" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
+                                <Entry Keyboard="Chat" Text="{Binding Ethic}" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
