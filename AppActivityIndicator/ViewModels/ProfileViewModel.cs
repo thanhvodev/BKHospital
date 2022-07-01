@@ -161,7 +161,8 @@ namespace AppActivityIndicator.ViewModels
         {
             try
             {
-                var users = await services.GetUsers();
+                //var users = await services.GetUsers();
+                var users = await App.SqlBD.GetUsersAsync();
                 var user = users.Where(i => i.Email == Preferences.Get("UserEmail", "")).FirstOrDefault();
                 Id = user.Id;
                 Name = user.Name;
@@ -190,7 +191,7 @@ namespace AppActivityIndicator.ViewModels
             {
                 try
                 {
-                    await services.UpdateUser(Id, Name, DateOfBirth, Sex, CMND, Career, Nation, Ethic, PhoneNo, Email, ProvinceInx, DistrictInx, WardInx, Street);
+                    await App.SqlBD.UpdateUserAsync(Id, Name, DateOfBirth, Sex, CMND, Career, Nation, Ethic, PhoneNo, Email, ProvinceInx, DistrictInx, WardInx, Street);
                     await Application.Current.MainPage.DisplayAlert("Thành công", "Lưu thông tin thành công", "OK");
                 }
                 catch (Exception)
