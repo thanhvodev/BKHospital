@@ -58,7 +58,7 @@
                     </Frame>
                 </Grid>
                 <Button Margin="0,10,0,0" Text="ĐẶT LỊCH KHÁM" 
-                        
+                        Clicked="MakeAppoint_Button_Clicked"
                         BackgroundColor="{StaticResource Alert}"
                         TextColor="White" 
                         />
