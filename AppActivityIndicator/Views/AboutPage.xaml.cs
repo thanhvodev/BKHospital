@@ -36,5 +36,10 @@ namespace AppActivityIndicator.Views
                 await Application.Current.MainPage.DisplayAlert("Alert", "Oh no !  Token expired", "OK");
             }
         }
+
+        private async void MakeAppoint_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MakingAppointmentPage());
+        }
     }
 }

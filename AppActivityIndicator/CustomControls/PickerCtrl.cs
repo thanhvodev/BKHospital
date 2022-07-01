@@ -1,0 +1,10 @@
+﻿using Xamarin.Forms;
+
+namespace AppActivityIndicator.CustomControls
+{
+    public class PickerCtrl : Picker
+    {
+        public static readonly BindableProperty EnterTextProperty = BindableProperty.Create(propertyName: "Placeholder", returnType: typeof(string), declaringType: typeof(DatePickerCtrl), defaultValue: default(string));
+        public string Placeholder { get; set; }
+    }
+}
