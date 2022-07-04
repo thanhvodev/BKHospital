@@ -38,7 +38,9 @@ namespace AppActivityIndicator
 
         private async void Logout(object sender, EventArgs e)
         {
+            Preferences.Remove("MyFirebaseRefreshToken");
             await App.SqlBD.ClearLocal();
+            await Current.GoToAsync("//LoginPage");
         }
     }
 }

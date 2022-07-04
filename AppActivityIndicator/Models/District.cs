@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AppActivityIndicator.Models
 {
-    internal class District
+    public class District
     {
         [JsonProperty("code")]
         public string Code { get; set; }

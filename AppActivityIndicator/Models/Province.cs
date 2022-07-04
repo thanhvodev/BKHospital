@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AppActivityIndicator.Models
 {
-    internal class Province
+    public class Province
     {
 
         [JsonProperty("code")]

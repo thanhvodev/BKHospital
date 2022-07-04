@@ -20,6 +20,7 @@ namespace AppActivityIndicator.Services
             client = new FirebaseClient(Constants.FIREBASE_SERVER);
             sqlDB = new SQLiteAsyncConnection(dbPath);
             sqlDB.CreateTableAsync<User>().Wait();
+            sqlDB.CreateTableAsync<Country>().Wait();
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -85,6 +86,13 @@ namespace AppActivityIndicator.Services
 
         public async Task FetchDataToLocal()
         {
+            List<Country> countries = await App.API.GetCountrysAsync($"{Constants.CountryAPIEndpoint}/v2/all/");
+            foreach (var country in countries)
+            {
+                await sqlDB.InsertAsync(country);
+            }
+
+
             List<User> users = new List<User>();
             users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
             {
@@ -112,6 +120,11 @@ namespace AppActivityIndicator.Services
         public async Task<int> ClearLocal()
         {
             return await sqlDB.DeleteAllAsync<User>();
+        }
+
+        public async Task<List<Country>> GetCountrys()
+        {
+            return await sqlDB.Table<Country>().ToListAsync();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.ViewModels;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.ViewModels;
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;

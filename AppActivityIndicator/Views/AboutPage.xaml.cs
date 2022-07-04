@@ -6,6 +6,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppActivityIndicator.ViewModels;
+using AppActivityIndicator.Helper;
 
 namespace AppActivityIndicator.Views
 {

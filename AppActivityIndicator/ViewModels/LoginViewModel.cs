@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Views;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Views;
 using Firebase.Auth;
 using Newtonsoft.Json;
 using System;

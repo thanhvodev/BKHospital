@@ -40,6 +40,22 @@ namespace AppActivityIndicator
             }
         }
 
+        private static API api;
+
+        // Create the database connection as a singleton.
+        public static API API
+        {
+            get
+            {
+                if (api == null)
+                {
+                    api = API.GetInstance();
+                }
+                return api;
+            }
+        }
+
+
         public App()
         {
             InitializeComponent();

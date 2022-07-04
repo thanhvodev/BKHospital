@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using AppActivityIndicator.Services;
 using System.Diagnostics;
 using System.Threading;
+using AppActivityIndicator.Helper;
 
 namespace AppActivityIndicator.Views
 {
@@ -37,7 +38,7 @@ namespace AppActivityIndicator.Views
         {
             try
             {
-                List<Country> repositories = await api.GetCountrysAsync($"{Constants.CountryAPIEndpoint}/v2/all/");
+                List<Country> repositories = await App.SqlBD.GetCountrys();
                 List<string> src = new List<string>();
                 foreach (Country country in repositories)
                 {

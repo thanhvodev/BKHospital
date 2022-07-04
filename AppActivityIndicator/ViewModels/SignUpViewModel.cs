@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Models;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Models;
 using AppActivityIndicator.Services;
 using Firebase.Auth;
 using System;

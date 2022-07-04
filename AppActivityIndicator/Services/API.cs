@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AppActivityIndicator.Services
 {
-    internal class API
+    public class API
     {
         private readonly HttpClient _client;
         private static API instance = null;
