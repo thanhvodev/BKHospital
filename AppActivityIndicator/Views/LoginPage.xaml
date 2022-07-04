@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="AppActivityIndicator.Views.LoginPage"
              Shell.NavBarIsVisible="False"
-             Title="Trang đăng nhập">
+             Title="Trang đăng nhập"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20">
             <Image Source="bklogobig.png"  WidthRequest="100"/>

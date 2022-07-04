@@ -110,7 +110,9 @@
     </MenuItem>
     <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>
-    <MenuItem Text="Đăng xuất" IconImageSource="{AppThemeBinding Light=logout_icon.png, Dark=logout_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="Đăng xuất" IconImageSource="{AppThemeBinding Light=logout_icon.png, Dark=logout_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Logout">
+    </MenuItem>
+    <MenuItem StyleClass="MenuItemLayoutStyle">
     </MenuItem>
     <MenuItem StyleClass="MenuItemLayoutStyle">
     </MenuItem>

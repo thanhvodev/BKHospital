@@ -35,5 +35,10 @@ namespace AppActivityIndicator
             Current.FlyoutIsPresented = false;
             await Navigation.PushAsync(new ProfilePage());
         }
+
+        private async void Logout(object sender, EventArgs e)
+        {
+            await App.SqlBD.ClearLocal();
+        }
     }
 }

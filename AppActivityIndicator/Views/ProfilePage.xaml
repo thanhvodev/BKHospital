@@ -6,7 +6,7 @@
              BackgroundColor="{StaticResource PageBackground}">
     <ContentPage.Content>
         <StackLayout>
-            <TableView Intent="Form" Margin="10" RowHeight="60"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+            <TableView Intent="Form" Margin="10" RowHeight="60" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                 <TableRoot>
                     <TableSection Title="Thông tin bệnh nhân">
                         <ViewCell>
@@ -27,7 +27,7 @@
                                 <Label Text="Ngày sinh*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                                 <DatePicker MinimumDate="01/01/1920"
                                             MaximumDate="12/31/2022"
-                                            Date="{Binding DateOfBirth}"  Grid.Column="1" IsEnabled="{Binding IsEditing}" Format="dd/MM/yyyy"/>
+                                            Date="{Binding DateOfBirth}" Grid.Column="1" IsEnabled="{Binding IsEditing}" Format="dd/MM/yyyy"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>

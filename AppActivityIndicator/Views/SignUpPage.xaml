@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.SignUpPage"
-             Title="Trang đăng ký">
+             Title="Trang đăng ký"
+             BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20, 0, 20, 20">
             <Image Source="bklogobig.png"  WidthRequest="100"/>

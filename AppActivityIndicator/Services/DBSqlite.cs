@@ -82,5 +82,36 @@ namespace AppActivityIndicator.Services
             _ = sqlDB.InsertAsync(user);
             return await client.Child("Users").PostAsync(user);
         }
+
+        public async Task FetchDataToLocal()
+        {
+            List<User> users = new List<User>();
+            users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
+            {
+               Id = u.Object.Id,
+               Name = u.Object.Name,
+               Sex = u.Object.Sex,
+               Street = u.Object.Street,
+               CMND = u.Object.CMND,
+               DateOfBirth = u.Object.DateOfBirth,
+               Career = u.Object.Career,
+               Nation = u.Object.Nation,
+               Ethic = u.Object.Ethic,
+               PhoneNo = u.Object.PhoneNo,
+               DistrictInx = u.Object.DistrictInx,
+               ProvinceInx = u.Object.ProvinceInx,
+               WardInx = u.Object.WardInx,
+               Email = u.Object.Email
+            }).ToList();
+            foreach (var user in users)
+            {
+                _ = sqlDB.InsertAsync(user);
+            }
+        }
+
+        public async Task<int> ClearLocal()
+        {
+            return await sqlDB.DeleteAllAsync<User>();
+        }
     }
 }

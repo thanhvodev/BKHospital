@@ -40,8 +40,10 @@ namespace AppActivityIndicator.ViewModels
                 Preferences.Set("UserEmail", content.User.Email);
                 Email = "";
                 Password = "";
+                await App.SqlBD.FetchDataToLocal();
                 //await Application.Current.MainPage.DisplayAlert("Alert", serializedcontnet, "OK");
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+
             }
             catch (Exception e)
             {
