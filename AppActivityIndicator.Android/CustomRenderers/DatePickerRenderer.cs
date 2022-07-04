@@ -16,7 +16,7 @@ namespace AppActivityIndicator.Droid.CustomRenderers
             base.OnElementChanged(e);
             if (Control != null)
             {
-                this.Control.SetBackground(null);
+                Control.SetBackground(null);
             }
         }
     }
