@@ -36,24 +36,24 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Bệnh viện Đa khoa Bách Khoa" FontSize="Title" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                <Label Text="Bệnh viện Đa khoa Bách Khoa" FontSize="Title"/>
                 <Grid RowDefinitions="1*" ColumnDefinitions="1*, 1*, 1*">
                     <Frame  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                         <StackLayout>
                             <Image Source="sheet.png" HeightRequest="50"/>
-                            <Label Text="Phiếu khám bệnh" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                            <Label Text="Phiếu khám bệnh" LineBreakMode="WordWrap" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="1" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                         <StackLayout>
                             <Image Source="calendar.png" HeightRequest="50"/>
-                            <Label Text="Lịch tái khám" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                            <Label Text="Lịch tái khám" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="2" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                         <StackLayout>
                             <Image Source="creditcard.png" HeightRequest="40"/>
-                            <Label Text="Thanh toán viện phí nội trú" HorizontalTextAlignment="Center" TextColor="{AppThemeBinding Light={StaticResource TextColorLight}, Dark={StaticResource TextColorDark}}"/>
+                            <Label Text="Thanh toán viện phí nội trú" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Frame>
                 </Grid>

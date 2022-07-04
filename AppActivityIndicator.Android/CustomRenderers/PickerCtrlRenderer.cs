@@ -17,16 +17,16 @@ namespace DatePickerDefaultTextDemo.Droid
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);
-            this.Control.SetTextColor(Android.Graphics.Color.Rgb(83, 63, 149));
-            this.Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
-            this.Control.SetPadding(20, 0, 0, 0);
+            //Control.SetTextColor(Android.Graphics.Color.Rgb(83, 63, 149));
+            Control.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            Control.SetPadding(20, 0, 0, 0);
 
             GradientDrawable gd = new GradientDrawable();
             gd.SetCornerRadius(25); //increase or decrease to changes the corner look  
             gd.SetColor(Android.Graphics.Color.Transparent);
-            gd.SetStroke(3, Android.Graphics.Color.Rgb(83, 63, 149));
+            //gd.SetStroke(3, Android.Graphics.Color.Rgb(83, 63, 149));
 
-            this.Control.SetBackgroundDrawable(gd);
+            Control.SetBackgroundDrawable(gd);
 
             PickerCtrl element = Element as PickerCtrl;
 
@@ -35,7 +35,7 @@ namespace DatePickerDefaultTextDemo.Droid
                 Control.Text = element.Placeholder;
             }
 
-            this.Control.TextChanged += (sender, arg) => {
+            Control.TextChanged += (sender, arg) => {
                 var selectedDate = arg.Text.ToString();
                 if (selectedDate == element.Placeholder)
                 {

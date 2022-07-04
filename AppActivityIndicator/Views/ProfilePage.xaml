@@ -6,7 +6,7 @@
              BackgroundColor="{StaticResource PageBackground}">
     <ContentPage.Content>
         <StackLayout>
-            <TableView Intent="Form" Margin="10" BackgroundColor="White" RowHeight="60">
+            <TableView Intent="Form" Margin="10" RowHeight="60"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                 <TableRoot>
                     <TableSection Title="Thông tin bệnh nhân">
                         <ViewCell>

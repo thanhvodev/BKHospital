@@ -5,21 +5,21 @@
              xmlns:custom="clr-namespace:AppActivityIndicator.CustomControls;assembly=AppActivityIndicator"
              Title="Đặt lịch khám">
     <ContentPage.Content>
-        <Grid RowDefinitions="0.4*, 0.4*, 0.2*">
+        <Grid RowDefinitions="0.4*, 0.4*, 0.2*"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
             <TableView Grid.Row="0" Margin="0,20,0,0">
                 <TableRoot>
                     <TableSection >
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.7*, 0.3*" Margin="5">
-                                <Image Source="profile_icon" Grid.Column="0"/>
+                                <Image Source="{AppThemeBinding Light=profile_icon.png, Dark=profile_icon_dark.png}" Grid.Column="0"/>
                                 <Label Text="XEM LẠI THÔNG TIN CÁ NHÂN" Grid.Column="1"
                                        VerticalOptions="Center"/>
-                                <Image Source="arrow_forward" Grid.Column="2"/>
+                                <Image Source="{AppThemeBinding Light=arrow_forward.png, Dark=arrow_forward_dark.png}" Grid.Column="2"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
-                                <Image Source="calendar_v2" Grid.Column="0"/>
+                                <Image Source="{AppThemeBinding Light=calendar_v2.png, Dark=calendar_v2_dark.png}" Grid.Column="0"/>
                                 <custom:DatePickerCtrl x:Name="datePicker" Placeholder="Chọn ngày khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1" Format="dd/MM/yyyy"/>
@@ -27,7 +27,7 @@
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
-                                <Image Source="medication" Grid.Column="0"/>
+                                <Image Source="{AppThemeBinding Light=medication.png, Dark=medication_dark.png}" Grid.Column="0"/>
                                 <custom:PickerCtrl  Placeholder="Chọn chuyên khoa" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"/>
@@ -35,7 +35,7 @@
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
-                                <Image Source="doctor" Grid.Column="0"/>
+                                <Image Source="{AppThemeBinding Light=doctor.png, Dark=doctor_dark.png}" Grid.Column="0"/>
                                 <custom:PickerCtrl  Placeholder="Chọn bác sĩ" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"/>
@@ -43,7 +43,7 @@
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
-                                <Image Source="schedule" Grid.Column="0"/>
+                                <Image Source="{AppThemeBinding Light=schedule.png, Dark=schedule_dark.png}" Grid.Column="0"/>
                                 <custom:PickerCtrl  Placeholder="Chọn giờ khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"/>
