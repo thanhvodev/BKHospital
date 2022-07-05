@@ -15,6 +15,8 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
+            Routing.RegisterRoute(nameof(MakingAppointmentPage), typeof(MakingAppointmentPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

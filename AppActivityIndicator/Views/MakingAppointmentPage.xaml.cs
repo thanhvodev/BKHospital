@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AppActivityIndicator.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,12 @@ namespace AppActivityIndicator.Views
         public MakingAppointmentPage()
         {
             InitializeComponent();
+        }
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync(new ProfilePage());
+            await Shell.Current.GoToAsync($"{nameof(ProfilePage)}");
         }
     }
 }

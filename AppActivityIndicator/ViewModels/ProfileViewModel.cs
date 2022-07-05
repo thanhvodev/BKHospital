@@ -6,13 +6,12 @@ using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Linq;
+using AppActivityIndicator.Views;
 
 namespace AppActivityIndicator.ViewModels
 {
     internal class ProfileViewModel: BaseViewModel
     {
-        private readonly DBFirebase services;
-
         #region bind user data
         private string street;
         public string Street
@@ -147,14 +146,25 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref bottomButtonText, value);
         }
         public Command EditingCommand { get;}
+        public Command BackBehavior { get; }
 
         public ProfileViewModel()
         {
             IsEditing = false;
             BottomButtonText = "Chỉnh sửa";
-            services = new DBFirebase();
             FetchUserData();
             EditingCommand = new Command(OnClickEditing);
+            BackBehavior = new Command(async () =>
+            {
+                try
+                {
+                    await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alert", "Broken", "OK");
+                }
+            });
         }
 
         private async void FetchUserData()

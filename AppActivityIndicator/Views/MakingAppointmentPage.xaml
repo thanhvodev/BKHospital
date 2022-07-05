@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.MakingAppointmentPage"
-             xmlns:custom="clr-namespace:AppActivityIndicator.CustomControls;assembly=AppActivityIndicator"
+             xmlns:custom="clr-namespace:AppActivityIndicator.CustomControls;assembly=AppActivityIndicator" xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels"
              Title="Đặt lịch khám">
+    <ContentPage.BindingContext>
+        <vm:MakingAppointmentViewModel />
+    </ContentPage.BindingContext>
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackBehavior}" />
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <Grid RowDefinitions="0.4*, 0.4*, 0.2*"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
             <TableView Grid.Row="0" Margin="0,20,0,0">
@@ -15,6 +21,9 @@
                                 <Label Text="XEM LẠI THÔNG TIN CÁ NHÂN" Grid.Column="1"
                                        VerticalOptions="Center"/>
                                 <Image Source="{AppThemeBinding Light=arrow_forward.png, Dark=arrow_forward_dark.png}" Grid.Column="2"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </Grid.GestureRecognizers>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -61,9 +70,9 @@
             <StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Label Text="Hỗ trợ" FontSize="Medium" HorizontalOptions="Center"/>
                 <Label Text="1945724833" FontSize="Large" TextColor="{StaticResource Primary}"/>
-                <!--<StackLayout.GestureRecognizers>
+                <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CallSupportCommand}" />
-                </StackLayout.GestureRecognizers>-->
+                </StackLayout.GestureRecognizers>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -40,7 +40,8 @@ namespace AppActivityIndicator.Views
 
         private async void MakeAppoint_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MakingAppointmentPage());
+            //await Navigation.PushAsync(new MakingAppointmentPage());
+            await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
         }
     }
 }
