@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Views;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,35 @@ namespace AppActivityIndicator.ViewModels
 {
     public class MakingAppointmentViewModel : BaseViewModel
     {
+        private string doctorName;
+        public string DoctorName
+        {
+            get => doctorName;
+            set => _ = SetProperty(ref doctorName, value);
+        }
+
+        private SpecialtyE specialty;
+        public SpecialtyE Specialty
+        {
+            get => specialty;
+            set => _ = SetProperty(ref specialty, value);
+        }
+
+        private DateTime date;
+        public DateTime Date
+        {
+            get => date;
+            set => _ = SetProperty(ref date, value);
+        }
+
+        private string time;
+        public string Time
+        {
+            get => time;
+            set => _ = SetProperty(ref time, value);
+        }
+
+
 
         public MakingAppointmentViewModel()
         {

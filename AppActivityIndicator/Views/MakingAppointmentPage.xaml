@@ -11,7 +11,7 @@
         <BackButtonBehavior Command="{Binding BackBehavior}" />
     </Shell.BackButtonBehavior>
     <ContentPage.Content>
-        <Grid RowDefinitions="0.4*, 0.4*, 0.2*"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+        <Grid RowDefinitions="0.4*, 0.1*, 0.3*, 0.2*"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
             <TableView Grid.Row="0" Margin="0,20,0,0">
                 <TableRoot>
                     <TableSection >
@@ -31,43 +31,47 @@
                                 <Image Source="{AppThemeBinding Light=calendar_v2.png, Dark=calendar_v2_dark.png}" Grid.Column="0"/>
                                 <custom:DatePickerCtrl x:Name="datePicker" Placeholder="Chọn ngày khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
-                                                       Grid.Column="1" Format="dd/MM/yyyy"/>
+                                                       Grid.Column="1" Format="dd/MM/yyyy"
+                                                        DateSelected="DatePicker_DateSelected"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                 <Image Source="{AppThemeBinding Light=medication.png, Dark=medication_dark.png}" Grid.Column="0"/>
-                                <custom:PickerCtrl  Placeholder="Chọn chuyên khoa" 
+                                <custom:PickerCtrl x:Name="Specialty"  Placeholder="Chọn chuyên khoa" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
-                                                       Grid.Column="1"/>
+                                                       Grid.Column="1"
+                                                       SelectedIndexChanged="Specialty_SelectedIndexChanged"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                 <Image Source="{AppThemeBinding Light=doctor.png, Dark=doctor_dark.png}" Grid.Column="0"/>
-                                <custom:PickerCtrl  Placeholder="Chọn bác sĩ" 
+                                <custom:PickerCtrl x:Name="Doctor"  Placeholder="Chọn bác sĩ" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
-                                                       Grid.Column="1"/>
+                                                       Grid.Column="1"
+                                                       SelectedIndexChanged="Doctor_SelectedIndexChanged"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                 <Image Source="{AppThemeBinding Light=schedule.png, Dark=schedule_dark.png}" Grid.Column="0"/>
-                                <custom:PickerCtrl  Placeholder="Chọn giờ khám" 
+                                <custom:PickerCtrl x:Name="Time" Placeholder="Chọn giờ khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
-                                                       Grid.Column="1"/>
+                                                       Grid.Column="1"
+                                                        SelectedIndexChanged="Time_SelectedIndexChanged"/>
                             </Grid>
                         </ViewCell>
                     </TableSection>
                 </TableRoot>
             </TableView>
             <StackLayout HeightRequest="100" Grid.Row="1">
-                <Button  Margin="10" Text="Đặt khám" 
-                                BackgroundColor="{StaticResource PageBackground}"
-                                TextColor="White" 
-                                />
+                <Button x:Name="Order" Margin="10" Text="Đặt khám" 
+                                BackgroundColor="{StaticResource Alert}"
+                                TextColor="White" />
             </StackLayout>
-            <StackLayout Grid.Row="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label Text="*Lưu ý: Số tiền cho một lần khám là 150.000đ" Grid.Row="2" Margin="20"/>
+            <StackLayout Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                 <Label Text="Hỗ trợ" FontSize="Medium" HorizontalOptions="Center"/>
                 <Label Text="1945724833" FontSize="Large" TextColor="{StaticResource Primary}"/>
                 <StackLayout.GestureRecognizers>

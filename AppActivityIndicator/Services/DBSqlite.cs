@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace AppActivityIndicator.Services
 {
@@ -21,6 +22,9 @@ namespace AppActivityIndicator.Services
             sqlDB = new SQLiteAsyncConnection(dbPath);
             sqlDB.CreateTableAsync<User>().Wait();
             sqlDB.CreateTableAsync<Country>().Wait();
+            sqlDB.CreateTableAsync<Doctor>().Wait();
+            sqlDB.CreateTableAsync<Specialty>().Wait();
+
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -92,9 +96,31 @@ namespace AppActivityIndicator.Services
                 await sqlDB.InsertAsync(country);
             }
 
+            List<Doctor> doctors = (await client.Child("Doctor").OnceAsync<Doctor>()).Select(d => new Doctor()
+            {
+                Id = d.Object.Id,
+                Name = d.Object.Name,
+                Specialty = d.Object.Specialty,
+                Time = d.Object.Time
+            }).ToList();
+            foreach (var doctor in doctors)
+            {
+                _ = sqlDB.InsertAsync(doctor);
+            }
 
-            List<User> users = new List<User>();
-            users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
+
+            List<Specialty> specialties = (await client.Child("specialty").OnceAsync<Specialty>()).Select(s => new Specialty()
+            {
+                Id = s.Object.Id,
+                Name = s.Object.Name
+            }).ToList();
+            foreach (var specialty in specialties)
+            {
+                _ = sqlDB.InsertAsync(specialty);
+            }
+
+
+            List<User> users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
             {
                Id = u.Object.Id,
                Name = u.Object.Name,
@@ -119,12 +145,37 @@ namespace AppActivityIndicator.Services
 
         public async Task<int> ClearLocal()
         {
-            return await sqlDB.DeleteAllAsync<User>();
+            await sqlDB.DeleteAllAsync<User>();
+            await sqlDB.DeleteAllAsync<Doctor>();
+            await sqlDB.DeleteAllAsync<Specialty>();
+            await sqlDB.DeleteAllAsync<Country>();
+            return 1;
         }
 
         public async Task<List<Country>> GetCountrys()
         {
             return await sqlDB.Table<Country>().ToListAsync();
+        }
+
+        public async Task<List<Doctor>> GetDoctors(int specialty)
+        {
+            List<Doctor> doctors = await sqlDB.Table<Doctor>().ToListAsync();
+            List<Doctor> Fdoctor = doctors.FindAll(x => x.Specialty == specialty);
+            //await Application.Current.MainPage.DisplayAlert("Thành công", $"{Fdoctor.Count}", "OK");
+            return Fdoctor;
+        }
+
+        public async Task<List<string>> GetTimes(string doctorName)
+        {
+            List<Doctor> doctors = await sqlDB.Table<Doctor>().ToListAsync();
+            Doctor d = doctors.Find(x => x.Name == doctorName);
+            List<string> src = d.Time.Split(',').ToList();
+            return src;
+        }
+
+        public async Task<List<Specialty>> GetSpecialties()
+        {   
+            return await sqlDB.Table<Specialty>().ToListAsync();
         }
     }
 }
