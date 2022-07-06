@@ -15,37 +15,43 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Mã phiếu" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="AS-3929495" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding MId}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Chuyên khoa" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="Ung thư" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding Specialty}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Giờ khám" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding Time}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Ngày khám" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding Date}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Số thứ tự" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding STT}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Phòng khám" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding RoomName}" Grid.Column="1" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Bác sĩ" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Label Text="{Binding DoctorName}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -54,8 +60,14 @@
                                 <Label Text="268 Lý Thường Kiệt, P. 14, Q.10, Tp. Hồ Chí Minh" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Tình trạng" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Label Text="Chưa khám" Grid.Column="1" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
                     </TableSection>
-                    <TableSection Title="Thông tin bệnh nhân">
+                    <!--<TableSection Title="Thông tin bệnh nhân">
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Họ tên" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
@@ -128,7 +140,7 @@
                                 <Label Text="Số nhà tên đường" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                             </Grid>
                         </ViewCell>
-                    </TableSection>
+                    </TableSection>-->
                 </TableRoot>
             </TableView>
             <Button Text="Trở về" Margin="10, 0,10,10" Command="{Binding BackToHomeCommand}"/>

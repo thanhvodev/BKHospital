@@ -43,7 +43,7 @@
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Specialty_SelectedIndexChanged"
-                                                       SelectedIndex="{Binding Specialty, Mode=OneWay}"/>
+                                                       SelectedIndex="{Binding Specialty, Mode=TwoWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -53,7 +53,7 @@
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Doctor_SelectedIndexChanged"
-                                                       SelectedItem="{Binding DoctorName, Mode=OneWay}"/>
+                                                       SelectedItem="{Binding DoctorName, Mode=TwoWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -63,7 +63,7 @@
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Time_SelectedIndexChanged"
-                                                       SelectedItem="{Binding Time, Mode=OneWay}" />
+                                                       SelectedItem="{Binding Time, Mode=TwoWay}" />
                             </Grid>
                         </ViewCell>
                     </TableSection>

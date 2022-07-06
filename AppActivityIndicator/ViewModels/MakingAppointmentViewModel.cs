@@ -60,8 +60,11 @@ namespace AppActivityIndicator.ViewModels
 
         private async void MA()
         {
-            await App.SqlBD.InsertMedicalSheetAsync(DoctorName, Time, Date, Specialty, Preferences.Get("UserEmail", ""));
-            await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}");
+            Random rnd = new Random();
+            int num = rnd.Next();
+            string mId = $"AS-{num}";
+            await App.SqlBD.InsertMedicalSheetAsync(mId, DoctorName, Time, Date, Specialty, Preferences.Get("UserEmail", ""));
+            await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}?{nameof(MASuccessViewModel.MId)}={mId}");
         }
 
         public ICommand CallSupportCommand { get; }

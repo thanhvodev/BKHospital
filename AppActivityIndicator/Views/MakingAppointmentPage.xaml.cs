@@ -17,12 +17,12 @@ namespace AppActivityIndicator.Views
         public MakingAppointmentPage()
         {
             InitializeComponent();
-            Specialty.IsEnabled = false;
-            Doctor.IsEnabled = false;
             Time.IsEnabled = false;
             Order.IsEnabled = false;
             datePicker.MinimumDate = DateTime.Now.AddDays(1);
             datePicker.MaximumDate = DateTime.Now.AddDays(7);
+            Specialty.IsEnabled = false;
+            Doctor.IsEnabled = false;
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

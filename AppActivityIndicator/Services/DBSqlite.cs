@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppActivityIndicator.Services
@@ -210,7 +211,7 @@ namespace AppActivityIndicator.Services
             return await sqlDB.Table<Specialty>().ToListAsync();
         }
 
-        public async Task InsertMedicalSheetAsync(string doctorName, string time, DateTime date, int specialty, string email)
+        public async Task InsertMedicalSheetAsync(string mId, string doctorName, string time, DateTime date, int specialty, string email)
         {
             Random rnd = new Random();
             int num = rnd.Next();
@@ -218,7 +219,7 @@ namespace AppActivityIndicator.Services
             Room room = await sqlDB.Table<Room>().Where(r =>r.Specialty == specialty).FirstOrDefaultAsync();
             MedicalSheet medicalSheet = new MedicalSheet()
             {
-                Id = $"As-{num}",
+                Id = mId,
                 DoctorName = doctorName,
                 Time = time,
                 Date = date,
@@ -230,8 +231,15 @@ namespace AppActivityIndicator.Services
                 RoomName = room.Name,
             };
 
+
             _ = sqlDB.InsertAsync(medicalSheet);
             await client.Child("MedicalSheet").PostAsync(medicalSheet);
+        }
+
+        public async Task<MedicalSheet> GetMedicalSheet(string mId)
+        {
+            MedicalSheet medicalSheet = await sqlDB.Table<MedicalSheet>().Where(m => m.Id == mId).FirstOrDefaultAsync();
+            return medicalSheet;
         }
     }
 }
