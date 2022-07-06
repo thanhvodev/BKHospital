@@ -21,6 +21,8 @@ namespace AppActivityIndicator.Views
             Doctor.IsEnabled = false;
             Time.IsEnabled = false;
             Order.IsEnabled = false;
+            datePicker.MinimumDate = DateTime.Now.AddDays(1);
+            datePicker.MaximumDate = DateTime.Now.AddDays(7);
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

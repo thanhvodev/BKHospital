@@ -128,7 +128,7 @@ namespace AppActivityIndicator.Services
                 Time = m.Object.Time,
                 Date = m.Object.Date,
                 UserId = m.Object.UserId,
-                RoomId = m.Object.RoomId,
+                RoomName = m.Object.RoomName,
                 STT = m.Object.STT,
                 SpecialtyId = m.Object.SpecialtyId,
                 DoctorName = m.Object.DoctorName,
@@ -208,6 +208,30 @@ namespace AppActivityIndicator.Services
         public async Task<List<Specialty>> GetSpecialties()
         {   
             return await sqlDB.Table<Specialty>().ToListAsync();
+        }
+
+        public async Task InsertMedicalSheetAsync(string doctorName, string time, DateTime date, int specialty, string email)
+        {
+            Random rnd = new Random();
+            int num = rnd.Next();
+            User user = await sqlDB.Table<User>().Where(u => u.Email == email).FirstOrDefaultAsync();
+            Room room = await sqlDB.Table<Room>().Where(r =>r.Specialty == specialty).FirstOrDefaultAsync();
+            MedicalSheet medicalSheet = new MedicalSheet()
+            {
+                Id = $"As-{num}",
+                DoctorName = doctorName,
+                Time = time,
+                Date = date,
+                SpecialtyId = specialty,
+                Address = "268 Lý Thường Kiệt, P. 14, Q.10, Tp. Hồ Chí Minh",
+                State = "Chưa khám",
+                STT = rnd.Next(1, 50),
+                UserId = user.Id,
+                RoomName = room.Name,
+            };
+
+            _ = sqlDB.InsertAsync(medicalSheet);
+            await client.Child("MedicalSheet").PostAsync(medicalSheet);
         }
     }
 }

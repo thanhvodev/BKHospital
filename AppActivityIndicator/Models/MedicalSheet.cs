@@ -10,7 +10,7 @@ namespace AppActivityIndicator.Models
         [PrimaryKey]
         public string Id { get; set; }
         public string DoctorName { get; set; }
-        public int RoomId { get; set; }
+        public string RoomName { get; set; }
         public int STT { get; set; }
         public int SpecialtyId { get; set; }
         public DateTime Date { get; set; }

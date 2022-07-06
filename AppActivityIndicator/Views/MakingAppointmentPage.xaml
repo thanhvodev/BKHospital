@@ -33,7 +33,7 @@
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1" Format="dd/MM/yyyy"
                                                         DateSelected="DatePicker_DateSelected"
-                                                       Date="{Binding Date, Mode=OneWay}"/>
+                                                       Date="{Binding Date, Mode=TwoWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>

@@ -9,6 +9,7 @@ namespace AppActivityIndicator.ViewModels
 {
     public class MASuccessViewModel : BaseViewModel
     {
+
         public MASuccessViewModel()
         {
             BackToHomeCommand = new Command(async () =>

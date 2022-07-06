@@ -3,6 +3,7 @@ using AppActivityIndicator.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -53,16 +54,18 @@ namespace AppActivityIndicator.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Alert", "Broken", "OK");
                 }
             });
-            MACommand = new Command(async () =>
-            {
-                await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}");
-            });
+            MACommand = new Command(MA);
 
+        }
+
+        private async void MA()
+        {
+            await App.SqlBD.InsertMedicalSheetAsync(DoctorName, Time, Date, Specialty, Preferences.Get("UserEmail", ""));
+            await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}");
         }
 
         public ICommand CallSupportCommand { get; }
         public ICommand BackBehavior { get; }
         public ICommand MACommand { get; }
-
     }
 }
