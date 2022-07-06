@@ -24,6 +24,8 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<Country>().Wait();
             sqlDB.CreateTableAsync<Doctor>().Wait();
             sqlDB.CreateTableAsync<Specialty>().Wait();
+            sqlDB.CreateTableAsync<Room>().Wait();
+            sqlDB.CreateTableAsync<MedicalSheet>().Wait();
 
         }
 
@@ -118,6 +120,36 @@ namespace AppActivityIndicator.Services
             {
                 _ = sqlDB.InsertAsync(specialty);
             }
+
+            List<MedicalSheet> medicalSheets = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).Select(m => new MedicalSheet()
+            {
+                Id = m.Object.Id,
+                Address = m.Object.Address,
+                Time = m.Object.Time,
+                Date = m.Object.Date,
+                UserId = m.Object.UserId,
+                RoomId = m.Object.RoomId,
+                STT = m.Object.STT,
+                SpecialtyId = m.Object.SpecialtyId,
+                DoctorName = m.Object.DoctorName,
+                State = m.Object.State
+            }).ToList();
+            foreach (var medicalSheet in medicalSheets)
+            {
+                _ = sqlDB.InsertAsync(medicalSheet);
+            }
+
+            List<Room> rooms = (await client.Child("Room").OnceAsync<Room>()).Select(m => new Room()
+            {
+                Id = m.Object.Id,
+                Name = m.Object.Name,
+                Specialty = m.Object.Specialty
+            }).ToList();
+            foreach (var room in rooms)
+            {
+                _ = sqlDB.InsertAsync(room);
+            }
+
 
 
             List<User> users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()

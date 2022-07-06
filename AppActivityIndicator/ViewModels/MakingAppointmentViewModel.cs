@@ -18,9 +18,9 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref doctorName, value);
         }
 
-        private SpecialtyE specialty;
-        public SpecialtyE Specialty
-        {
+        private int specialty;
+        public int Specialty
+        { 
             get => specialty;
             set => _ = SetProperty(ref specialty, value);
         }
@@ -39,8 +39,6 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref time, value);
         }
 
-
-
         public MakingAppointmentViewModel()
         {
             CallSupportCommand = new Command(() => PhoneDialer.Open("1945724833"));
@@ -55,11 +53,16 @@ namespace AppActivityIndicator.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Alert", "Broken", "OK");
                 }
             });
+            MACommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}");
+            });
 
         }
 
         public ICommand CallSupportCommand { get; }
         public ICommand BackBehavior { get; }
+        public ICommand MACommand { get; }
 
     }
 }

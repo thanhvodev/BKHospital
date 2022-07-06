@@ -32,7 +32,8 @@
                                 <custom:DatePickerCtrl x:Name="datePicker" Placeholder="Chọn ngày khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1" Format="dd/MM/yyyy"
-                                                        DateSelected="DatePicker_DateSelected"/>
+                                                        DateSelected="DatePicker_DateSelected"
+                                                       Date="{Binding Date, Mode=OneWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -41,7 +42,8 @@
                                 <custom:PickerCtrl x:Name="Specialty"  Placeholder="Chọn chuyên khoa" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
-                                                       SelectedIndexChanged="Specialty_SelectedIndexChanged"/>
+                                                       SelectedIndexChanged="Specialty_SelectedIndexChanged"
+                                                       SelectedIndex="{Binding Specialty, Mode=OneWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -50,7 +52,8 @@
                                 <custom:PickerCtrl x:Name="Doctor"  Placeholder="Chọn bác sĩ" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
-                                                       SelectedIndexChanged="Doctor_SelectedIndexChanged"/>
+                                                       SelectedIndexChanged="Doctor_SelectedIndexChanged"
+                                                       SelectedItem="{Binding DoctorName, Mode=OneWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
@@ -59,7 +62,8 @@
                                 <custom:PickerCtrl x:Name="Time" Placeholder="Chọn giờ khám" 
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
-                                                        SelectedIndexChanged="Time_SelectedIndexChanged"/>
+                                                       SelectedIndexChanged="Time_SelectedIndexChanged"
+                                                       SelectedItem="{Binding Time, Mode=OneWay}" />
                             </Grid>
                         </ViewCell>
                     </TableSection>
@@ -68,7 +72,8 @@
             <StackLayout HeightRequest="100" Grid.Row="1">
                 <Button x:Name="Order" Margin="10" Text="Đặt khám" 
                                 BackgroundColor="{StaticResource Alert}"
-                                TextColor="White" />
+                                TextColor="White" 
+                                Command="{Binding MACommand}"/>
             </StackLayout>
             <Label Text="*Lưu ý: Số tiền cho một lần khám là 150.000đ" Grid.Row="2" Margin="20"/>
             <StackLayout Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
