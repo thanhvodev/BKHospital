@@ -133,7 +133,8 @@ namespace AppActivityIndicator.Services
                 STT = m.Object.STT,
                 SpecialtyId = m.Object.SpecialtyId,
                 DoctorName = m.Object.DoctorName,
-                State = m.Object.State
+                State = m.Object.State,
+                SpecialtyName = m.Object.SpecialtyName
             }).ToList();
             foreach (var medicalSheet in medicalSheets)
             {

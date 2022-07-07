@@ -18,10 +18,5 @@ namespace AppActivityIndicator.Views
             InitializeComponent();
             BindingContext = new MedicalSheetsViewModel();
         }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
     }
 }

@@ -27,22 +27,29 @@
                         <StackLayout>
                             <Grid Padding="10" x:DataType="model:MedicalSheet" RowDefinitions="1*, 0.1*, 1*, 1*, 1*" ColumnDefinitions="4*, 1*"
                               BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
-                                <Label Text="Mã phiếu: A220595043" HeightRequest="45" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
-                                <Label Text="Đã khám" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Id, StringFormat='Mã phiếu: {0}'}" HeightRequest="45" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding State}" Grid.Column="1" VerticalTextAlignment="Center"/>
                                 <BoxView HeightRequest="0.08" Color="Black" Grid.Row="1" Grid.ColumnSpan="2"/>
                                 <StackLayout Orientation="Horizontal" Grid.Row="2">
                                     <Image Source="doctor.png" WidthRequest="20"/>
-                                    <Label Text="Bác sĩ Huỳnh Công Hậu" VerticalOptions="Center"/>
+                                    <Label Text="{Binding DoctorName}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Grid.Row="3">
                                     <Image Source="medication.png" WidthRequest="20"/>
-                                    <Label Text="Tai, mũi, họng" VerticalOptions="Center"/>
+                                    <Label Text="{Binding SpecialtyName}" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Grid.Row="4">
                                     <Image Source="calendar_v2.png" WidthRequest="20"/>
-                                    <Label Text="09/06/2022 (9pm - 9:30pm)" VerticalOptions="Center"/>
+                                    <Label VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" />
+                                                <Span Text="{Binding Time, StringFormat=' ({0})'}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
-                                <Label Text="21" FontSize="61" TextColor="{StaticResource PageBackground}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding STT}" FontSize="61" TextColor="{StaticResource PageBackground}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalTextAlignment="Center"/>
                             </Grid>
                             <BoxView HeightRequest="0.1" Color="{StaticResource PageBackground}"/>
                         </StackLayout>

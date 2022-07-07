@@ -13,6 +13,7 @@ namespace AppActivityIndicator.Models
         public string RoomName { get; set; }
         public int STT { get; set; }
         public int SpecialtyId { get; set; }
+        public string SpecialtyName { get; set; }
         public DateTime Date { get; set; }
         public string Address { get; set; }
         public string Time { get; set; }
