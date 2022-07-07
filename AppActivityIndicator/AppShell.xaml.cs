@@ -37,7 +37,9 @@ namespace AppActivityIndicator
         private async void ProfileItem_Clicked(object sender, EventArgs e)
         {
             Current.FlyoutIsPresented = false;
-            await Navigation.PushAsync(new ProfilePage());
+            //await Navigation.PushAsync(new ProfilePage());
+            string fromId = "HomePage";
+            await Shell.Current.GoToAsync($"{nameof(ProfilePage)}?{nameof(ProfileViewModel.FromId)}={fromId}");
         }
 
         private async void Logout(object sender, EventArgs e)

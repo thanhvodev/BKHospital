@@ -10,8 +10,16 @@ using AppActivityIndicator.Views;
 
 namespace AppActivityIndicator.ViewModels
 {
-    internal class ProfileViewModel: BaseViewModel
+    [QueryProperty(nameof(FromId), nameof(FromId))]
+    public class ProfileViewModel: BaseViewModel
     {
+        private string fromId;
+        public string FromId
+        {
+            get => fromId;
+            set => _ = SetProperty(ref fromId, value);
+        }
+
         #region bind user data
         private string street;
         public string Street
@@ -158,7 +166,14 @@ namespace AppActivityIndicator.ViewModels
             {
                 try
                 {
-                    await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
+                    if (FromId == "HomePage")
+                    {
+                        await Shell.Current.GoToAsync("..");
+                    }
+                    else
+                    {
+                        await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
+                    }
                 }
                 catch (Exception)
                 {
