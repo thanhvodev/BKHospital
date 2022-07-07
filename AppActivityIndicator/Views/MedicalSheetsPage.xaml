@@ -4,26 +4,48 @@
              x:Class="AppActivityIndicator.Views.MedicalSheetsPage"
              Title="{Binding Title}"
              xmlns:local="clr-namespace:AppActivityIndicator.ViewModels"  
-             xmlns:model="clr-namespace:AppActivityIndicator.Models">
+             xmlns:model="clr-namespace:AppActivityIndicator.Models"
+             BackgroundColor="{StaticResource PageBackground}"
+             >
     <ContentPage.Content>
         <RefreshView x:DataType="local:MedicalSheetsViewModel" Command="{Binding LoadCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <CollectionView x:Name="MedicalSheetsListView"
-                            ItemsSource="{Binding MedicalSheets}">
+                            ItemsSource="{Binding MedicalSheets}"
+                            Margin="10" >
                 <CollectionView.Header>
-                    <StackLayout BackgroundColor="LightGray">
+                    <StackLayout>
                         <Label Margin="10,0,0,0"
                                Text="{Binding Name_Id}"
                                x:Name="Name_Id"
                                FontSize="Medium"
-                               FontAttributes="Bold"
-                               HorizontalTextAlignment="Center"/>
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10" x:DataType="model:MedicalSheet" RowDefinitions="1*, 1*, 1*, 1*" ColumnDefinitions="3*, 1*">
-                            <Label Text="Mã phiếu: A220595043" />
-                        </Grid>
+                        <StackLayout>
+                            <Grid Padding="10" x:DataType="model:MedicalSheet" RowDefinitions="1*, 0.1*, 1*, 1*, 1*" ColumnDefinitions="4*, 1*"
+                              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+                                <Label Text="Mã phiếu: A220595043" HeightRequest="45" TextColor="{StaticResource Primary}" VerticalTextAlignment="Center"/>
+                                <Label Text="Đã khám" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                <BoxView HeightRequest="0.08" Color="Black" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                <StackLayout Orientation="Horizontal" Grid.Row="2">
+                                    <Image Source="doctor.png" WidthRequest="20"/>
+                                    <Label Text="Bác sĩ Huỳnh Công Hậu" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Row="3">
+                                    <Image Source="medication.png" WidthRequest="20"/>
+                                    <Label Text="Tai, mũi, họng" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Grid.Row="4">
+                                    <Image Source="calendar_v2.png" WidthRequest="20"/>
+                                    <Label Text="09/06/2022 (9pm - 9:30pm)" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Label Text="21" FontSize="61" TextColor="{StaticResource PageBackground}" Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" VerticalTextAlignment="Center"/>
+                            </Grid>
+                            <BoxView HeightRequest="0.1" Color="{StaticResource PageBackground}"/>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
