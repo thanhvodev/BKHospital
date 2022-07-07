@@ -241,5 +241,10 @@ namespace AppActivityIndicator.Services
             MedicalSheet medicalSheet = await sqlDB.Table<MedicalSheet>().Where(m => m.Id == mId).FirstOrDefaultAsync();
             return medicalSheet;
         }
+
+        public async Task<List<MedicalSheet>> GetMedicalSheetsAsync()
+        {
+            return await sqlDB.Table<MedicalSheet>().ToListAsync();
+        }
     }
 }

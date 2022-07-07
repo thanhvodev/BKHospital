@@ -42,7 +42,6 @@ namespace AppActivityIndicator.Views
         private async void Specialty_SelectedIndexChanged(object sender, EventArgs e)
         {
             Doctor.IsEnabled = true;
-            //await Application.Current.MainPage.DisplayAlert("Thành công", $"{Specialty.SelectedIndex}", "OK");
             List<Doctor> doctors = await App.SqlBD.GetDoctors(Specialty.SelectedIndex);
             List<string> src = doctors.Select(d => d.Name).ToList();
             Doctor.ItemsSource = src;

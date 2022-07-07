@@ -18,6 +18,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(ProfilePage), typeof(ProfilePage));
             Routing.RegisterRoute(nameof(MakingAppointmentPage), typeof(MakingAppointmentPage));
             Routing.RegisterRoute(nameof(MASuccessPage), typeof(MASuccessPage));
+            Routing.RegisterRoute(nameof(MedicalSheetsPage), typeof(MedicalSheetsPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -44,6 +45,12 @@ namespace AppActivityIndicator
             Preferences.Remove("MyFirebaseRefreshToken");
             await App.SqlBD.ClearLocal();
             await Current.GoToAsync("//LoginPage");
+        }
+
+        private async void MenuItem_Clicked_1(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}");
         }
     }
 }

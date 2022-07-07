@@ -90,7 +90,7 @@
 
     <MenuItem Text="Hồ sơ bệnh nhân" IconImageSource="{AppThemeBinding Light=profile_icon.png, Dark=profile_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="ProfileItem_Clicked">
     </MenuItem>
-    <MenuItem Text="Phiếu khám bệnh" IconImageSource="{AppThemeBinding Light=icon_feed.png, Dark=icon_feed_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Phiếu khám bệnh" IconImageSource="{AppThemeBinding Light=icon_feed.png, Dark=icon_feed_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked_1">
     </MenuItem>
     <MenuItem Text="Thông báo" IconImageSource="{AppThemeBinding Light=notifications_icon.png, Dark=notifications_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>
