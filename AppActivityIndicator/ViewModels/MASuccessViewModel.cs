@@ -23,7 +23,7 @@ namespace AppActivityIndicator.ViewModels
         {
             try
             {
-                await Application.Current.MainPage.DisplayAlert("Thành công", $"{MId}", "OK");
+                await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đặt khám thành công, vui lòng kiểm tra thông tin", "OK");
                 var item = await App.SqlBD.GetMedicalSheet(MId);
                 DoctorName = item.DoctorName;
                 switch(item.SpecialtyId)

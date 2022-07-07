@@ -10,5 +10,6 @@ namespace AppActivityIndicator.Helper
         public const string ProvinceAPIEndpoint = "https://provinces.open-api.vn";
         public const string CountryAPIEndpoint = "https://restcountries.com";
         public const string FIREBASE_SERVER = "https://xamarinauth-462c8-default-rtdb.firebaseio.com/";
+        public const string QR_API_ENDPOINT = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=";
     }
 }

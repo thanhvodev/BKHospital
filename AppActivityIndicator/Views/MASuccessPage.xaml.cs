@@ -1,4 +1,5 @@
 ﻿using AppActivityIndicator.ViewModels;
+using AppActivityIndicator.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

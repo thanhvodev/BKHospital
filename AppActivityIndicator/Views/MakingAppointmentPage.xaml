@@ -43,7 +43,8 @@
                                                        HeightRequest="45"  HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Specialty_SelectedIndexChanged"
-                                                       SelectedIndex="{Binding Specialty, Mode=TwoWay}"/>
+                                                       SelectedIndex="{Binding Specialty, Mode=TwoWay}"
+                                                       SelectedItem="{Binding SpecialtyName, Mode=TwoWay}"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>

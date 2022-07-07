@@ -214,7 +214,7 @@ namespace AppActivityIndicator.Services
             return await sqlDB.Table<Specialty>().ToListAsync();
         }
 
-        public async Task InsertMedicalSheetAsync(string mId, string doctorName, string time, DateTime date, int specialty, string email)
+        public async Task InsertMedicalSheetAsync(string mId, string doctorName, string time, DateTime date, int specialty, string email, string specialtyName)
         {
             Random rnd = new Random();
             int num = rnd.Next();
@@ -232,6 +232,7 @@ namespace AppActivityIndicator.Services
                 STT = rnd.Next(1, 50),
                 UserId = user.Id,
                 RoomName = room.Name,
+                SpecialtyName = specialtyName
             };
 
 

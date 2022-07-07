@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:MASuccessViewModel"
              x:Class="AppActivityIndicator.Views.MASuccessPage"
              BackgroundColor="{StaticResource PageBackground}"
+             xmlns:constants="clr-namespace:AppActivityIndicator.Helper"
              Title="Đặt khám thành công">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
@@ -15,8 +16,14 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Mã phiếu" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="{Binding MId}" Grid.Column="1" VerticalOptions="Center" />
+                                <Label x:Name="mId" Text="{Binding MId}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Qr Code" Grid.Column="0" VerticalOptions="Center" Margin="5, 5, 50, 5"/>
+                                <Image x:Name="QrCode" Grid.Column="1" VerticalOptions="Center" Source="{Binding MId, StringFormat='https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data={0}'}" Margin="5"/>
+                            </StackLayout>
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
@@ -67,80 +74,6 @@
                             </Grid>
                         </ViewCell>
                     </TableSection>
-                    <!--<TableSection Title="Thông tin bệnh nhân">
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Họ tên" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Mã số bệnh nhân" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Ngày sinh" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Giới tính" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="CMND/CCCD" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Nghề nghiệp" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Quốc gia" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Dân tộc" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Số điện thoại" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Email" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                    </TableSection>
-                    <TableSection Title="Địa chỉ">
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Tỉnh thành" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Quận huyện" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Phường xã" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                        <ViewCell>
-                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
-                                <Label Text="Số nhà tên đường" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                            </Grid>
-                        </ViewCell>
-                    </TableSection>-->
                 </TableRoot>
             </TableView>
             <Button Text="Trở về" Margin="10, 0,10,10" Command="{Binding BackToHomeCommand}"/>

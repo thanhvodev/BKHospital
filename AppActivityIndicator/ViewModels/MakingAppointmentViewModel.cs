@@ -26,6 +26,13 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref specialty, value);
         }
 
+        private string specialtyName;
+        public string SpecialtyName
+        {
+            get => specialtyName;
+            set => _ = SetProperty(ref specialtyName, value);
+        }
+
         private DateTime date;
         public DateTime Date
         {
@@ -63,7 +70,7 @@ namespace AppActivityIndicator.ViewModels
             Random rnd = new Random();
             int num = rnd.Next();
             string mId = $"AS-{num}";
-            await App.SqlBD.InsertMedicalSheetAsync(mId, DoctorName, Time, Date, Specialty, Preferences.Get("UserEmail", ""));
+            await App.SqlBD.InsertMedicalSheetAsync(mId, DoctorName, Time, Date, Specialty, Preferences.Get("UserEmail", ""), SpecialtyName);
             await Shell.Current.GoToAsync($"{nameof(MASuccessPage)}?{nameof(MASuccessViewModel.MId)}={mId}");
         }
 
