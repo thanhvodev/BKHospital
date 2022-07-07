@@ -182,6 +182,8 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<Doctor>();
             await sqlDB.DeleteAllAsync<Specialty>();
             await sqlDB.DeleteAllAsync<Country>();
+            await sqlDB.DeleteAllAsync<MedicalSheet>();
+            await sqlDB.DeleteAllAsync<Room>();
             return 1;
         }
 

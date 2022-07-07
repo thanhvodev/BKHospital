@@ -33,6 +33,7 @@ namespace AppActivityIndicator.ViewModels
             MedicalSheets = new ObservableCollection<MedicalSheet>();
             LoadCommand = new Command(async () => await ExecuteLoadCommand());
             Fetch();
+            IsBusy = true;
         }
 
         private async Task ExecuteLoadCommand()
@@ -51,13 +52,17 @@ namespace AppActivityIndicator.ViewModels
             {
                 await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
             }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private async void Fetch()
         {
             var users = await App.SqlBD.GetUsersAsync();
             var user = users.Where(i => i.Email == Preferences.Get("UserEmail", "")).FirstOrDefault();
-            Name_Id = user.Name + ", " + user.Id;
+            Name_Id = user.Name + " (" + user.Id + ")";
         }
         #endregion
     }

@@ -21,7 +21,9 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
+                        <Grid Padding="10" x:DataType="model:MedicalSheet" RowDefinitions="1*, 1*, 1*, 1*" ColumnDefinitions="3*, 1*">
+                            <Label Text="Mã phiếu: A220595043" />
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
