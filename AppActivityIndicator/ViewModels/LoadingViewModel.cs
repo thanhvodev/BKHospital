@@ -25,6 +25,7 @@ namespace AppActivityIndicator.ViewModels
                 LoadEmailPassword(value);
             }
         }
+
         #endregion
 
         #region Method
@@ -50,7 +51,6 @@ namespace AppActivityIndicator.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
         }
-
         #endregion
     }
 }
