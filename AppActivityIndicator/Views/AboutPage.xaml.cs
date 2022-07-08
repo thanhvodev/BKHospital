@@ -44,9 +44,13 @@ namespace AppActivityIndicator.Views
             await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
+            if (string.IsNullOrEmpty(Preferences.Get("MyFirebaseRefreshToken", "")))
+            {
+                await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
+            }
         }
     }
 }
