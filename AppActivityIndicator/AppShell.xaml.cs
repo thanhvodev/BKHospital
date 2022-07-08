@@ -20,6 +20,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(MASuccessPage), typeof(MASuccessPage));
             Routing.RegisterRoute(nameof(MedicalSheetsPage), typeof(MedicalSheetsPage));
             Routing.RegisterRoute(nameof(MedicalSheetDetailPage), typeof(MedicalSheetDetailPage));
+            Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

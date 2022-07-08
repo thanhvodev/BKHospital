@@ -25,7 +25,7 @@ namespace AppActivityIndicator.ViewModels
         }
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+            LoginCommand = new Command(OnLoginClickedLoading);
         }
 
         private async void OnLoginClicked(object obj)
@@ -46,9 +46,22 @@ namespace AppActivityIndicator.ViewModels
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Alert", e.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+            }
+        }
+
+        private async void OnLoginClickedLoading(object obj)
+        {
+            try
+            {
+                string email_password = Email + "," + Password;
+                await Shell.Current.GoToAsync($"{nameof(LoadingPage)}?{nameof(LoadingViewModel.Email_Password)}={email_password}");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
             }
         }
     }
