@@ -17,6 +17,7 @@ namespace AppActivityIndicator.ViewModels
     {
         private string email;
         private string password;
+        private string repassword;
 
         public string Email
         {
@@ -28,6 +29,12 @@ namespace AppActivityIndicator.ViewModels
         {
             get => password;
             set => SetProperty(ref password, value);
+        }
+
+        public string Repassword
+        {
+            get => repassword;
+            set => SetProperty(ref repassword, value);
         }
 
         public SignUpViewModel()
@@ -48,23 +55,30 @@ namespace AppActivityIndicator.ViewModels
 
         public Command SignUpCommand { get; }
         public Command BackBehavior { get; }
-        private async void OnSignUpClicked(object obj)
+        private async void OnSignUpClicked()
         {
+            if (Password != Repassword)
+            {
+                await Application.Current.MainPage.DisplayAlert("Thất bại", "Trường mật khẩu và xác nhận mật khẩu khác nhau. Vui lòng thử lại!", "OK");
+            }
+            else
+            {
+                try
+                {
+                    FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
+                    FirebaseAuthLink auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email, Password);
+                    string gettoken = auth.FirebaseToken;
+                    await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đăng ký tài khoản với Email {Email} thành công", "Quay lại trang đăng nhập");
+                    await Shell.Current.GoToAsync("//LoginPage");
+                    await App.SqlBD.AddUser(email);
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Thất bại", ex.Message, "OK");
+                }
+            }
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-            try
-            {
-                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(Constants.WebAPIkey));
-                FirebaseAuthLink auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Email, Password);
-                string gettoken = auth.FirebaseToken;
-                await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đăng ký tài khoản với Email {Email} thành công", "Quay lại trang đăng nhập");
-                await Shell.Current.GoToAsync("//LoginPage");
-                await App.SqlBD.AddUser(email);
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Thất bại", ex.Message, "OK");
-            }
         }
     }
 }

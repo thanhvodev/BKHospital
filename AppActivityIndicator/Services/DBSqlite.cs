@@ -234,9 +234,7 @@ namespace AppActivityIndicator.Services
                 RoomName = room.Name,
                 SpecialtyName = specialtyName
             };
-
-
-            _ = sqlDB.InsertAsync(medicalSheet);
+            _ = sqlDB.InsertAsync(medicalSheet) ;
             await client.Child("MedicalSheet").PostAsync(medicalSheet);
         }
 
