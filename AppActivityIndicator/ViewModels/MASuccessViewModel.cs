@@ -12,49 +12,13 @@ namespace AppActivityIndicator.ViewModels
     [QueryProperty(nameof(MId), nameof(MId))]
     public class MASuccessViewModel : BaseViewModel
     {
+
+        #region Field and Property
         private string mId;
         public string MId
         {
             get => mId;
             set => _ = SetProperty(ref mId, value);
-        }
-
-        private async void Fetch()
-        {
-            try
-            {
-                await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đặt khám thành công, vui lòng kiểm tra thông tin", "OK");
-                var item = await App.SqlBD.GetMedicalSheet(MId);
-                DoctorName = item.DoctorName;
-                switch(item.SpecialtyId)
-                {
-                    case 0:
-                        Specialty = "Chuyên khoa Tai, mũi, họng";
-                        break;
-                    case 1:
-                        Specialty = "Chuyên khoa Não và thần kinh";
-                        break;
-                    case 2:
-                        Specialty = "Chuyên khoa Ung thư";
-                        break;
-                    case 3:
-                        Specialty = "Chuyên khoa Nội tổng quát";
-                        break;
-                    case 4:
-                        Specialty = "Chuyên khoa Tiết niệu";
-                        break;
-                    default:
-                        break;
-                }
-                Date = item.Date.ToLongDateString();
-                Time = item.Time;
-                STT = item.STT;
-                RoomName = item.RoomName;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
         }
 
         private string doctorName;
@@ -99,6 +63,11 @@ namespace AppActivityIndicator.ViewModels
             set => _ = SetProperty(ref time, value);
         }
 
+        public ICommand BackToHomeCommand { get; }
+
+        #endregion
+
+        #region Method
         public MASuccessViewModel()
         {
             Fetch();
@@ -108,6 +77,43 @@ namespace AppActivityIndicator.ViewModels
             });
         }
 
-        public ICommand BackToHomeCommand { get; }
+        private async void Fetch()
+        {
+            try
+            {
+                await Application.Current.MainPage.DisplayAlert("Thành công", $"Bạn đã đặt khám thành công, vui lòng kiểm tra thông tin", "OK");
+                var item = await App.SqlBD.GetMedicalSheet(MId);
+                DoctorName = item.DoctorName;
+                switch (item.SpecialtyId)
+                {
+                    case 0:
+                        Specialty = "Chuyên khoa Tai, mũi, họng";
+                        break;
+                    case 1:
+                        Specialty = "Chuyên khoa Não và thần kinh";
+                        break;
+                    case 2:
+                        Specialty = "Chuyên khoa Ung thư";
+                        break;
+                    case 3:
+                        Specialty = "Chuyên khoa Nội tổng quát";
+                        break;
+                    case 4:
+                        Specialty = "Chuyên khoa Tiết niệu";
+                        break;
+                    default:
+                        break;
+                }
+                Date = item.Date.ToLongDateString();
+                Time = item.Time;
+                STT = item.STT;
+                RoomName = item.RoomName;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+        #endregion
     }
 }

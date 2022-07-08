@@ -1,4 +1,5 @@
 ﻿using AppActivityIndicator.Models;
+using AppActivityIndicator.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,18 @@ namespace AppActivityIndicator.ViewModels
         private MedicalSheet _selectedMedicalSheet;
         public ObservableCollection<MedicalSheet> MedicalSheets { get; }
         public Command LoadCommand { get; }
+        public Command<MedicalSheet> MSTapped { get; }
+
+        public MedicalSheet SelectedMS
+        {
+            get => _selectedMedicalSheet;
+            set
+            {
+                _ = SetProperty(ref _selectedMedicalSheet, value);
+                OnMSSelected(value);
+            }
+        }
+
         #endregion
 
         #region method
@@ -34,6 +47,7 @@ namespace AppActivityIndicator.ViewModels
             LoadCommand = new Command(async () => await ExecuteLoadCommand());
             Fetch();
             IsBusy = true;
+            MSTapped = new Command<MedicalSheet>(OnMSSelected);
         }
 
         private async Task ExecuteLoadCommand()
@@ -63,6 +77,23 @@ namespace AppActivityIndicator.ViewModels
             var users = await App.SqlBD.GetUsersAsync();
             var user = users.Where(i => i.Email == Preferences.Get("UserEmail", "")).FirstOrDefault();
             Name_Id = user.Name + " (" + user.Id + ")";
+        }
+
+        private async void OnMSSelected(MedicalSheet m)
+        {
+            if (m == null)
+            {
+                return;
+            }
+            // This will push the ItemDetailPage onto the navigation stack
+            try
+            {
+                await Shell.Current.GoToAsync($"{nameof(MedicalSheetDetailPage)}?{nameof(MedicalSheetDetailViewModel.MId)}={m.Id}");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
+            }
         }
         #endregion
     }

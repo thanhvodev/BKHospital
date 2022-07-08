@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:MedicalSheetDetailViewModel"
+             x:Class="AppActivityIndicator.Views.MedicalSheetDetailPage"
+             Title="{Binding MId}">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form" Margin="10"  RowHeight="60" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+                <TableRoot>
+                    <TableSection Title="Thông tin phiếu khám bệnh">
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Mã phiếu" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Label x:Name="mId" Text="{Binding MId}" Grid.Column="1" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
