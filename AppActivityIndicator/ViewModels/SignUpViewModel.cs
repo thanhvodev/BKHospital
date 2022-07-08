@@ -1,6 +1,7 @@
 ﻿using AppActivityIndicator.Helper;
 using AppActivityIndicator.Models;
 using AppActivityIndicator.Services;
+using AppActivityIndicator.Views;
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using Xamarin.Forms;
 
 namespace AppActivityIndicator.ViewModels
 {
-    internal class SignUpViewModel : BaseViewModel
+    public class SignUpViewModel : BaseViewModel
     {
         private string email;
         private string password;
@@ -32,10 +33,21 @@ namespace AppActivityIndicator.ViewModels
         public SignUpViewModel()
         {
             SignUpCommand = new Command(OnSignUpClicked);
+            BackBehavior = new Command(async () =>
+            {
+                try
+                {
+                    await Shell.Current.GoToAsync("..");
+                }
+                catch (Exception)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Oops", "Something Broken", "OK");
+                }
+            });
         }
 
         public Command SignUpCommand { get; }
-
+        public Command BackBehavior { get; }
         private async void OnSignUpClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one

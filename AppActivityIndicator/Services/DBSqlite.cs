@@ -246,9 +246,10 @@ namespace AppActivityIndicator.Services
             return medicalSheet;
         }
 
-        public async Task<List<MedicalSheet>> GetMedicalSheetsAsync()
+        public async Task<List<MedicalSheet>> GetMedicalSheetsAsync(string mId)
         {
-            return await sqlDB.Table<MedicalSheet>().ToListAsync();
+            List<MedicalSheet> all = await sqlDB.Table<MedicalSheet>().ToListAsync();
+            return all.FindAll(m => m.UserId == mId);
         }
     }
 }

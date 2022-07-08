@@ -4,6 +4,9 @@
              x:Class="AppActivityIndicator.Views.SignUpPage"
              Title="Trang đăng ký"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackBehavior}" />
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20, 0, 20, 20">
             <Image Source="bklogobig.png"  WidthRequest="100"/>

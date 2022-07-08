@@ -47,8 +47,8 @@ namespace AppActivityIndicator.ViewModels
         {
             Title = "Phiếu khám bệnh";
             MedicalSheets = new ObservableCollection<MedicalSheet>();
-            LoadCommand = new Command(async () => await ExecuteLoadCommand());
             Fetch();
+            LoadCommand = new Command(async () => await ExecuteLoadCommand());
             IsBusy = true;
             MSTapped = new Command<MedicalSheet>(OnMSSelected);
             BackToHomeCommand = new Command(async () =>
@@ -63,7 +63,9 @@ namespace AppActivityIndicator.ViewModels
             try
             {
                 MedicalSheets.Clear();
-                var medicalSheets = await App.SqlBD.GetMedicalSheetsAsync();
+                var users = await App.SqlBD.GetUsersAsync();
+                var user = users.Where(i => i.Email == Preferences.Get("UserEmail", "")).FirstOrDefault();
+                var medicalSheets = await App.SqlBD.GetMedicalSheetsAsync(user.Id);
                 foreach (MedicalSheet m in medicalSheets)
                 {
                     MedicalSheets.Add(m);
