@@ -45,8 +45,4 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helper\QrCode\" />
-  </ItemGroup>
 </Project>

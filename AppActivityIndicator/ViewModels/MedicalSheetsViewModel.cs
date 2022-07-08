@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -26,6 +27,8 @@ namespace AppActivityIndicator.ViewModels
         public ObservableCollection<MedicalSheet> MedicalSheets { get; }
         public Command LoadCommand { get; }
         public Command<MedicalSheet> MSTapped { get; }
+
+        public ICommand BackToHomeCommand { get; }
 
         public MedicalSheet SelectedMS
         {
@@ -48,6 +51,10 @@ namespace AppActivityIndicator.ViewModels
             Fetch();
             IsBusy = true;
             MSTapped = new Command<MedicalSheet>(OnMSSelected);
+            BackToHomeCommand = new Command(async () =>
+            {
+                await Shell.Current.GoToAsync("//AboutPage");
+            });
         }
 
         private async Task ExecuteLoadCommand()

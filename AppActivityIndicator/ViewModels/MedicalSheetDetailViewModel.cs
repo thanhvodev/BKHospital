@@ -1,7 +1,9 @@
 ﻿using AppActivityIndicator.Models;
+using AppActivityIndicator.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace AppActivityIndicator.ViewModels
@@ -16,8 +18,8 @@ namespace AppActivityIndicator.ViewModels
             get => mId;
             set
             {
-                mId = value;
                 LoadMId(value);
+                _ = SetProperty(ref mId, value);
             }
         }
 
@@ -62,10 +64,27 @@ namespace AppActivityIndicator.ViewModels
             get => time;
             set => _ = SetProperty(ref time, value);
         }
+
+        public ICommand BackToHomeCommand { get; }
         #endregion
 
 
         #region Method
+
+        public MedicalSheetDetailViewModel()
+        {
+            BackToHomeCommand = new Command(async () =>
+            {
+                try
+                {
+                    await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}");
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
+                }
+            });
+        }
         private async void LoadMId(string msId)
         {
             try

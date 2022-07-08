@@ -7,6 +7,9 @@
              xmlns:model="clr-namespace:AppActivityIndicator.Models" x:DataType="local:MedicalSheetsViewModel"
              BackgroundColor="{StaticResource PageBackground}"
              >
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <RefreshView x:DataType="local:MedicalSheetsViewModel" Command="{Binding LoadCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <CollectionView x:Name="MedicalSheetsListView"
