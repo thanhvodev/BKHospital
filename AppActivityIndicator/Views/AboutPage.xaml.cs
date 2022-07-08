@@ -43,5 +43,10 @@ namespace AppActivityIndicator.Views
             //await Navigation.PushAsync(new MakingAppointmentPage());
             await Shell.Current.GoToAsync($"{nameof(MakingAppointmentPage)}");
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }

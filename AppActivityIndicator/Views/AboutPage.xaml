@@ -27,6 +27,7 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
+        <!--<ActivityIndicator IsRunning="true" Grid.Row="1"/>-->
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0" VerticalOptions="FillAndExpand">
@@ -42,6 +43,12 @@
                         <StackLayout>
                             <Image Source="sheet.png" HeightRequest="50"/>
                             <Label Text="Phiếu khám bệnh" LineBreakMode="WordWrap" HorizontalTextAlignment="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding GoToMSsPage}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="1" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
