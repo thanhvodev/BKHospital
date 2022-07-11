@@ -246,8 +246,19 @@ namespace AppActivityIndicator.Services
 
         public async Task<List<MedicalSheet>> GetMedicalSheetsAsync(string mId)
         {
-            List<MedicalSheet> all = await sqlDB.Table<MedicalSheet>().ToListAsync();
-            return all.FindAll(m => m.UserId == mId);
+            List<MedicalSheet> result = (await sqlDB.Table<MedicalSheet>().ToListAsync()).FindAll(m => m.UserId == mId);
+            DateTime today = DateTime.Now;
+            foreach (MedicalSheet medicalSheet in result)
+            {
+                if (DateTime.Compare(today, medicalSheet.Date) > 0)
+                {
+                    var toUpdateMS = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
+                    medicalSheet.State = "Đã khám";
+                    _ = sqlDB.UpdateAsync(medicalSheet);
+                    await client.Child("MedicalSheet").Child(toUpdateMS.Key).PutAsync(medicalSheet);
+                }
+            }
+            return result;
         }
     }
 }

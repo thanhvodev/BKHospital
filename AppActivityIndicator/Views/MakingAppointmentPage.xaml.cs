@@ -33,6 +33,12 @@ namespace AppActivityIndicator.Views
 
         private async void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
+            if (datePicker.Date.DayOfWeek == DayOfWeek.Saturday || datePicker.Date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                await Application.Current.MainPage.DisplayAlert("Thất bại", $"Không thể đăng ký khám vào T7, CN", "Chọn ngày khác");
+                return;
+            }
+
             Specialty.IsEnabled = true;
             List<Specialty> specialties = await App.SqlBD.GetSpecialties();
             List<string> src = specialties.Select(s => s.Name).ToList();
