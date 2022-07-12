@@ -103,7 +103,7 @@ namespace AppActivityIndicator.ViewModels
         {
             notificationNumber++;
             string title = "Nhắc nhở khám bệnh";
-            string message = $"Bạn có lịch khám lúc {dateDateFormat:dd/MM/yyyy}, {time} vui lòng đến trước 15'";
+            string message = $"Bạn có lịch khám lúc {dateDateFormat:dd/MM/yyyy}, {time} vui lòng đến trước giờ hẹn 15 phút";
             notificationManager.SendNotification(title, message, dateDateFormat.Subtract(new TimeSpan(1, 0, 0, 0)));
         }
 

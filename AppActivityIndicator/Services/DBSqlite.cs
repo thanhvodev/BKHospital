@@ -248,16 +248,21 @@ namespace AppActivityIndicator.Services
         {
             List<MedicalSheet> result = (await sqlDB.Table<MedicalSheet>().ToListAsync()).FindAll(m => m.UserId == mId);
             DateTime today = DateTime.Now;
-            foreach (MedicalSheet medicalSheet in result)
+            var netword = Connectivity.NetworkAccess;
+            if (netword == NetworkAccess.Internet)
             {
-                if (DateTime.Compare(today, medicalSheet.Date) > 0)
+                foreach (MedicalSheet medicalSheet in result)
                 {
-                    var toUpdateMS = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
-                    medicalSheet.State = "Đã khám";
-                    _ = sqlDB.UpdateAsync(medicalSheet);
-                    await client.Child("MedicalSheet").Child(toUpdateMS.Key).PutAsync(medicalSheet);
+                    if (DateTime.Compare(today, medicalSheet.Date) > 0)
+                    {
+                        var toUpdateMS = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
+                        medicalSheet.State = "Đã khám";
+                        _ = sqlDB.UpdateAsync(medicalSheet);
+                        await client.Child("MedicalSheet").Child(toUpdateMS.Key).PutAsync(medicalSheet);
+                    }
                 }
             }
+
             return result;
         }
     }
