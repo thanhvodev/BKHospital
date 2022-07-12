@@ -61,6 +61,8 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmHandler.cs" />
+    <Compile Include="AndroidNotificationManager.cs" />
     <Compile Include="CustomRenderers\DatePickerCtrlRenderer.cs" />
     <Compile Include="CustomRenderers\DatePickerRenderer.cs" />
     <Compile Include="CustomRenderers\EntryRender.cs" />

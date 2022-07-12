@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Models;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Models;
 using AppActivityIndicator.Views;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace AppActivityIndicator.ViewModels
     {
 
         #region Field and Property
+
+        readonly INotificationManager notificationManager;
+        private int notificationNumber = 0;
+
         private string mId;
         public string MId
         {
@@ -70,11 +75,37 @@ namespace AppActivityIndicator.ViewModels
         #region Method
         public MASuccessViewModel()
         {
+            notificationManager = DependencyService.Get<INotificationManager>();
+            notificationManager.NotificationReceived += (sender, eventArgs) =>
+            {
+                var evtData = (NotificationEventArgs)eventArgs;
+                ShowNotification(evtData.Title, evtData.Message);
+            };
             Fetch();
             BackToHomeCommand = new Command(async () =>
             {
                 await Shell.Current.GoToAsync("//AboutPage");
             });
+        }
+
+        void ShowNotification(string title, string message)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var msg = new Label()
+                {
+                    Text = $"Notification Received:\nTitle: {title}\nMessage: {message}"
+                };
+            });
+        }
+
+        void OnScheduleClick(string date, string time, DateTime dateDateFormat)
+        {
+            notificationNumber++;
+            string title = "Nhắc nhở khám bệnh";
+            string message = $"Bạn có lịch khám lúc {dateDateFormat:dd/MM/yyyy}, {time} vui lòng đến trước 15'";
+            //dateDateFormat.Subtract(new TimeSpan(1, 0, 0, 0))
+            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
         }
 
         private async void Fetch()
@@ -104,8 +135,10 @@ namespace AppActivityIndicator.ViewModels
                     default:
                         break;
                 }
+
                 Date = item.Date.ToLongDateString();
                 Time = item.Time;
+                OnScheduleClick(Date, Time, item.Date);
                 STT = item.STT;
                 RoomName = item.RoomName;
             }
