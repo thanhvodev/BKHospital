@@ -82,6 +82,10 @@ namespace AppActivityIndicator.Droid
             intent.PutExtra(MessageKey, message);
 
             PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId++, intent, PendingIntentFlags.UpdateCurrent);
+            NotificationCompat.BigTextStyle textStyle = new NotificationCompat.BigTextStyle();
+            string longTextMessage = message;
+            textStyle.BigText(longTextMessage);
+            textStyle.SetSummaryText("Lịch khám.");
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
                 .SetContentIntent(pendingIntent)
@@ -89,12 +93,12 @@ namespace AppActivityIndicator.Droid
                 .SetContentText(message)
                 .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.material_ic_calendar_black_24dp))
                 .SetSmallIcon(Resource.Drawable.material_ic_calendar_black_24dp)
-                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate)
+                .SetStyle(textStyle);
 
             Notification notification = builder.Build();
             manager.Notify(messageId++, notification);
         }
-
         void CreateNotificationChannel()
         {
             manager = (NotificationManager)AndroidApp.Context.GetSystemService(AndroidApp.NotificationService);

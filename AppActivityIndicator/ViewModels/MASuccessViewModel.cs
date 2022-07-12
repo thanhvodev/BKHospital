@@ -99,13 +99,12 @@ namespace AppActivityIndicator.ViewModels
             });
         }
 
-        void OnScheduleClick(string date, string time, DateTime dateDateFormat)
+        void OnScheduleClick(string time, DateTime dateDateFormat)
         {
             notificationNumber++;
             string title = "Nhắc nhở khám bệnh";
             string message = $"Bạn có lịch khám lúc {dateDateFormat:dd/MM/yyyy}, {time} vui lòng đến trước 15'";
-            //dateDateFormat.Subtract(new TimeSpan(1, 0, 0, 0))
-            notificationManager.SendNotification(title, message, DateTime.Now.AddSeconds(10));
+            notificationManager.SendNotification(title, message, dateDateFormat.Subtract(new TimeSpan(1, 0, 0, 0)));
         }
 
         private async void Fetch()
@@ -138,7 +137,7 @@ namespace AppActivityIndicator.ViewModels
 
                 Date = item.Date.ToLongDateString();
                 Time = item.Time;
-                OnScheduleClick(Date, Time, item.Date);
+                OnScheduleClick(Time, item.Date);
                 STT = item.STT;
                 RoomName = item.RoomName;
             }
