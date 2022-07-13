@@ -22,7 +22,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(MedicalSheetDetailPage), typeof(MedicalSheetDetailPage));
             Routing.RegisterRoute(nameof(LoadingPage), typeof(LoadingPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(Notifications), typeof(Notifications));
+            Routing.RegisterRoute(nameof(CCCDPage), typeof(CCCDPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -64,7 +64,12 @@ namespace AppActivityIndicator
         {
             Current.FlyoutIsPresented = false;
             await Shell.Current.GoToAsync($"{nameof(Notifications)}");
+        }
 
+        private async void Fingerprint_Button_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Shell.Current.GoToAsync($"{nameof(CCCDPage)}");
         }
     }
 }
