@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:CCCDViewModel"
-             x:Class="AppActivityIndicator.Views.CCCDPage">
+             x:Class="AppActivityIndicator.Views.CCCDPage"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Button x:Name="FrontButton" Command="{Binding GetFrontId}" Text="Chụp mặt trước CMND/CCCD"/>
-            <Image x:Name="FrontImage" Source="{Binding ImageSourceFront}"/>
-            <!--<Button x:Name="BackButton" />
-            <Image x:Name="BackImage" />-->
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="10">
+                <Button x:Name="FrontButton" Command="{Binding GetFrontId}" Text="Chụp mặt trước CMND/CCCD" HorizontalOptions="Center"/>
+                <Image x:Name="FrontImage" Source="{Binding ImageSourceFront}" WidthRequest="300" />
+                <Button x:Name="BackButton" Command="{Binding GetBackId}" Text="Chụp mặt sau CMND/CCCD" HorizontalOptions="Center"/>
+                <Image x:Name="BackImage" Source="{Binding ImageSourceBack}" WidthRequest="300" VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

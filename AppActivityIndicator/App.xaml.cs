@@ -55,7 +55,20 @@ namespace AppActivityIndicator
             }
         }
 
+        private static DBFirebaseStorage fbStorage;
 
+        // Create the database connection as a singleton.
+        public static DBFirebaseStorage FBStorage
+        {
+            get
+            {
+                if (fbStorage == null)
+                {
+                    fbStorage = new DBFirebaseStorage();
+                }
+                return fbStorage;
+            }
+        }
         public App()
         {
             InitializeComponent();

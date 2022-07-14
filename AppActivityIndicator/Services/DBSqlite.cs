@@ -27,6 +27,7 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<Specialty>().Wait();
             sqlDB.CreateTableAsync<Room>().Wait();
             sqlDB.CreateTableAsync<MedicalSheet>().Wait();
+            sqlDB.CreateTableAsync<Models.Image>().Wait();
 
         }
 
@@ -89,6 +90,19 @@ namespace AppActivityIndicator.Services
             User user = new User() { Id = $"Ns-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "Vietnam", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
             _ = sqlDB.InsertAsync(user);
             return await client.Child("Users").PostAsync(user);
+        }
+
+        public async Task InsertImage(string email, bool isFront, string src)
+        {
+            Models.Image image = new Models.Image()
+            {
+                Email = email,
+                IsFront = isFront,
+                Src = src,
+            };
+
+            await sqlDB.InsertAsync(image);
+            await client.Child("Images").PostAsync(image);
         }
 
         public async Task FetchDataToLocal()
