@@ -24,7 +24,7 @@ namespace AppActivityIndicator.Services
         public FirebaseStorageTask InsertStorageWithCapture(MediaFile file)
         {
             return client.Child("CMND")
-                         .Child($"{file.AlbumPath}.png")
+                         .Child($"{file.GetHashCode()}.png")
                          .PutAsync(file.GetStream());
         }
 

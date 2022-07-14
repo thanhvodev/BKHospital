@@ -14,6 +14,6 @@ namespace AppActivityIndicator.Helper
         public const string HOSPITAL_ADDRESS = "HCMC+National+University+Dormitary+Zone+A";
         public const string SUPPORT_PHONE_NUMBER = "196478536";
         public const string USER_EMAIL_STRING = "UserEmail";
-        public const string FIREBASE_BUCKET = "xamarinauth-462c8.appspot.com/AreYouWinning";
+        public const string FIREBASE_BUCKET = "xamarinauth-462c8.appspot.com";
     }
 }

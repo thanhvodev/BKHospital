@@ -63,7 +63,7 @@ namespace AppActivityIndicator.ViewModels
                 if (file == null)
                     return;
 
-                await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
+                //await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
                 try
                 {
                     var task = await App.FBStorage.InsertStorageWithCapture(file);
