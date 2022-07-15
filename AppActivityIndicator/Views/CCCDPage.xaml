@@ -4,13 +4,15 @@
              x:Class="AppActivityIndicator.Views.CCCDPage"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="10">
-                <Button x:Name="FrontButton" Command="{Binding GetFrontId}" Text="Chụp mặt trước CMND/CCCD" HorizontalOptions="Center"/>
-                <Image x:Name="FrontImage" Source="{Binding ImageSourceFront}" WidthRequest="300" />
-                <Button x:Name="BackButton" Command="{Binding GetBackId}" Text="Chụp mặt sau CMND/CCCD" HorizontalOptions="Center"/>
-                <Image x:Name="BackImage" Source="{Binding ImageSourceBack}" WidthRequest="300" VerticalOptions="FillAndExpand"/>
-            </StackLayout>
-        </ScrollView>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCommand}">
+            <ScrollView>
+                <StackLayout Margin="10" HeightRequest="1000">
+                    <Button x:Name="FrontButton" Command="{Binding GetFrontId}" Text="Chụp mặt trước CMND/CCCD" HorizontalOptions="Center"/>
+                    <Image x:Name="FrontImage" Source="{Binding ImageSourceFront}" />
+                    <Button x:Name="BackButton" Command="{Binding GetBackId}" Text="Chụp mặt sau CMND/CCCD" HorizontalOptions="Center"/>
+                    <Image x:Name="BackImage" Source="{Binding ImageSourceBack}" />
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
