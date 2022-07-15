@@ -28,11 +28,11 @@ namespace AppActivityIndicator.Services
                          .PutAsync(file.GetStream());
         }
 
-        public async Task InsertStorageWithPick(FileResult file)
+        public async Task<string> InsertStorageWithPick(FileResult file)
         {
-            await client.Child("CMND")
-                         .Child(file.FileName)
-                         .PutAsync(await file.OpenReadAsync());
+            return await client.Child("CMND")
+                        .Child(file.FileName)
+                        .PutAsync(await file.OpenReadAsync());
         }
     }
 }

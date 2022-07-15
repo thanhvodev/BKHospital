@@ -166,6 +166,17 @@ namespace AppActivityIndicator.Services
                 _ = sqlDB.InsertAsync(room);
             }
 
+            List<Models.Image> images = (await client.Child("Images").OnceAsync<Models.Image>()).Select(i => new Models.Image()
+            {
+                Id = i.Object.Id,
+                Email = i.Object.Email,
+                IsFront = i.Object.IsFront,
+                Src = i.Object.Src
+            }).ToList();
+            foreach (var image in images)
+            {
+                _ = sqlDB.InsertAsync(image);
+            }
 
 
             List<User> users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
@@ -199,6 +210,7 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<Country>();
             await sqlDB.DeleteAllAsync<MedicalSheet>();
             await sqlDB.DeleteAllAsync<Room>();
+            await sqlDB.DeleteAllAsync<Models.Image>();
             return 1;
         }
 
@@ -278,6 +290,12 @@ namespace AppActivityIndicator.Services
             }
 
             return result;
+        }
+
+        public async Task<string> GetCMNDNo(string email, bool isFront)
+        {
+            List<Models.Image> images = await sqlDB.Table<Models.Image>().ToListAsync();
+            return images.FindLast(i => i.Email == email && i.IsFront == isFront).Src;
         }
     }
 }
