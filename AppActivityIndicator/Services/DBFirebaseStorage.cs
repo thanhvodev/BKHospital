@@ -31,8 +31,8 @@ namespace AppActivityIndicator.Services
         public async Task InsertStorageWithPick(FileResult file)
         {
             await client.Child("CMND")
-                         .Child(file.FileName)
-                         .PutAsync(await file.OpenReadAsync());
+                        .Child(file.FileName)
+                        .PutAsync(await file.OpenReadAsync());
         }
     }
 }

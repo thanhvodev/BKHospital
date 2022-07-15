@@ -35,6 +35,7 @@ namespace AppActivityIndicator.ViewModels
         public CCCDViewModel()
         {
             Title = "Hình CMND/CCCD";
+            Fetch();
             GetFrontId = new Command(async () =>
             {
                 await CrossMedia.Current.Initialize();
@@ -118,18 +119,48 @@ namespace AppActivityIndicator.ViewModels
                 if (file == null)
                     return;
 
-                await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
-
-                ImageSourceBack = ImageSource.FromStream(() =>
+                try
                 {
-                    var stream = file.GetStream();
-                    return stream;
-                });
+                    var task = await App.FBStorage.InsertStorageWithCapture(file);
+
+                    ImageSourceBack = task;
+                    bool isFront = false;
+                    await App.SqlBD.InsertImage(Preferences.Get(Constants.USER_EMAIL_STRING, ""), isFront, task);
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
+                }
+
+                //await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
+
+                //ImageSourceBack = ImageSource.FromStream(() =>
+                //{
+                //    var stream = file.GetStream();
+                //    return stream;
+                //});
             });
         }
 
         private async void Fetch()
         {
+            try
+            {
+                ImageSourceFront = await App.SqlBD.GetCMNDNo(Preferences.Get(Constants.USER_EMAIL_STRING, ""), true);
+            }
+            catch (Exception)
+            {
+                ImageSourceFront = "";
+            }
+
+            try
+            {
+                ImageSourceBack = await App.SqlBD.GetCMNDNo(Preferences.Get(Constants.USER_EMAIL_STRING, ""), false);
+            }
+            catch (Exception)
+            {
+                ImageSourceBack = "";
+            }
         }
         #endregion
     }
