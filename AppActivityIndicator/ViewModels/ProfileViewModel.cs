@@ -177,7 +177,8 @@ namespace AppActivityIndicator.ViewModels
                 }
                 catch (Exception)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Alert", "Broken", "OK");
+                    await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                    //await Application.Current.MainPage.DisplayAlert("Alert", "Broken", "OK");
                 }
             });
         }
