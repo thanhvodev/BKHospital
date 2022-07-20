@@ -39,8 +39,8 @@ namespace AppActivityIndicator.ViewModels
         public CCCDViewModel()
         {
             Title = "Hình CMND/CCCD";
-            LoadCommand = new Command(async () => await ExecuteLoadCommand());
             Fetch();
+            LoadCommand = new Command(async () => await ExecuteLoadCommand());
             GetFrontId = new Command(async () =>
             {
                 string action = await Application.Current.MainPage.DisplayActionSheet("Chọn ảnh từ?", "Cancel", null, "Thư viện", "Camera");
@@ -97,22 +97,7 @@ namespace AppActivityIndicator.ViewModels
                     await App.SqlBD.InsertImage(Preferences.Get(Constants.USER_EMAIL_STRING, ""), isFront, task);
                     ImageSourceFront = task;
                 }
-
-                //ImageSourceFront = ImageSource.FromStream(() =>
-                //{
-                //    var stream = file.GetStream();
-                //    return stream;
-                //});
-                //try 
-                //{ 
-                //    await App.SqlBD.InsertImage(Preferences.Get(Constants.USER_EMAIL_STRING, ""), true, ImageSourceFront.ToString());
-                //}
-                //catch (Exception ex)
-                //{
-                //    await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
-                //}
             });
-
             GetBackId = new Command(async () =>
             {
                 string action = await Application.Current.MainPage.DisplayActionSheet("Chọn ảnh từ?", "Cancel", null, "Thư viện", "Camera");
@@ -170,14 +155,6 @@ namespace AppActivityIndicator.ViewModels
                     await App.SqlBD.InsertImage(Preferences.Get(Constants.USER_EMAIL_STRING, ""), isFront, task);
                     ImageSourceBack = task;
                 }
-
-                //await Application.Current.MainPage.DisplayAlert("File Location", file.Path, "OK");
-
-                //ImageSourceBack = ImageSource.FromStream(() =>
-                //{
-                //    var stream = file.GetStream();
-                //    return stream;
-                //});
             });
         }
 
@@ -200,6 +177,7 @@ namespace AppActivityIndicator.ViewModels
 
         private async void Fetch()
         {
+            IsBusy = true;
             try
             {
                 ImageSourceFront = await App.SqlBD.GetCMNDNo(Preferences.Get(Constants.USER_EMAIL_STRING, ""), true);
@@ -216,6 +194,10 @@ namespace AppActivityIndicator.ViewModels
             catch (Exception)
             {
                 ImageSourceBack = "";
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
         #endregion

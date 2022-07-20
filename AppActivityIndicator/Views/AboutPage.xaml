@@ -73,6 +73,9 @@
                         <StackLayout>
                             <Image Source="calendar.png" HeightRequest="50"/>
                             <Label Text="Lịch tái khám" HorizontalTextAlignment="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToReShedule}" />
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="2" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
