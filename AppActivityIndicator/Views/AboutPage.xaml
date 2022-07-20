@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.AboutPage"
-             xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels"
-            >
+             xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels">
     <Shell.TitleView>
         <Label Text="HCMUT" FontSize="Title" TextColor="White" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
     </Shell.TitleView>
@@ -29,11 +28,30 @@
         </Grid.RowDefinitions>
         <!--<ActivityIndicator IsRunning="true" Grid.Row="1"/>-->
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
                 <ContentView Padding="0" VerticalOptions="FillAndExpand">
                     <Image Source="doctors.png" VerticalOptions="Center" HeightRequest="200"/>
                 </ContentView>
-            </StackLayout>
+            </StackLayout>-->
+            <Grid ColumnDefinitions="1*" RowDefinitions="1*, 1*, 1*, 1*, 1*" HeightRequest="200">
+                <CarouselView x:Name="Carousel"
+                          ItemsSource="{Binding Images}"
+                          IndicatorView="indicatorView"
+                          Grid.RowSpan="5">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Image Source="{Binding ImageURL}" HeightRequest="200" HorizontalOptions="StartAndExpand" Aspect="Fill"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="indicatorView"
+                           IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DarkGray"
+                           HorizontalOptions="Center" 
+                           Grid.Row="4"/>
+            </Grid>
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
