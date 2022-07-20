@@ -53,7 +53,7 @@ namespace AppActivityIndicator.ViewModels
             MSTapped = new Command<MedicalSheet>(OnMSSelected);
             BackToHomeCommand = new Command(async () =>
             {
-                await Shell.Current.GoToAsync("//AboutPage");
+                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
             });
         }
 

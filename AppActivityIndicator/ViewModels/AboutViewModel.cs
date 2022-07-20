@@ -1,6 +1,8 @@
 ﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Models;
 using AppActivityIndicator.Views;
 using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -9,9 +11,22 @@ namespace AppActivityIndicator.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        #region Field and Property
+        public ICommand OpenWebCommand { get; }
+        public ICommand CallSupportCommand { get; }
+        public ICommand GoToMSsPage { get; }
+        public List<ThumbnailImage> Images { get; set; }
+
+        #endregion
+
         public AboutViewModel()
         {
             Title = "HCMUT";
+            Images = new List<ThumbnailImage>
+            {
+                new ThumbnailImage() { ImageURL = "doctors.png" },
+                new ThumbnailImage() { ImageURL = "doctor_surgery.jpg" }
+            };
             OpenWebCommand = new Command(async () =>
             {
                 if (Device.RuntimePlatform == Device.iOS)
@@ -33,8 +48,5 @@ namespace AppActivityIndicator.ViewModels
             GoToMSsPage = new Command(async () => await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}"));
         }
 
-        public ICommand OpenWebCommand { get; }
-        public ICommand CallSupportCommand { get; }
-        public ICommand GoToMSsPage { get; }
     }
 }

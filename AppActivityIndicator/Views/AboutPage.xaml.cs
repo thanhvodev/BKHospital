@@ -16,6 +16,11 @@ namespace AppActivityIndicator.Views
         {
             InitializeComponent();
             GetProfileInformationAndRefreshToken();
+            Device.StartTimer(TimeSpan.FromSeconds(7), () =>
+            {
+                Carousel.Position = (Carousel.Position + 1) % (BindingContext as AboutViewModel).Images.Count;
+                return true;
+            });
         }
 
         private async void GetProfileInformationAndRefreshToken()
