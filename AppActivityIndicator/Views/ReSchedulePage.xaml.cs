@@ -1,8 +1,11 @@
 ﻿using AppActivityIndicator.ViewModels;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -19,8 +22,19 @@ namespace AppActivityIndicator.Views
             BindingContext = new ReSheduleViewModel();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
         {
+            try
+            {
+                TestingPage t = new TestingPage();
+                await PopupNavigation.Instance.PushAsync(t, true);
+                Thread.Sleep(200);
+                await PopupNavigation.Instance.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Oops", ex.Message, "OK");
+            }
         }
     }
 }
