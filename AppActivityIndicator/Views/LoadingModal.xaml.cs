@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace AppActivityIndicator.Views
 {
-    public partial class TestingPage : PopupPage
+    public partial class LoadingModal : PopupPage
     {
-        public TestingPage()
+        public LoadingModal()
         {
             InitializeComponent();
         }

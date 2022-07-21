@@ -26,7 +26,7 @@ namespace AppActivityIndicator.Views
         {
             try
             {
-                TestingPage t = new TestingPage();
+                LoadingModal t = new LoadingModal();
                 await PopupNavigation.Instance.PushAsync(t, true);
                 Thread.Sleep(200);
                 await PopupNavigation.Instance.PopAsync();
