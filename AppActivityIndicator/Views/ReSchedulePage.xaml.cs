@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.ViewModels;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.ViewModels;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -20,21 +21,7 @@ namespace AppActivityIndicator.Views
         {
             InitializeComponent();
             BindingContext = new ReSheduleViewModel();
-        }
-
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                LoadingModal t = new LoadingModal();
-                await PopupNavigation.Instance.PushAsync(t, true);
-                Thread.Sleep(200);
-                await PopupNavigation.Instance.PopAsync();
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Oops", ex.Message, "OK");
-            }
+            MedicalSheetIdValidationBehavior.SetAttachBehavior(MedicalSheetId, true);
         }
     }
 }
