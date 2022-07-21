@@ -19,7 +19,7 @@ namespace AppActivityIndicator.Views
             InitializeComponent();
             Time.IsEnabled = false;
             Order.IsEnabled = false;
-            datePicker.MinimumDate = DateTime.Now.AddDays(1);
+            datePicker.MinimumDate = DateTime.Now;
             datePicker.MaximumDate = DateTime.Now.AddDays(7);
             Specialty.IsEnabled = false;
             Doctor.IsEnabled = false;

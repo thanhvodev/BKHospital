@@ -45,6 +45,12 @@
                         </ViewCell>
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
+                                <Label Text="Phí khám" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
+                                <Label Text="150.000đ" Grid.Column="1" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Số thứ tự" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
                                 <Label Text="{Binding STT}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>

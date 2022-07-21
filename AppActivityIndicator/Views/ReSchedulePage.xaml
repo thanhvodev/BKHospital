@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:ReSheduleViewModel"
+             x:Class="AppActivityIndicator.Views.ReSchedulePage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnDefinitions="0.7*, 0.3*" RowDefinitions="1*, 1*" Margin="5">
+                <Label Text="Vui lòng nhập đúng số hồ sơ" FontSize="Medium" VerticalOptions="Center"/>
+                <Frame Grid.Row="1" Padding="0" BorderColor="Black">
+                    <Entry Placeholder="ví dụ: AS-XXXXXXXX" x:Name="MedicalSheetId" Text="{Binding MedicalSheetId, Mode=TwoWay}" />
+                </Frame>
+                <Button Text="Tìm" Grid.Row="1" Grid.Column="1" Command="{Binding FindMedicalSheetCommand}"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -288,7 +288,11 @@ namespace AppActivityIndicator.Services
                     }
                 }
             }
-
+            int compare(MedicalSheet m1, MedicalSheet m2)
+            {
+                return DateTime.Compare(m2.Date, m1.Date);
+            }
+            result.Sort(compare);
             return result;
         }
 
