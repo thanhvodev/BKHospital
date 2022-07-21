@@ -15,5 +15,6 @@ namespace AppActivityIndicator.Helper
         public const string SUPPORT_PHONE_NUMBER = "196478536";
         public const string USER_EMAIL_STRING = "UserEmail";
         public const string FIREBASE_BUCKET = "xamarinauth-462c8.appspot.com";
+        public const string MEDICAL_SHEET_ID_REGEX = @"^AS-[0-9]+$";
     }
 }

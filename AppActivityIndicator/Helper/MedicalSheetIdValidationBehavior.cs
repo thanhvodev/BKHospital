@@ -47,7 +47,7 @@ namespace AppActivityIndicator.Helper
 
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            string pattern = @"AS-[0-9]+";
+            string pattern = Constants.MEDICAL_SHEET_ID_REGEX;
             bool isValid = Regex.IsMatch(args.NewTextValue, pattern);
             ((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
         }

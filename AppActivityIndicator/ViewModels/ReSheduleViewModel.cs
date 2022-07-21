@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Views;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Views;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -43,15 +44,6 @@ namespace AppActivityIndicator.ViewModels
             }
         }
 
-        private bool ValidateFind ()
-        {
-            string pattern = @"AS-[0-9]+";
-            if (string.IsNullOrWhiteSpace(MedicalSheetId))
-            {
-                return false;
-            }
-            bool isValid = Regex.IsMatch(MedicalSheetId, pattern);
-            return !string.IsNullOrWhiteSpace(MedicalSheetId) && isValid;
-        }
+        private bool ValidateFind() => Regex.IsMatch(MedicalSheetId ?? "", Constants.MEDICAL_SHEET_ID_REGEX);
     }
 }
