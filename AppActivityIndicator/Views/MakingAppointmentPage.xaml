@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.MakingAppointmentPage"
              xmlns:custom="clr-namespace:AppActivityIndicator.CustomControls;assembly=AppActivityIndicator" xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels"
-             xmlns:datepicker="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
-             Title="Đặt lịch khám">
+             Title="Đặt lịch khám"
+             Shell.FlyoutBehavior="Disabled">
     <ContentPage.BindingContext>
         <vm:MakingAppointmentViewModel />
     </ContentPage.BindingContext>

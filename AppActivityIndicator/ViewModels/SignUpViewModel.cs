@@ -46,9 +46,9 @@ namespace AppActivityIndicator.ViewModels
                 {
                     await Shell.Current.GoToAsync("..");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Oops", "Something Broken", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
                 }
             });
         }

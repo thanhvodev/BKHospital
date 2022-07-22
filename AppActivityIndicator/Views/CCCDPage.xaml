@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:CCCDViewModel"
              x:Class="AppActivityIndicator.Views.CCCDPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCommand}">
             <ScrollView>

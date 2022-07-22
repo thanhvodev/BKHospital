@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:ProfileViewModel"
              x:Class="AppActivityIndicator.Views.ProfilePage"
              Title="Hồ sơ bệnh nhân"
-             BackgroundColor="{StaticResource PageBackground}">
+             BackgroundColor="{StaticResource PageBackground}"
+             Shell.FlyoutBehavior="Disabled">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackBehavior}" />
     </Shell.BackButtonBehavior>

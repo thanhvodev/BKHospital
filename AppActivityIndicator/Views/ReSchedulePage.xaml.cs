@@ -19,9 +19,15 @@ namespace AppActivityIndicator.Views
     {
         public ReSchedulePage()
         {
-            InitializeComponent();
+            InitializeComponent ();
             BindingContext = new ReSheduleViewModel();
             MedicalSheetIdValidationBehavior.SetAttachBehavior(MedicalSheetId, true);
+        }
+
+        private void MedicalSheetId_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            InfoLabel.IsVisible = false;
+            NotHaveLabel.IsVisible = false;
         }
     }
 }

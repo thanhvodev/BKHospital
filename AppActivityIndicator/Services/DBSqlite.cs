@@ -28,6 +28,7 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<Room>().Wait();
             sqlDB.CreateTableAsync<MedicalSheet>().Wait();
             sqlDB.CreateTableAsync<Models.Image>().Wait();
+            sqlDB.CreateTableAsync<ReShedule>().Wait();
 
         }
 
@@ -126,17 +127,17 @@ namespace AppActivityIndicator.Services
             }
 
 
-            List<Specialty> specialties = (await client.Child("specialty").OnceAsync<Specialty>()).Select(s => new Specialty()
+            List<Specialty> specialties = (await client.Child ("specialty").OnceAsync<Specialty> ()).Select (s => new Specialty ()
             {
                 Id = s.Object.Id,
                 Name = s.Object.Name
             }).ToList();
             foreach (var specialty in specialties)
             {
-                _ = sqlDB.InsertAsync(specialty);
+                _ = sqlDB.InsertAsync (specialty);
             }
 
-            List<MedicalSheet> medicalSheets = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).Select(m => new MedicalSheet()
+            List<MedicalSheet> medicalSheets = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet> ()).Select(m => new MedicalSheet ()
             {
                 Id = m.Object.Id,
                 Address = m.Object.Address,
@@ -152,10 +153,10 @@ namespace AppActivityIndicator.Services
             }).ToList();
             foreach (var medicalSheet in medicalSheets)
             {
-                _ = sqlDB.InsertAsync(medicalSheet);
+                _ = sqlDB.InsertAsync (medicalSheet);
             }
 
-            List<Room> rooms = (await client.Child("Room").OnceAsync<Room>()).Select(m => new Room()
+            List<Room> rooms = (await client.Child ("Room").OnceAsync<Room> ()).Select(m => new Room ()
             {
                 Id = m.Object.Id,
                 Name = m.Object.Name,
@@ -166,7 +167,7 @@ namespace AppActivityIndicator.Services
                 _ = sqlDB.InsertAsync(room);
             }
 
-            List<Models.Image> images = (await client.Child("Images").OnceAsync<Models.Image>()).Select(i => new Models.Image()
+            List<Models.Image> images = (await client.Child ("Images").OnceAsync<Models.Image> ()).Select(i => new Models.Image ()
             {
                 Id = i.Object.Id,
                 Email = i.Object.Email,
@@ -178,6 +179,25 @@ namespace AppActivityIndicator.Services
                 _ = sqlDB.InsertAsync(image);
             }
 
+            List<ReShedule> res = (await client.Child ("ReShedule").OnceAsync<ReShedule> ()).Select (r => new ReShedule()
+            {
+                Id = r.Object.Id,
+                For = r.Object.For,
+                Specialty = r.Object.Specialty,
+                Date = r.Object.Date
+            }).ToList();
+            foreach (var re in res)
+            {
+                try
+                {
+                    await sqlDB.InsertAsync (re);
+
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert ("Oops", ex.Message, "OK");
+                }
+            }
 
             List<User> users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
             {
@@ -211,6 +231,7 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<MedicalSheet>();
             await sqlDB.DeleteAllAsync<Room>();
             await sqlDB.DeleteAllAsync<Models.Image>();
+            await sqlDB.DeleteAllAsync<ReShedule>();
             return 1;
         }
 
@@ -279,20 +300,20 @@ namespace AppActivityIndicator.Services
             {
                 foreach (MedicalSheet medicalSheet in result)
                 {
-                    if (DateTime.Compare(today, medicalSheet.Date) > 0)
+                    if (DateTime.Compare (today, medicalSheet.Date) > 0)
                     {
-                        var toUpdateMS = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
+                        var toUpdateMS = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet> ()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
                         medicalSheet.State = "Đã khám";
-                        _ = sqlDB.UpdateAsync(medicalSheet);
-                        await client.Child("MedicalSheet").Child(toUpdateMS.Key).PutAsync(medicalSheet);
+                        _ = sqlDB.UpdateAsync (medicalSheet);
+                        await client.Child ("MedicalSheet").Child (toUpdateMS.Key).PutAsync (medicalSheet);
                     }
                 }
             }
-            int compare(MedicalSheet m1, MedicalSheet m2)
+            int compare (MedicalSheet m1, MedicalSheet m2)
             {
-                return DateTime.Compare(m2.Date, m1.Date);
+                return DateTime.Compare (m2.Date, m1.Date);
             }
-            result.Sort(compare);
+            result.Sort (compare);
             return result;
         }
 
@@ -300,6 +321,13 @@ namespace AppActivityIndicator.Services
         {
             List<Models.Image> images = await sqlDB.Table<Models.Image>().ToListAsync();
             return images.FindLast(i => i.Email == email && i.IsFront == isFront).Src;
+        }
+
+        public async Task<(DateTime, string)> GetReShedule(string msId)
+        {
+            List<ReShedule> res = await sqlDB.Table<ReShedule>().ToListAsync();
+            ReShedule re = res.Find(r => r.For == msId);
+            return (re.Date, re.Specialty);
         }
     }
 }

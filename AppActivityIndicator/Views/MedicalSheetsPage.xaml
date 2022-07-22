@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AppActivityIndicator.ViewModels"  
              xmlns:model="clr-namespace:AppActivityIndicator.Models" x:DataType="local:MedicalSheetsViewModel"
              BackgroundColor="{StaticResource PageBackground}"
-             >
+             Shell.FlyoutBehavior="Disabled">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
     </Shell.BackButtonBehavior>
