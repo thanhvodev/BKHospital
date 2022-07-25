@@ -11,10 +11,10 @@
                    HorizontalOptions="CenterAndExpand" 
                    FontSize="Medium"
                    TextColor="Black"/>
-            <Frame >
+            <Frame>
                 <StackLayout>
                     <Label Text="Số hồ sơ" />
-                    <Entry x:Name="ProfileNumber" Placeholder="ví dụ: N17-XXXXXXX" TextTransform="Uppercase"/>
+                    <Entry x:Name="ProfileNumber" Placeholder="ví dụ: AS-XXXXXXX" TextTransform="Uppercase" Text="{Binding MedicalSheetId, Mode=TwoWay}"/>
                 </StackLayout>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ProfileNumber_TapGestureRecognizer_Tapped"/>
@@ -23,13 +23,13 @@
             <Frame>
                 <StackLayout>
                     <Label Text="Số nhập viện" />
-                    <Entry x:Name="HospitalizationNumber" Placeholder="ví dụ: 18-01234567" />
+                    <Entry x:Name="HospitalizationNumber" Placeholder="ví dụ: 18-01234567" Text="{Binding HospitalizationId, Mode=TwoWay}" />
                 </StackLayout>
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="HospitalizationNumber_TapGestureRecognizer_Tapped"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="HospitalizationNumber_TapGestureRecognizer_Tapped" />
                 </Frame.GestureRecognizers>
             </Frame>
-            <Button Text="Xác nhận" Margin="0, 10, 0, 10"/>
+            <Button Text="Xác nhận" Margin="0, 10, 0, 10" Command="{Binding GoToPaymentInfoPageCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

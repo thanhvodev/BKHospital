@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.ViewModels;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace AppActivityIndicator.Views
         {
             InitializeComponent();
             BindingContext = new PayFeeViewModel();
+            MedicalSheetIdValidationBehavior.SetAttachBehavior(ProfileNumber, true);
+            HospitalizationIdValidationBehavior.SetAttachBehavior(HospitalizationNumber, true);
+
         }
 
         private void ProfileNumber_TapGestureRecognizer_Tapped(object sender, EventArgs e)
