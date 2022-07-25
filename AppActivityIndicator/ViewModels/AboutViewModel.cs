@@ -15,6 +15,7 @@ namespace AppActivityIndicator.ViewModels
         public ICommand OpenWebCommand { get; }
         public ICommand CallSupportCommand { get; }
         public ICommand GoToMSsPage { get; }
+        public ICommand GoToPayFeePage { get; }
         public ICommand GoToReShedule { get; }
         public List<ThumbnailImage> Images { get; set; }
 
@@ -48,6 +49,7 @@ namespace AppActivityIndicator.ViewModels
             CallSupportCommand = new Command(() => PhoneDialer.Open(Constants.SUPPORT_PHONE_NUMBER));
             GoToMSsPage = new Command(async () => await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}"));
             GoToReShedule = new Command(async () => await Shell.Current.GoToAsync($"{nameof(ReSchedulePage)}"));
+            GoToPayFeePage = new Command(async () => await Shell.Current.GoToAsync($"{nameof(PayFeePage)}"));
         }
 
     }

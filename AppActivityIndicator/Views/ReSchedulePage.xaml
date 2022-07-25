@@ -9,7 +9,7 @@
             <Grid ColumnDefinitions="0.7*, 0.3*" RowDefinitions="1*, 1*" Margin="5">
                 <Label Text="Vui lòng nhập đúng số hồ sơ" FontSize="Medium" VerticalOptions="Center"/>
                 <Frame Grid.Row="1" Padding="0" BorderColor="Black">
-                    <Entry Placeholder="ví dụ: AS-XXXXXXXX" x:Name="MedicalSheetId" Text="{Binding MedicalSheetId, Mode=TwoWay}" TextChanged="MedicalSheetId_TextChanged"/>
+                    <Entry Placeholder="ví dụ: AS-XXXXXXXX" x:Name="MedicalSheetId" Text="{Binding MedicalSheetId, Mode=TwoWay}" TextChanged="MedicalSheetId_TextChanged" TextTransform="Uppercase" />
                 </Frame>
                 <Button x:Name="FindButton" Text="Tìm" Grid.Row="1" Grid.Column="1" Command="{Binding FindMedicalSheetCommand}" />
             </Grid>
@@ -30,7 +30,7 @@
             <Label x:Name="NotHaveLabel" IsVisible="{Binding IsNotHaveSchedule, Mode=TwoWay}" LineBreakMode="WordWrap" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="30, 0, 30, 0">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="   Phiếu khám " />
+                        <Span Text="Phiếu khám " />
                         <Span Text="{Binding MedicalSheetId}" TextColor="Black" />
                         <Span Text=" không tồn tại hoặc không có lịch tái khám." />
                     </FormattedString>
