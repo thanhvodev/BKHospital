@@ -25,6 +25,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(CCCDPage), typeof(CCCDPage));
             Routing.RegisterRoute(nameof(ReSchedulePage), typeof(ReSchedulePage));
             Routing.RegisterRoute(nameof(PayFeePage), typeof(PayFeePage));
+            Routing.RegisterRoute(nameof(PaymentPage), typeof(PaymentPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace AppActivityIndicator.ViewModels
         private string hospitalizationId;
         public string HospitalizationId { get => hospitalizationId; set => _ = SetProperty(ref hospitalizationId, value); }
         public Command GoToPaymentInfoPageCommand { get; }
+        public Command BackToHomeCommand { get; }
 
 
 
@@ -25,6 +26,7 @@ namespace AppActivityIndicator.ViewModels
         {
             Title = "Thanh toán viện phí";
             GoToPaymentInfoPageCommand = new Command(GoToPaymentInfoPage, ValidateFind);
+            BackToHomeCommand = new Command(async () => await Shell.Current.GoToAsync($"//{nameof(AboutPage)}"));
             PropertyChanged +=
                     (_, __) => GoToPaymentInfoPageCommand.ChangeCanExecute();
         }
@@ -36,7 +38,16 @@ namespace AppActivityIndicator.ViewModels
                 LoadingModal t = new LoadingModal();
                 await PopupNavigation.Instance.PushAsync(t, true);
                 // Load Shedule
-                Thread.Sleep(2000);
+                int? feedId = await App.SqlBD.GetFeeId(MedicalSheetId, HospitalizationId);
+                if (feedId != null)
+                {
+
+                    await Shell.Current.GoToAsync($"{nameof(PaymentPage)}?{nameof(PaymentViewModel.FeeId)}={feedId}&{nameof(PaymentViewModel.MedicalSheetId)}={MedicalSheetId}&{nameof(PaymentViewModel.HospitalizationId)}={HospitalizationId}");
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Oops", "Không có thông tin thanh toán", "OK");
+                }
                 // End
                 await PopupNavigation.Instance.PopAsync();
             }

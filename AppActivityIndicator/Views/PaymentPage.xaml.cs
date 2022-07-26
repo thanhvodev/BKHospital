@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppActivityIndicator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace AppActivityIndicator.Views
         public PaymentPage()
         {
             InitializeComponent();
+            BindingContext = new PaymentViewModel();
         }
     }
 }

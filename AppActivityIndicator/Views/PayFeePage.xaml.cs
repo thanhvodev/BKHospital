@@ -20,6 +20,8 @@ namespace AppActivityIndicator.Views
             BindingContext = new PayFeeViewModel();
             MedicalSheetIdValidationBehavior.SetAttachBehavior(ProfileNumber, true);
             HospitalizationIdValidationBehavior.SetAttachBehavior(HospitalizationNumber, true);
+            ProfileNumber.Text = "AS-1234567";
+            HospitalizationNumber.Text = "18-01234567";
 
         }
 

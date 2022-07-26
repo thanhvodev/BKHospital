@@ -334,10 +334,10 @@ namespace AppActivityIndicator.Services
                 {
                     if (DateTime.Compare (today, medicalSheet.Date) > 0)
                     {
-                        var toUpdateMS = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet> ()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
+                        var toUpdateMS = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
                         medicalSheet.State = "Đã khám";
-                        _ = sqlDB.UpdateAsync (medicalSheet);
-                        await client.Child ("MedicalSheet").Child (toUpdateMS.Key).PutAsync (medicalSheet);
+                        _ = sqlDB.UpdateAsync(medicalSheet);
+                        await client.Child("MedicalSheet").Child (toUpdateMS.Key).PutAsync(medicalSheet);
                     }
                 }
             }
@@ -360,6 +360,11 @@ namespace AppActivityIndicator.Services
             List<ReShedule> res = await sqlDB.Table<ReShedule>().ToListAsync();
             ReShedule re = res.Find(r => r.For == msId);
             return (re.Date, re.Specialty);
+        }
+        public async Task<int?> GetFeeId(string profileId, string hospitalizationId)
+        {
+            PayFee payFee = await sqlDB.Table<PayFee>().Where(p => p.HospitalizationNumber == hospitalizationId && p.ProfileNumber == profileId).FirstOrDefaultAsync();
+            return payFee?.FeeId;
         }
     }
 }

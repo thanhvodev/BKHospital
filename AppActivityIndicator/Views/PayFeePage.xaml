@@ -4,6 +4,9 @@
              x:Class="AppActivityIndicator.Views.PayFeePage"
              Title="{Binding Title}"
              Shell.FlyoutBehavior="Disabled">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <StackLayout Margin="10">
             <Label Text="Nhập mã thanh toán để tiếp tục"
