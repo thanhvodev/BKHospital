@@ -366,5 +366,11 @@ namespace AppActivityIndicator.Services
             PayFee payFee = await sqlDB.Table<PayFee>().Where(p => p.HospitalizationNumber == hospitalizationId && p.ProfileNumber == profileId).FirstOrDefaultAsync();
             return payFee?.FeeId;
         }
+
+        public async Task<Fee> GetFeeAsync(int feeId)
+        {
+            Fee payFee = await sqlDB.Table<Fee>().Where(p => p.Id == feeId).FirstOrDefaultAsync();
+            return payFee;
+        }
     }
 }
