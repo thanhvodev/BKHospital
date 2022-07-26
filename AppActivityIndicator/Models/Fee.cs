@@ -11,12 +11,12 @@ namespace AppActivityIndicator.Models
         public int Id { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public ulong PhiKhamBenh { get; set; }
-        public ulong PhiPhauThuat { get; set; }
-        public ulong PhiThuoc { get; set; }
-        public ulong PhiAnUong { get; set; }
-        public ulong PhiDieuDuong { get; set; }
-        public ulong PhiONoiTru { get; set; }
+        public long PhiKhamBenh { get; set; }
+        public long PhiPhauThuat { get; set; }
+        public long PhiThuoc { get; set; }
+        public long PhiAnUong { get; set; }
+        public long PhiDieuDuong { get; set; }
+        public long PhiONoiTru { get; set; }
 
     }
 }

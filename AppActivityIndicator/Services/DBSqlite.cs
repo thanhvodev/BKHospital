@@ -29,7 +29,8 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<MedicalSheet>().Wait();
             sqlDB.CreateTableAsync<Models.Image>().Wait();
             sqlDB.CreateTableAsync<ReShedule>().Wait();
-
+            sqlDB.CreateTableAsync<PayFee>().Wait();
+            sqlDB.CreateTableAsync<Fee>().Wait();
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -220,6 +221,35 @@ namespace AppActivityIndicator.Services
             {
                 _ = sqlDB.InsertAsync(user);
             }
+
+            List<PayFee> payFees = (await client.Child("PayFee").OnceAsync<PayFee>()).Select(p => new PayFee()
+            {
+                Id = p.Object.Id,
+                ProfileNumber = p.Object.ProfileNumber,
+                HospitalizationNumber = p.Object.HospitalizationNumber,
+                FeeId = p.Object.FeeId
+            }).ToList();
+            foreach (var payFee in payFees)
+            {
+                _ = sqlDB.InsertAsync(payFee);
+            }
+
+            List<Fee> fees = (await client.Child("Fee").OnceAsync<Fee>()).Select(f => new Fee()
+            {
+                Id = f.Object.Id,
+                StartTime = f.Object.StartTime,
+                EndTime = f.Object.EndTime,
+                PhiAnUong = f.Object.PhiAnUong,
+                PhiDieuDuong = f.Object.PhiDieuDuong,
+                PhiKhamBenh = f.Object.PhiKhamBenh,
+                PhiONoiTru = f.Object.PhiONoiTru,
+                PhiPhauThuat = f.Object.PhiPhauThuat,
+                PhiThuoc = f.Object.PhiThuoc
+            }).ToList();
+            foreach (var fee in fees)
+            {
+                _ = sqlDB.InsertAsync(fee);
+            }
         }
 
         public async Task<int> ClearLocal()
@@ -232,6 +262,8 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<Room>();
             await sqlDB.DeleteAllAsync<Models.Image>();
             await sqlDB.DeleteAllAsync<ReShedule>();
+            await sqlDB.DeleteAllAsync<PayFee>();
+            await sqlDB.DeleteAllAsync<Fee>();
             return 1;
         }
 
