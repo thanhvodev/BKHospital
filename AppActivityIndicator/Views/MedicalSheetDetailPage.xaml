@@ -75,7 +75,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Tình trạng" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="Chưa khám" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding State}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                     </TableSection>
