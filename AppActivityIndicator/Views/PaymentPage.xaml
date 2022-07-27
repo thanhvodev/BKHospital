@@ -2,16 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:PaymentViewModel"
              x:Class="AppActivityIndicator.Views.PaymentPage"
+             xmlns:local="clr-namespace:AppActivityIndicator.Helper"
+             Shell.FlyoutBehavior="Disabled"
              Title="{Binding Title}">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToPayFeeCommand}" />
     </Shell.BackButtonBehavior>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CurrencyConverter x:Key="CurrencyFormat" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Thời gian"
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding StartTime}"
-                HorizontalOptions="CenterAndExpand" />
+            <Frame>
+                <StackLayout>
+                    <Label Text="Thời gian"
+                           HorizontalOptions="CenterAndExpand" />
+                    <Label Text="{Binding StartTime}"
+                           HorizontalOptions="CenterAndExpand" />
+                    <Label Text="|"
+                           HorizontalOptions="CenterAndExpand" />
+                    <Label Text="{Binding EndTime}"
+                           HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Frame>
+            <Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Phí khám bệnh" />
+                    <Label Text="{Binding PhiKhamBenh, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

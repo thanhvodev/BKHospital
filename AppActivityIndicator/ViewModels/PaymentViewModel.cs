@@ -77,7 +77,7 @@ namespace AppActivityIndicator.ViewModels
 
         public PaymentViewModel()
         {
-            Title = "Xác nhận thông tin";
+            Title = "Xác nhận thông tin thanh toán";
             BackToPayFeeCommand = new Command(async () => { await Shell.Current.GoToAsync($"{nameof(PayFeePage)}"); });
         }
     }
