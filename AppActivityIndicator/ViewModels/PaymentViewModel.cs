@@ -60,6 +60,11 @@ namespace AppActivityIndicator.ViewModels
 
         private long phiONoiTru;
         public long PhiONoiTru { get => phiONoiTru; set => _ = SetProperty(ref phiONoiTru, value); }
+
+        private long total;
+        public long Total { get => total; set => _ = SetProperty(ref total, value); }
+
+
         public Command BackToPayFeeCommand { get; }
 
         private async void LoadFeeId(int value)
@@ -73,6 +78,7 @@ namespace AppActivityIndicator.ViewModels
             PhiKhamBenh = fee.PhiKhamBenh;
             PhiPhauThuat = fee.PhiPhauThuat;
             PhiThuoc = fee.PhiThuoc;
+            Total = PhiAnUong + PhiONoiTru + PhiDieuDuong + PhiKhamBenh + PhiPhauThuat + PhiThuoc;
         }
 
         public PaymentViewModel()

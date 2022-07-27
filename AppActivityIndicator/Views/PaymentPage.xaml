@@ -72,7 +72,7 @@
                 <Frame>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Tổng cộng" />
-                        <Label Text="" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="{Binding Total, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
                     </StackLayout>
                 </Frame>
                 <Button Text="Thanh toán"  Margin="0, 5, 0, 10"/>
