@@ -8,6 +8,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="EntryBorder">#808080</Color>
             <Color x:Key="Alert">#fc9003</Color>
             <Color x:Key="Secondary">#3f3f40</Color>
             <Color x:Key="PageBackground">#b6b8b4</Color>

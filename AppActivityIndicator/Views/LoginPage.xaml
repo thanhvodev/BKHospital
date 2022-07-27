@@ -5,16 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:LoginViewModel"
              mc:Ignorable="d"
              x:Class="AppActivityIndicator.Views.LoginPage"
-             Shell.NavBarIsVisible="False"
              Title="Trang đăng nhập"
+             Shell.FlyoutBehavior="Disabled"
              BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20">
             <Image Source="bklogobig.png" WidthRequest="100"/>
-            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+            <Frame Padding="0" BorderColor="{StaticResource EntryBorder}">
                 <Entry Keyboard="Email" Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
             </Frame>
-            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+            <Frame Padding="0" BorderColor="{StaticResource EntryBorder}">
                 <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding Password, Mode=TwoWay}"/>
             </Frame>
             <Button VerticalOptions="Center" Text="Đăng nhập" Command="{Binding LoginCommand}"/>
