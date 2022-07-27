@@ -22,6 +22,7 @@ namespace AppActivityIndicator.Views
             InitializeComponent ();
             BindingContext = new ReSheduleViewModel();
             MedicalSheetIdValidationBehavior.SetAttachBehavior(MedicalSheetId, true);
+            MedicalSheetId.Text = "AS-1175968499";
         }
 
         private void MedicalSheetId_TextChanged(object sender, TextChangedEventArgs e)

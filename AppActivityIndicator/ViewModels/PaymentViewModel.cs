@@ -1,5 +1,6 @@
 ﻿using AppActivityIndicator.Models;
 using AppActivityIndicator.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -66,6 +67,24 @@ namespace AppActivityIndicator.ViewModels
 
 
         public Command BackToPayFeeCommand { get; }
+        public Command PayCommand { get; }
+
+        private async void Pay()
+        {
+            try
+            {
+                LoadingModal l = new LoadingModal();
+                await PopupNavigation.Instance.PushAsync(l, true);
+                await Application.Current.MainPage.DisplayAlert("Thanh toán thành công", "Bạn đã thanh toán viện phí thành công", "OK");
+                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+                await PopupNavigation.Instance.PopAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
 
         private async void LoadFeeId(int value)
         {
@@ -85,6 +104,7 @@ namespace AppActivityIndicator.ViewModels
         {
             Title = "Xác nhận thông tin thanh toán";
             BackToPayFeeCommand = new Command(async () => { await Shell.Current.GoToAsync($"{nameof(PayFeePage)}"); });
+            PayCommand = new Command(Pay);
         }
     }
 }

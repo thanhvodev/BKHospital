@@ -75,7 +75,7 @@
                         <Label Text="{Binding Total, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand" FontAttributes="Bold"/>
                     </StackLayout>
                 </Frame>
-                <Button Text="Thanh toán"  Margin="0, 5, 0, 10"/>
+                <Button Text="Thanh toán"  Margin="0, 5, 0, 10" Command="{Binding PayCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
