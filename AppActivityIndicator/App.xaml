@@ -15,6 +15,9 @@
             <Color x:Key="TextColorDark">#ffffff</Color>
             <Color x:Key="BackgroundColorLight">#ffffff</Color>
             <Color x:Key="BackgroundColorDark">#403f3f</Color>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"></Setter>
+            </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">

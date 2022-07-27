@@ -14,25 +14,69 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Frame>
-                <StackLayout>
-                    <Label Text="Thời gian"
+        <ScrollView>
+            <StackLayout>
+                <Frame>
+                    <StackLayout>
+                        <Label Text="Thời gian"
                            HorizontalOptions="CenterAndExpand" />
-                    <Label Text="{Binding StartTime}"
+                        <Label Text="{Binding StartTime, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
                            HorizontalOptions="CenterAndExpand" />
-                    <Label Text="|"
+                        <Image Source="down_arrow.png" />
+                        <Label Text="{Binding EndTime, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"
                            HorizontalOptions="CenterAndExpand" />
-                    <Label Text="{Binding EndTime}"
-                           HorizontalOptions="CenterAndExpand" />
-                </StackLayout>
-            </Frame>
-            <Frame>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Phí khám bệnh" />
-                    <Label Text="{Binding PhiKhamBenh, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Số hồ sơ" />
+                        <Label Text="{Binding MedicalSheetId}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Số nhập viện" />
+                        <Label Text="{Binding HospitalizationId}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Phí khám bệnh" />
+                        <Label Text="{Binding PhiKhamBenh, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Phí phẫu thuật" />
+                        <Label Text="{Binding PhiPhauThuat, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Phí thuốc" />
+                        <Label Text="{Binding PhiThuoc, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Phí điều dưỡng" />
+                        <Label Text="{Binding PhiDieuDuong, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Phí ở nội trú" />
+                        <Label Text="{Binding PhiONoiTru, Converter={StaticResource CurrencyFormat}}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Tổng cộng" />
+                        <Label Text="" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+                <Button Text="Thanh toán"  Margin="0, 5, 0, 10"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
