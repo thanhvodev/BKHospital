@@ -10,9 +10,15 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20, 0, 20, 20">
             <Image Source="bklogobig.png"  WidthRequest="100"/>
-            <Entry Keyboard="Email" Placeholder="Email" Text="{Binding Email}"/>
-            <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding Password}"/>
-            <Entry IsPassword="True" Placeholder="Nhập lại Mật khẩu" Text="{Binding Repassword}"/>
+            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+                <Entry Keyboard="Email" Placeholder="Email" Text="{Binding Email}"/>
+            </Frame>
+            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+                <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding Password}"/>
+            </Frame>
+            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+                <Entry IsPassword="True" Placeholder="Nhập lại Mật khẩu" Text="{Binding Repassword}"/>
+            </Frame>
             <Button VerticalOptions="Center" Text="Đăng ký" Command="{Binding SignUpCommand}"/>
         </StackLayout>
     </ContentPage.Content>

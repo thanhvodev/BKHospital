@@ -11,8 +11,12 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" Margin="20">
             <Image Source="bklogobig.png" WidthRequest="100"/>
-            <Entry Keyboard="Email" Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
-            <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding Password, Mode=TwoWay}"/>
+            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+                <Entry Keyboard="Email" Placeholder="Email" Text="{Binding Email, Mode=TwoWay}"/>
+            </Frame>
+            <Frame Padding="0" BorderColor="{StaticResource Primary}">
+                <Entry IsPassword="True" Placeholder="Mật khẩu" Text="{Binding Password, Mode=TwoWay}"/>
+            </Frame>
             <Button VerticalOptions="Center" Text="Đăng nhập" Command="{Binding LoginCommand}"/>
             <Label Text="Chưa có tài khoản? Nhấn để đăng ký" Margin="0,20,0,20">
                 <Label.GestureRecognizers>

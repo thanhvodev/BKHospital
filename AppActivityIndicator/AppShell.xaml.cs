@@ -63,12 +63,6 @@ namespace AppActivityIndicator
             await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}");
         }
 
-        private async void Notification_Button_Clicked(object sender, EventArgs e)
-        {
-            Current.FlyoutIsPresented = false;
-            await Shell.Current.GoToAsync($"{nameof(Notifications)}");
-        }
-
         private async void Fingerprint_Button_Clicked(object sender, EventArgs e)
         {
             Current.FlyoutIsPresented = false;
