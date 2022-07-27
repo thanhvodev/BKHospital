@@ -79,7 +79,7 @@ namespace AppActivityIndicator.ViewModels
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
                 await PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

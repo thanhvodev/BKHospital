@@ -51,7 +51,7 @@ namespace AppActivityIndicator.ViewModels
                 // End
                 await PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

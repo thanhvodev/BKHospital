@@ -55,8 +55,16 @@ namespace AppActivityIndicator.Views
 
         private async void Doctor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Time.IsEnabled = true;
-            Time.ItemsSource = await App.SqlBD.GetTimes(Doctor.SelectedItem.ToString());
+            try
+            {
+                Time.IsEnabled = true;
+                Time.ItemsSource = await App.SqlBD.GetTimes(Doctor.SelectedItem.ToString());
+            }
+            catch (Exception)
+            {
+                Time.SelectedIndex = -1;
+                //await DisplayAlert(nameof(MakingAppointmentPage), ex.Message, "OK");
+            }
         }
 
         private void Time_SelectedIndexChanged(object sender, EventArgs e)
