@@ -31,6 +31,7 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<ReShedule>().Wait();
             sqlDB.CreateTableAsync<PayFee>().Wait();
             sqlDB.CreateTableAsync<Fee>().Wait();
+            sqlDB.CreateTableAsync<Bill>().Wait();
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -250,6 +251,14 @@ namespace AppActivityIndicator.Services
             {
                 _ = sqlDB.InsertAsync(fee);
             }
+
+            List<Bill> bills = (await client.Child("Bill").OnceAsync<Bill>()).Select(b => new Bill()
+            {
+                Id = b.Object.Id,
+                DatePayed = b.Object.DatePayed,
+                PayFeeId = b.Object.PayFeeId,
+            }).ToList();
+            _ = sqlDB.InsertAllAsync(bills);
         }
 
         public async Task<int> ClearLocal()
@@ -264,6 +273,7 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<ReShedule>();
             await sqlDB.DeleteAllAsync<PayFee>();
             await sqlDB.DeleteAllAsync<Fee>();
+            await sqlDB.DeleteAllAsync<Bill>();
             return 1;
         }
 
@@ -371,6 +381,12 @@ namespace AppActivityIndicator.Services
         {
             Fee payFee = await sqlDB.Table<Fee>().Where(p => p.Id == feeId).FirstOrDefaultAsync();
             return payFee;
+        }
+
+        public async Task<List<Bill>> GetAllBillsAsync()
+        {
+            List<Bill> bills = await sqlDB.Table<Bill>().ToListAsync();
+            return bills;
         }
     }
 }

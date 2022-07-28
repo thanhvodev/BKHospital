@@ -2,12 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.PaymentsPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Disabled"
+             xmlns:local="clr-namespace:AppActivityIndicator.ViewModels"  
+             xmlns:model="clr-namespace:AppActivityIndicator.Models" x:DataType="local:PaymentsViewModel"
+             BackgroundColor="{StaticResource PageBackground}">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Payments page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+            <CollectionView x:Name="Bills" ItemsSource="{Binding Bills}" 
+                            Margin="10">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Label Margin="10,0,0,0"
+                               Text="{Binding Name_Id}"
+                               x:Name="Name_Id"
+                               FontSize="Medium"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource Primary}"/>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout x:DataType="model:Bill">
+                            <Label Text="Hello World" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>
