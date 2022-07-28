@@ -5,11 +5,17 @@
              Title="{Binding Title}"
              Shell.FlyoutBehavior="Disabled"
              xmlns:local="clr-namespace:AppActivityIndicator.ViewModels"  
+             xmlns:helper="clr-namespace:AppActivityIndicator.Helper"
              xmlns:model="clr-namespace:AppActivityIndicator.Models" x:DataType="local:PaymentsViewModel"
              BackgroundColor="{StaticResource PageBackground}">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
     </Shell.BackButtonBehavior>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helper:MedicalSheetIdConverter x:Key="MedicalSheetIdConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <RefreshView Command="{Binding LoadCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <CollectionView x:Name="Bills" ItemsSource="{Binding Bills}" 
@@ -36,11 +42,11 @@
                             <BoxView HeightRequest="0.5" Color="Black"/>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Số hồ sơ" />
-                                <Label Text="Mã đơn" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding MedicalSheetId}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Số nhập viện" />
-                                <Label Text="Mã đơn" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding HospitalizationId}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Thời gian thanh toán" />

@@ -43,6 +43,8 @@ namespace AppActivityIndicator.ViewModels
                 List<Bill> localBill = await App.SqlBD.GetAllBillsAsync();
                 foreach (Bill bill in localBill)
                 {
+                    bill.MedicalSheetId = await App.SqlBD.GetMedicalSheetIdAsync(bill.Id);
+                    bill.HospitalizationId = await App.SqlBD.GetHospitalizationIdAsync(bill.Id);
                     Bills.Add(bill);
                 }
             }

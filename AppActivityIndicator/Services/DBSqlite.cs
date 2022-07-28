@@ -388,5 +388,17 @@ namespace AppActivityIndicator.Services
             List<Bill> bills = await sqlDB.Table<Bill>().ToListAsync();
             return bills;
         }
+
+        public async Task<string> GetMedicalSheetIdAsync(string billId)
+        {
+            int payFeeId = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == billId).PayFeeId;
+            return (await sqlDB.Table<PayFee>().ToListAsync()).Find(p => p.Id == payFeeId).ProfileNumber;
+        }
+
+        public async Task<string> GetHospitalizationIdAsync(string billId)
+        {
+            int payFeeId = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == billId).PayFeeId;
+            return (await sqlDB.Table<PayFee>().ToListAsync()).Find(p => p.Id == payFeeId).HospitalizationNumber;
+        }
     }
 }
