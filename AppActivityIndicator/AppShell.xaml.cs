@@ -26,6 +26,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(ReSchedulePage), typeof(ReSchedulePage));
             Routing.RegisterRoute(nameof(PayFeePage), typeof(PayFeePage));
             Routing.RegisterRoute(nameof(PaymentPage), typeof(PaymentPage));
+            Routing.RegisterRoute(nameof(PaymentsPage), typeof(PaymentsPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -67,6 +68,12 @@ namespace AppActivityIndicator
         {
             Current.FlyoutIsPresented = false;
             await Shell.Current.GoToAsync($"{nameof(CCCDPage)}");
+        }
+
+        private async void Bill_Button_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Shell.Current.GoToAsync($"{nameof(PaymentsPage)}");
         }
     }
 }
