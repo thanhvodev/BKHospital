@@ -20,6 +20,7 @@ namespace AppActivityIndicator.ViewModels
             get => name_id;
             set => _ = SetProperty(ref name_id, value);
         }
+
         public ObservableCollection<Bill> Bills { get; set; }
         public Command BackToHomeCommand { get; }
         public Command LoadCommand { get; }

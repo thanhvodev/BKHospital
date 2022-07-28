@@ -90,7 +90,7 @@ namespace AppActivityIndicator.Services
         {
             Random rnd = new Random();
             int num = rnd.Next();
-            User user = new User() { Id = $"Ns-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "Vietnam", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
+            User user = new User() { Id = $"NS-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "Vietnam", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
             _ = sqlDB.InsertAsync(user);
             return await client.Child("Users").PostAsync(user);
         }

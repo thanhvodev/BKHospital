@@ -26,8 +26,26 @@
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout x:DataType="model:Bill">
-                            <Label Text="Hello World" />
+                        <StackLayout x:DataType="model:Bill" 
+                                     Padding="10" 
+                                     BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Mã đơn" TextColor="{StaticResource Primary}" FontSize="Medium"/>
+                                <Label Text="{Binding Id}" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Primary}" />
+                            </StackLayout>
+                            <BoxView HeightRequest="0.5" Color="Black"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Số hồ sơ" />
+                                <Label Text="Mã đơn" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Số nhập viện" />
+                                <Label Text="Mã đơn" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Thời gian thanh toán" />
+                                <Label Text="{Binding DatePayed, StringFormat='{0:dd/MM/yyyy}'}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
