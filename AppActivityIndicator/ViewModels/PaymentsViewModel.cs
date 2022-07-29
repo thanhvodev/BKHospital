@@ -24,6 +24,7 @@ namespace AppActivityIndicator.ViewModels
         public ObservableCollection<Bill> Bills { get; set; }
         public Command BackToHomeCommand { get; }
         public Command LoadCommand { get; }
+        public Command<Bill> BillTappedCommand { get; }
         public PaymentsViewModel()
         {
             IsBusy = true;
@@ -32,6 +33,24 @@ namespace AppActivityIndicator.ViewModels
             Fetch();
             BackToHomeCommand = new Command(async () => await Shell.Current.GoToAsync($"//{nameof(AboutPage)}"));
             LoadCommand = new Command(async () => await ExecuteLoadCommand());
+            BillTappedCommand = new Command<Bill>(BillTapped);
+        }
+
+        private async void BillTapped(Bill bill)
+        {
+            if (bill == null)
+            {
+                return;
+            }
+
+            try
+            {
+                await Shell.Current.GoToAsync($"{nameof(PaymentDetailPage)}?{nameof(PaymentDetailViewModel.BillId)}={bill.Id}");
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Oops", ex.Message, "OK");
+            }
         }
 
         private async Task ExecuteLoadCommand()

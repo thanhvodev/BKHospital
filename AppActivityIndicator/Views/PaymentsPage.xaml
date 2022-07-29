@@ -27,7 +27,7 @@
                                x:Name="Name_Id"
                                FontSize="Medium"
                                HorizontalTextAlignment="Center"
-                               TextColor="{StaticResource Primary}"/>
+                               TextColor="{StaticResource Primary}" />
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
@@ -36,22 +36,29 @@
                                      Padding="10" 
                                      BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Mã đơn" TextColor="{StaticResource Primary}" FontSize="Medium"/>
+                                <Label Text="Mã đơn" TextColor="{StaticResource Primary}" FontSize="Medium" />
                                 <Label Text="{Binding Id}" HorizontalOptions="EndAndExpand" TextColor="{StaticResource Primary}" />
                             </StackLayout>
                             <BoxView HeightRequest="0.5" Color="Black"/>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Số hồ sơ" />
-                                <Label Text="{Binding MedicalSheetId}" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding MedicalSheetId}" HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Số nhập viện" />
-                                <Label Text="{Binding HospitalizationId}" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{Binding HospitalizationId}" HorizontalOptions="EndAndExpand" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Thời gian thanh toán" />
-                                <Label Text="{Binding DatePayed, StringFormat='{0:dd/MM/yyyy}'}" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="Ngày thanh toán" />
+                                <Label Text="{Binding DatePayed, StringFormat='{0:dd/MM/yyyy}'}" HorizontalOptions="EndAndExpand" />
                             </StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaymentsViewModel}}, Path=BillTappedCommand}"
+                                    CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
