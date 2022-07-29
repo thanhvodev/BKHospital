@@ -379,8 +379,8 @@ namespace AppActivityIndicator.Services
 
         public async Task<Fee> GetFeeAsync(int feeId)
         {
-            Fee payFee = await sqlDB.Table<Fee>().Where(p => p.Id == feeId).FirstOrDefaultAsync();
-            return payFee;
+            Fee fee = await sqlDB.Table<Fee>().Where(p => p.Id == feeId).FirstOrDefaultAsync();
+            return fee;
         }
 
         public async Task<List<Bill>> GetAllBillsAsync()
@@ -399,6 +399,18 @@ namespace AppActivityIndicator.Services
         {
             int payFeeId = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == billId).PayFeeId;
             return (await sqlDB.Table<PayFee>().ToListAsync()).Find(p => p.Id == payFeeId).HospitalizationNumber;
+        }
+
+        public async Task<Bill> GetBillAsync(string pBillId)
+        {
+            Bill bill = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == pBillId);
+            return bill;
+        }
+
+        public async Task<PayFee> GetPayFeeAsync(int pPayFeeId)
+        {
+            PayFee payFee = await sqlDB.Table<PayFee>().Where(p => p.Id == pPayFeeId).FirstOrDefaultAsync();
+            return payFee;
         }
     }
 }
