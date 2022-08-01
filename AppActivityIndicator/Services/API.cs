@@ -1,5 +1,6 @@
 ﻿using AppActivityIndicator.Models;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,7 +30,60 @@ namespace AppActivityIndicator.Services
 
         private API()
         {
-                _client = new HttpClient();
+            _client = new HttpClient();
+        }
+
+        public void SendEmail()
+        {
+            var client = new RestClient("https://api.mailjet.com/v3.1/send");
+            var request = new RestRequest()
+            {
+                Method = Method.Post
+            };
+            request.AddHeader("Authorization", "Basic MDQwYTk0OWI0OGUxNmIyM2Y2MWEyMzI3ZDRhNjMxNWI6YjliNGM0NzZiZTc2NmEzN2RkYmJiYjA1ZDYwMWY3ZWQ=");
+            request.AddHeader("Content-Type", "application/json");
+            var body = @"{
+" + "\n" +
+            @"    ""Messages"": [
+" + "\n" +
+            @"        {
+" + "\n" +
+            @"            ""From"": {
+" + "\n" +
+            @"                ""Email"": ""vodinhthanh123@gmail.com"",
+" + "\n" +
+            @"                ""Name"": ""Thanh""
+" + "\n" +
+            @"            },
+" + "\n" +
+            @"            ""To"": [
+" + "\n" +
+            @"                {
+" + "\n" +
+            @"                    ""Email"": ""vodinhthanh123@gmail.com"",
+" + "\n" +
+            @"                    ""Name"": ""Thanh""
+" + "\n" +
+            @"                }
+" + "\n" +
+            @"            ],
+" + "\n" +
+            @"            ""Subject"": ""Gymasium password"",
+" + "\n" +
+            @"            ""TextPart"": ""Greetings from Gymasium."",
+" + "\n" +
+            @"            ""HTMLPart"": ""<h3>This is your password: 123</h3>"",
+" + "\n" +
+            @"            ""CustomID"": ""AppGettingStartedTest""
+" + "\n" +
+            @"        }
+" + "\n" +
+            @"    ]
+" + "\n" +
+            @"}";
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
         }
 
         public async Task<List<Province>> GetProvincesAsync(string uri)

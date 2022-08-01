@@ -108,7 +108,7 @@
     </MenuItem>
     <MenuItem Text="Các vấn đề thường gặp" IconImageSource="{AppThemeBinding Light=common_problem_icon.png, Dark=common_problem_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>
-    <MenuItem Text="Liên hệ" IconImageSource="{AppThemeBinding Light=contact_mail_icon.png, Dark=contact_mail_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Góp ý" IconImageSource="{AppThemeBinding Light=contact_mail_icon.png, Dark=contact_mail_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="FeedBack_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle">
     </MenuItem>
