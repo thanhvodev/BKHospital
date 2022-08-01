@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppActivityIndicator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,7 @@ namespace AppActivityIndicator.Views
         public FeedBackPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            App.API.SendEmail();
+            BindingContext = new FeedBackViewModel();
         }
     }
 }

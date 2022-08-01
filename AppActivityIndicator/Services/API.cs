@@ -1,4 +1,5 @@
-﻿using AppActivityIndicator.Models;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -33,15 +34,15 @@ namespace AppActivityIndicator.Services
             _client = new HttpClient();
         }
 
-        public void SendEmail()
+        public void SendEmail(string content)
         {
             var client = new RestClient("https://api.mailjet.com/v3.1/send");
             var request = new RestRequest()
             {
                 Method = Method.Post
             };
-            request.AddHeader("Authorization", "Basic MDQwYTk0OWI0OGUxNmIyM2Y2MWEyMzI3ZDRhNjMxNWI6YjliNGM0NzZiZTc2NmEzN2RkYmJiYjA1ZDYwMWY3ZWQ=");
-            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Authorization", Constants.EMAIL_AUTHORIZATION_TOKEN);
+            request.AddHeader("Content-Type", Constants.APPLICATION_TYPE);
             var body = @"{
 " + "\n" +
             @"    ""Messages"": [
@@ -68,11 +69,11 @@ namespace AppActivityIndicator.Services
 " + "\n" +
             @"            ],
 " + "\n" +
-            @"            ""Subject"": ""Gymasium password"",
+            @"            ""Subject"": ""Góp ý"",
 " + "\n" +
-            @"            ""TextPart"": ""Greetings from Gymasium."",
+            @"            ""TextPart"": ""Greetings from BKHospital."",
 " + "\n" +
-            @"            ""HTMLPart"": ""<h3>This is your password: 123</h3>"",
+            @"            ""HTMLPart"": ""<h3>" + content + @"</h3>"",
 " + "\n" +
             @"            ""CustomID"": ""AppGettingStartedTest""
 " + "\n" +
@@ -81,7 +82,7 @@ namespace AppActivityIndicator.Services
             @"    ]
 " + "\n" +
             @"}";
-            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            request.AddParameter(Constants.APPLICATION_TYPE, body, ParameterType.RequestBody);
             RestResponse response = client.Execute(request);
             Console.WriteLine(response.Content);
         }

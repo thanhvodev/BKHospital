@@ -17,5 +17,7 @@ namespace AppActivityIndicator.Helper
         public const string FIREBASE_BUCKET = "xamarinauth-462c8.appspot.com";
         public const string MEDICAL_SHEET_ID_REGEX = @"^AS-[0-9]+$";
         public const string HOSPITALIZATION_ID_REGEX = @"^[0-9][0-9]-[0-9]+$";
+        public const string EMAIL_AUTHORIZATION_TOKEN = "Basic MDQwYTk0OWI0OGUxNmIyM2Y2MWEyMzI3ZDRhNjMxNWI6YjliNGM0NzZiZTc2NmEzN2RkYmJiYjA1ZDYwMWY3ZWQ=";
+        public const string APPLICATION_TYPE = "application/json";
     }
 }
