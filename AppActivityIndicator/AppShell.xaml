@@ -96,7 +96,7 @@
     </MenuItem>
     <MenuItem Text="Hóa đơn" IconImageSource="{AppThemeBinding Light=bill.png, Dark=bill_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Bill_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Hướng dẫn sử dụng" IconImageSource="{AppThemeBinding Light=instruction_icon.png, Dark=instruction_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Hướng dẫn sử dụng" IconImageSource="{AppThemeBinding Light=instruction_icon.png, Dark=instruction_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="UserManual_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Quy trính khám bệnh" IconImageSource="{AppThemeBinding Light=process_icon.png, Dark=process_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>

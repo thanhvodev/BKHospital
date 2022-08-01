@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppActivityIndicator.Views.UserManualPage"
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="How to search on Google"
+                VerticalOptions="Start" 
+                HorizontalOptions="Start" 
+                FontSize="45"
+                TextColor="Black"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Learn a few tips and tricks to help you easily find information on " />
+                            <Span Text="Google"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoogleTapCommand}"
+                                          CommandParameter="https://google.com/" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="Tip 1: Start with the basics" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="No matter what you're looking for, start with a simple search like " />
+                            <Span Text="where's the closest airport?" TextColor="Green"/>
+                            <Span Text=". You can always add a few descriptive words if necessary." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="If you're looking for a place or product in a specific location, add the location. For example, " />
+                            <Span Text="bakery seattle" TextColor="Green" />
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Tip 2: Search using your voice" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Tired of typing? To search with your voice, say &quot;Ok Google&quot; or select the Microphone. " />
+                            <Span Text="Learn more about how to search with your voice"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/2940021" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Tip 3: Choose words carefully" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="When you're deciding what words to put in the search box, try to choose words that are likely to appear on the site you're looking for. For example, instead of saying " />
+                            <Span Text="my head hurts" TextColor="Green" />
+                            <Span Text=", say headache, because that's the word a medical site would use." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Tip 4: Don't worry about the little things" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Spelling: " TextColor="Black"/>
+                            <Span Text="Google's spell checker automatically uses the most common spelling of a given word, whether or not you spell it correctly." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Capitalization: " TextColor="Black"/>
+                            <Span Text="A search for " />
+                            <Span Text="New York Times" TextColor="Green"/>
+                            <Span Text=" is the same as a search for " />
+                            <Span Text="new york times." TextColor="Green"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Tip 5: Find quick answers" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label Text="For many searches, Google will do the work for you and show an answer to your question in the search results. Some features, like information about sports teams, aren't available in all regions." />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Weather:" TextColor="Black"/>
+                            <Span Text=" Search " />
+                            <Span Text="weather" TextColor="Green" />
+                            <Span Text=" to see the weather in your location or add a city name, like " />
+                            <Span Text="weather seattle" TextColor="Green" />
+                            <Span Text=", to find weather for a certain place." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Dictionary:" TextColor="Black"/>
+                            <Span Text="  Put " />
+                            <Span Text="define" TextColor="Green" />
+                            <Span Text=" in front of any word to see its definition. " />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Calculations:" TextColor="Black"/>
+                            <Span Text=" Enter a math equation like " />
+                            <Span Text="3*9123" TextColor="Green" />
+                            <Span Text=" , or solve complex graphing equations." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Unit conversions:" TextColor="Black"/>
+                            <Span Text=" Enter any conversion, like  " />
+                            <Span Text="3 dollars in euros" TextColor="Green" />
+                            <Span Text="." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Sports:" TextColor="Black"/>
+                            <Span Text=" Search for the name of your team to see a schedule, game scores and more." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Quick facts:" TextColor="Black"/>
+                            <Span Text=" Search for the name of a celebrity, location, movie, or song to find related information." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="Expert Search tips" TextColor="Black" FontSize="20" Margin="0, 10"/>
+                <Label Text="Want more tips and tricks to help you search like a pro? Check out the links below to learn more advanced search techniques." />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " />
+                            <Span Text="Search operators"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/2466433" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " />
+                            <Span Text="Reverse image search"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/1325808" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " />
+                            <Span Text="Image search on Google"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/112511" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " />
+                            <Span Text="Filter your search results"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/142143" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Margin="0,0,0,20">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; " />
+                            <Span Text="Advanced Search"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          CommandParameter="https://support.google.com/websearch/answer/35890" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
