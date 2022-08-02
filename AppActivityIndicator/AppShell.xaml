@@ -100,7 +100,7 @@
     </MenuItem>
     <MenuItem Text="Quy trính khám bệnh" IconImageSource="{AppThemeBinding Light=process_icon.png, Dark=process_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MedicalExaminationProcess_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Điều khoản dịch vụ" IconImageSource="{AppThemeBinding Light=service_policy_icon.png, Dark=service_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Điều khoản dịch vụ" IconImageSource="{AppThemeBinding Light=service_policy_icon.png, Dark=service_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="TermsOfService_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Chính sách bảo mật" IconImageSource="{AppThemeBinding Light=security_policy_icon.png, Dark=security_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>

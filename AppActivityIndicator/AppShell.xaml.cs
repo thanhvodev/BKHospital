@@ -31,6 +31,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(UserManualPage), typeof(UserManualPage));
             Routing.RegisterRoute(nameof(FeedBackPage), typeof(FeedBackPage));
             Routing.RegisterRoute(nameof(MedicalExaminationProcessPage), typeof(MedicalExaminationProcessPage));
+            Routing.RegisterRoute(nameof(TermsOfServicePage), typeof(TermsOfServicePage));
 
         }
 
@@ -52,7 +53,7 @@ namespace AppActivityIndicator
             Current.FlyoutIsPresented = false;
             //await Navigation.PushAsync(new ProfilePage());
             string fromId = "HomePage";
-            await Shell.Current.GoToAsync($"{nameof(ProfilePage)}?{nameof(ProfileViewModel.FromId)}={fromId}");
+            await Current.GoToAsync($"{nameof(ProfilePage)}?{nameof(ProfileViewModel.FromId)}={fromId}");
         }
 
         private async void Logout(object sender, EventArgs e)
@@ -60,25 +61,25 @@ namespace AppActivityIndicator
             Current.FlyoutIsPresented = false;
             Preferences.Remove("MyFirebaseRefreshToken");
             await App.SqlBD.ClearLocal();
-            await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
+            await Current.GoToAsync($"{nameof(LoginPage)}");
         }
 
         private async void MenuItem_Clicked_1(object sender, EventArgs e)
         {
             Current.FlyoutIsPresented = false;
-            await Shell.Current.GoToAsync($"{nameof(MedicalSheetsPage)}");
+            await Current.GoToAsync($"{nameof(MedicalSheetsPage)}");
         }
 
         private async void Fingerprint_Button_Clicked(object sender, EventArgs e)
         {
             Current.FlyoutIsPresented = false;
-            await Shell.Current.GoToAsync($"{nameof(CCCDPage)}");
+            await Current.GoToAsync($"{nameof(CCCDPage)}");
         }
 
         private async void Bill_Button_Clicked(object sender, EventArgs e)
         {
             Current.FlyoutIsPresented = false;
-            await Shell.Current.GoToAsync($"{nameof(PaymentsPage)}");
+            await Current.GoToAsync($"{nameof(PaymentsPage)}");
         }
 
         private async void UserManual_Button_Clicked(object sender, EventArgs e)
@@ -97,6 +98,12 @@ namespace AppActivityIndicator
         {
             Current.FlyoutIsPresented = false;
             await Current.GoToAsync($"{nameof(MedicalExaminationProcessPage)}");
+        }
+
+        private async void TermsOfService_Button_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Current.GoToAsync($"{nameof(TermsOfServicePage)}");
         }
     }
 }
