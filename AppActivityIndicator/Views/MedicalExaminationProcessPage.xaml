@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppActivityIndicator.Views.MedicalExaminationProcessPage">
+             x:Class="AppActivityIndicator.Views.MedicalExaminationProcessPage"
+             Title="Quy trình khám bệnh">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="Quy trình khám chữa bệnh của Bệnh viện Đa khoa Bách Khoa" FontSize="Title" TextColor="Black"/>
+                <Label Text="Thủ tục thăm khám được chia ra làm 2 mục:" />
+                <Label Text="1. Có bảo hiểm y tế" FontSize="Title" TextColor="Black" />
+                <Label Text="&#x2022; Người bệnh có bảo hiểm y tế khi điền thông tin sẽ đánh dấu vào ô bảo hiểm y tế trong phiếu thông tin" />
+                <Label Text="&#x2022; Sau đó đóng tiền, nhận số thứ tự tại quầy đăng ký khám bệnh" />
+                <Label Text="&#x2022; Bệnh nhân theo số thứ tự đến phòng khám chuyên khoa được ghi trên phiếu khám bệnh" />
+                <Label Text="&#x2022; Nhận thuốc tại nhà thuốc của bệnh viện." />
+                <Image Source="MedicalExaminationProcessWithInsurance" />
+                <Label Text="Quy trình khám bệnh (Có BHYT)" HorizontalOptions="Center" />
+                <Label Text="2. Không có bảo hiểm y tế" FontSize="Title" TextColor="Black" />
+                <Label Text="&#x2022; Điền vào phiếu ghi thông tin người bệnh tại bàn hướng dẫn" />
+                <Label Text="&#x2022; Đóng phí khám bệnh và nhận số thứ tự khám chuyên khoa tại các quầy đăng ký khám bệnh của bệnh viện" />
+                <Label Text="&#x2022; Bạn theo đúng số thứ tự khám chuyên khoa tại các phòng khám. Tiến hành thực hiện các xét nghiệm cận lâm sàng nếu cần thiết." />
+                <Label Text="&#x2022; Bệnh nhân trở lại phòng khám để nhận toa thuốc." />
+                <Image Source="MedicalExaminationProcessWithoutInsurance" />
+                <Label Text="Quy trình khám bệnh (Không Có BHYT)" HorizontalOptions="Center" />
+            </StackLayout>
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>
