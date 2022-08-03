@@ -32,7 +32,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(FeedBackPage), typeof(FeedBackPage));
             Routing.RegisterRoute(nameof(MedicalExaminationProcessPage), typeof(MedicalExaminationProcessPage));
             Routing.RegisterRoute(nameof(TermsOfServicePage), typeof(TermsOfServicePage));
-
+            Routing.RegisterRoute(nameof(SecurityPolicyPage), typeof(SecurityPolicyPage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -105,5 +105,11 @@ namespace AppActivityIndicator
             Current.FlyoutIsPresented = false;
             await Current.GoToAsync($"{nameof(TermsOfServicePage)}");
         }
+        private async void SecurityPolicy_Button_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Current.GoToAsync($"{nameof(SecurityPolicyPage)}");
+        }
+
     }
 }

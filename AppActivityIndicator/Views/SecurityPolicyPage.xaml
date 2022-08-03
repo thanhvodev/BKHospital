@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppActivityIndicator.Views.SecurityPolicyPage"
+             Title="Chính sách bảo mật"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="BẢO MẬT THÔNG TIN" HorizontalOptions="Center" Margin="0, 20, 0, 0" FontSize="Large"/>
+                <Frame BackgroundColor="AliceBlue">
+                    <Label Text="Wellcare tôn trọng quyền riêng tư và cam kết bảo mật thông tin cho bệnh nhân nói riêng và người dùng nói chung. Chúng tôi áp dụng Quy định bảo vệ thông tin người dùng (GDPR) của Châu Âu, Quy định về bảo vệ thông tin sức khỏe (HIPPA) của Mỹ và Yêu cầu An toàn An ninh mạng của Việt Nam." />
+                </Frame>
+                <Label Text="Wellcare tôn trọng quyền riêng tư và cam kết bảo mật thông tin cho bệnh nhân nói riêng và người dùng nói chung. Chúng tôi áp dụng 3 tiêu chuẩn sau:" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Quy định bảo vệ thông tin người dùng (" />
+                            <Span Text="GDPR" TextColor="Black" />
+                            <Span Text=") của Châu Âu." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="&#x2022; Quy định về bảo vệ thông tin sức khỏe (" />
+                            <Span Text="HIPPA" TextColor="Black" />
+                            <Span Text=") của Mỹ." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="&#x2022; Yêu cầu An toàn An ninh mạng của Bộ Thông tin Truyền Thông Việt Nam (Thông tư 03/2017/TT-BTTTT)" />
+                <Label Text="Chính sách bảo mật dưới đây nêu rõ thông tin của bệnh nhân và người dùng được thu thập và sử dụng như thế nào. Chúng tôi có thể sẽ cập nhật chính sách này nhằm tuân thủ những hướng dẫn về bảo mật mới nhất, và nếu những thay đổi này ảnh hưởng trọng yếu đến người dùng, chúng tôi sẽ thông báo và mời bạn xem xét những thay đổi. Khi bạn nhận được những thông báo này và tiếp tục sử dụng hệ thống Wellcare, có nghĩa là bạn đã đồng ý với những thay đổi chúng tôi đưa ra." />
+                <Label Text="Nếu bạn có bất cứ câu hỏi nào liên quan đến chính sách thu thập và sử dụng thông tin, hãy liên hệ ngay với bộ phận Bảo mật Thông tin của chúng tôi:" />
+                <Label Text="&#x2022; Chuyên viên phụ trách Bảo mật thông tin" />
+                <Label Text="&#x2022; Địa chỉ: LA0208 Tòa nhà Lexington, 67 Mai Chí Thọ, Phường An Phú, Quận 2, TP Hồ Chí Minh." />
+                <Label Text="&#x2022; Email: cskh@wellcare.vn" />
+                <Label Text="Mục đích và phạm vi thu thập" FontSize="30" TextColor="Black"/>
+                <Label Text="Khi sử dụng dịch vụ của Wellcare trên các trang web, ứng dụng di động, và tổng đài của chúng tôi, hoặc của đối tác sử dụng phần mềm của chúng tôi theo hình thức nhãn trắng (white labeling), các loại thông tin và dữ liệu được Wellcare thu thập như sau:" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Padding="20" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="0">
+                        <Label Text="Phạm vi"  VerticalOptions="Center"/>
+                    </Frame>
+                    <Frame Padding="20" BackgroundColor="AliceBlue"
+                           Grid.Column="1">
+                        <Label Text="Mục đích"  VerticalOptions="Center"/>
+                    </Frame>
+                    <Frame Grid.Row="1">
+                        <StackLayout>
+                            <Label Text="Thông tin liên hệ" TextColor="Black" />
+                            <Label Text="Số điện thoại, email, địa chỉ" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="1">
+                        <StackLayout>
+                            <Label Text="- Số điện thoại: Để xác thực người dùng và kết nối gọi thoại giữa bệnh nhân với bác sĩ qua tổng đài." />
+                            <Label Text="- Email &amp; Số điện thoại: Để gửi thông báo cho người dùng, nhắc hẹn và gửi các kết quả tư vấn của bác sĩ." />
+                            <Label Text="- Địa chỉ: Chỉ yêu cầu nhập khi người dùng cần giao thuốc tại nhà hoặc nhận các kết quả &amp; tài liệu qua đường bưu điện." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" BackgroundColor="AliceBlue" Grid.Column="0">
+                        <StackLayout>
+                            <Label Text="Thông tin cá nhân" TextColor="Black"/>
+                            <Label Text="Tên, năm sinh, giới tính, thẻ bảo hiểm y tế, chứng minh nhân dân (dưới dạng số hoặc hình ảnh), chứng chỉ hành nghề" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="2" BackgroundColor="AliceBlue" Grid.Column="1">
+                        <StackLayout>
+                            <Label Text="- Để định danh người dùng trong ứng dụng." />
+                            <Label Text="- Để bác sĩ đưa ra lời tư vấn phù hợp với độ tuổi và giới tính của bệnh nhân." />
+                            <Label Text="- Để xác thực thông tin người dùng với bên thứ ba, ví dụ: BHYT, bệnh viện, Bộ Y tế..." />
+                            <Label Text="- Để đáp ứng yêu cầu của cơ quan chứng năng, ví dụ như yêu cầu bác sĩ cần phải có chứng chỉ hành nghề khi thực hành khám chữa bệnh từ xa của Bộ Y Tế." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="0">
+                        <StackLayout>
+                            <Label Text="Thông tin sức khỏe" TextColor="Black"/>
+                            <Label Text="Loại thông tin: triệu chứng, đơn thuốc, chẩn đoán, chỉ số sinh tồn, chỉ số hoạt động cơ thể, kết quả xét nghiệm, kết quả chẩn đoán hình ảnh, kết quả kiểm tra sàng lọc sức khỏe, tin nhắn trao đổi với chatbot hoặc với người dùng khác." />
+                            <Label Text="Hình thức dữ liệu: Chữ, hình ảnh, âm thanh, file ghi âm, video hoặc các tài liệu số hóa khác. " />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="1">
+                        <StackLayout>
+                            <Label Text="- Trước khi tư vấn kỹ lưỡng, bác sĩ yêu cầu bệnh nhân cung cấp đầy đủ tất cả các thông tin bệnh bệnh sử lên bệnh án dựa trên những căn cứ vững chắc nhất." />
+                            <Label Text="- Lưu trữ bệnh án điện tử trọn đời &amp; theo thứ tự thời gian giúp bác sĩ và bệnh nhân theo dõi sức khỏe tốt hơn." />
+                            <Label Text="- Bệnh án đầy đủ là căn cứ để các bác sĩ hội chẩn khi cần thiết." />
+                            <Label Text="- Là cơ sở để nhận chi trả của bảo hiểm." />
+                            <Label Text="- Các thông tin sẽ được loại bỏ nhận dạng (xóa bỏ thông tin định danh và liên hệ) trước khi sử dụng để phân tích cải thiện các thuật toán trí tuệ nhân tạo, nâng cấp và làm cho phân mềm dễ sử dụng hơn, mang lại lợi ích thiết thực cho bác sĩ và bệnh nhân trong việc khám chữa bệnh và chăm sóc sức khỏe." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="4" BackgroundColor="AliceBlue" Grid.Column="0">
+                        <StackLayout>
+                            <Label Text="Thông tin tài chính" TextColor="Black" />
+                            <Label Text="Loại thông tin: Tài khoản ngân hàng &amp; Lịch sử giao dịch thanh toán để sử dụng dịch vụ " />
+                            <Label Text="Chúng tôi không lưu trữ thông tin thẻ tín dụng, khi thanh toán bằng thẻ tín dụng hoặc ví điện tử, người dùng sẽ được chuyển tới trang thanh toán của các cổng thanh toán điện tử đã được nhà nước cấp phép để thực hiện giao dịch." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="4" BackgroundColor="AliceBlue" Grid.Column="1">
+                        <StackLayout>
+                            <Label Text="- Chúng tôi lưu trữ thông tin tài khoản ngân hàng của bác sĩ để chuyển trả doanh số tư vấn, không lưu trữ thông tin tài khoản ngân hàng của bệnh nhân." />
+                            <Label Text="- Chúng tôi lưu trữ lịch sử giao dịch thanh toán của khách hàng để đối soát với các cổng thanh toán điện tử." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="5" Grid.Column="0">
+                        <StackLayout>
+                            <Label Text="Thông tin kỹ thuật" TextColor="Black" />
+                            <Label Text="Địa chỉ IP, thiết bị sử dụng, múi giờ, ngôn ngữ, cookies, các nội dung đã xem, kết quả tương tác với ứng dụng, thời gian truy xuất nội dung" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Row="5" Grid.Column="1">
+                        <StackLayout>
+                            <Label Text="Các thông tin này được ghi nhận nhằm mục đích:" />
+                            <Label Text="- Phát hiện và khắc phục các lỗi phát sinh của ứng dụng, cải thiện tốc độ và hiệu năng của ứng dụng." />
+                            <Label Text="- Hỗ trợ phân tích để tối ưu trải nghiệm người dùng." />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Label Text="Những thông tin trên được chúng tôi thu thập từ ứng dụng Wellcare, hoặc một phần từ các ứng dụng của các đối tác (ví dụ như Facebook, Google...). Dù từ bất cứ nguồn nào, chúng tôi đều tuân thủ chung một chính sách thu thập và sử dụng dịch vụ." />
+                <Label Text="Thời gian lưu trữ thông tin" FontSize="30" TextColor="Black"/>
+                <Label Text="Dữ liệu cá nhân của người dùng sẽ được lưu trữ cho đến khi có yêu cầu hủy bỏ hoặc tự người dùng đăng nhập và thực hiện hủy bỏ. Trong mọi trường hợp còn lại, thông tin cá nhân người dùng sẽ được bảo mật trên máy chủ của chúng tôi theo khuyến nghị của Bộ Y Tế" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.3*" />
+                        <ColumnDefinition Width="0.7*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame Padding="5" BackgroundColor="AliceBlue">
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Loại thông tin" TextColor="Black"  VerticalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" BackgroundColor="AliceBlue" Grid.Column="1">
+                        <StackLayout VerticalOptions="Center">
+                            <Label Text="Thời gian lưu trữ" TextColor="Black"  VerticalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="0" Grid.Row="1">
+                        <StackLayout>
+                            <Label Text="Thông tin liên hệ"  />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="1" Grid.Row="1">
+                        <StackLayout>
+                            <Label Text="Cho đến khi người dùng yêu cầu hủy, bỏ." />
+                            <Label Text="Trường hợp không yêu cầu hủy, bỏ, thông tin được lưu trữ tối thiểu 10 năm kể từ khi người dùng ngừng sử dụng ứng dụng." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="0" Grid.Row="2" BackgroundColor="AliceBlue">
+                        <StackLayout>
+                            <Label Text="Thông tin cá nhân" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="1" Grid.Row="2" BackgroundColor="AliceBlue">
+                        <StackLayout>
+                            <Label Text="Cho đến khi người dùng yêu cầu hủy, bỏ." />
+                            <Label Text="Trường hợp không yêu cầu hủy, bỏ, thông tin được lưu trữ tối thiểu 10 năm kể từ khi người dùng ngừng sử dụng ứng dụng." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="0" Grid.Row="3">
+                        <StackLayout>
+                            <Label Text="Thông tin tài chính"  />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="1" Grid.Row="3">
+                        <StackLayout>
+                            <Label Text="Thông tin giao dịch lưu tối thiểu 2 năm sau ngày giao dịch để đối soát và phục vụ công tác kiểm toán." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="0" Grid.Row="4" BackgroundColor="AliceBlue">
+                        <StackLayout>
+                            <Label Text="Thông tin y tế	"  />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="1" Grid.Row="4" BackgroundColor="AliceBlue">
+                        <StackLayout>
+                            <Label Text="Thông tin có gắn liền định dạng của người dùng được lưu trữ cho đến khi người dùng yêu cầu hủy, bỏ." />
+                            <Label Text="Thông tin từ bỏ định dạng được lưu trữ ít nhất 10 năm kể từ ngày bắt đầu tồn tại." />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="0" Grid.Row="5">
+                        <StackLayout>
+                            <Label Text="Thông tin kỹ thuật"  />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="5" Grid.Column="1" Grid.Row="5">
+                        <StackLayout>
+                            <Label Text="Thông tin từ bỏ định dạng được lưu trữ ít nhất 10 năm kể từ ngày phát sinh." />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+                <Label Text="Lưu trữ, bảo mật, truyền dẫn và an toàn dữ liệu" FontSize="30" TextColor="Black"/>
+                <Label Text="&#x2022; Toàn bộ thông tin của người dùng đều được mã hóa khi lưu trữ từ thiết bị của người dùng và tại máy chủ, chỉ khi điền đúng mật khẩu mới có thể truy xuất và xem được dữ liệu. Vui lòng không chia sẻ mật khẩu, các tin nhắn SMS và mã OTP của bạn cho bất cứ ai." />
+                <Label Text="&#x2022; Wellcare không lưu trữ thông tin thẻ tín dụng và mật khẩu của người dùng vào các cổng thanh toán hoặc ứng dụng của bên thứ ba. Đối tác cổng thanh toán chúng tôi lựa chọn đều đảm bảo tuân thủ tiêu chuẩn bảo mật PCI và được nhà nước cấp phép hoạt động." />
+                <Label Text="&#x2022; Tất cả những thông tin truyền dẫn từ thiết bị người dùng đến hệ thống của chúng tôi, giữa hệ thống của chúng tôi với hệ thống của bên thứ ba đều được mã hóa dùng SSL và các tiêu chuẩn bảo mật mới nhất để hạn chế các truy cập bất hợp pháp. " />
+                <Label Text="&#x2022; Dữ liệu của người dùng được lưu trữ và dự phòng tại các Trung tâm dữ liệu lớn tại Việt Nam, Singapore và Mỹ." />
+                <Label Text="&#x2022; Chúng tôi không  sử dụng, không chuyển giao, không cung cấp hay tiết lộ cho bất cứ bên thứ 3 nào khi chưa có sự đồng ý từ người dùng." />
+                <Label Text="&#x2022; Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân của người dùng, chúng tôi sẽ thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho người dùng được biết." />
+                <Label Text="Quyền người dùng với dữ liệu" FontSize="30" TextColor="Black"/>
+                <Label Text="&#x2022; Quý khách hàng có quyền truy cập vào dữ liệu riêng của mình và tải dữ liệu về thiết bị riêng (trừ trường hợp quá thời gian lưu trữ hoặc trường hợp dữ liệu đồng sở hữu bởi người dùng khác, ví dụ như file ghi âm)." />
+                <Label Text="&#x2022; Đề nghị chỉnh sửa dữ liệu nếu có sai sót hoặc xóa dữ liệu. Riêng đối với những dự liệu là cơ sở cho các nội dung tư vấn &amp; chẩn đoán hay toa thuốc, dữ liệu sẽ được từ bỏ định dạng nhưng không được xóa sửa cho đến khi hết thời gian lưu trữ tối thiểu quy định." />
+                <Label Text="&#x2022; Thiết lập và thay đổi thiết lập quyền sử dụng thông tin &amp; dữ liệu." />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

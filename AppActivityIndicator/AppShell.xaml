@@ -102,7 +102,7 @@
     </MenuItem>
     <MenuItem Text="Điều khoản dịch vụ" IconImageSource="{AppThemeBinding Light=service_policy_icon.png, Dark=service_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="TermsOfService_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Chính sách bảo mật" IconImageSource="{AppThemeBinding Light=security_policy_icon.png, Dark=security_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Chính sách bảo mật" IconImageSource="{AppThemeBinding Light=security_policy_icon.png, Dark=security_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="SecurityPolicy_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Quy định sử dụng" IconImageSource="{AppThemeBinding Light=usage_rule_icon.png, Dark=usage_rule_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
     </MenuItem>

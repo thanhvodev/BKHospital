@@ -16,8 +16,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Họ tên*" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Entry Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" 
-                                               IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
+                                <Entry Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" IsEnabled="{Binding IsEditing}" IsSpellCheckEnabled="False" TextTransform="Uppercase"/>
                             </Grid>
                         </ViewCell>
                         <ViewCell>
