@@ -33,6 +33,7 @@ namespace AppActivityIndicator
             Routing.RegisterRoute(nameof(MedicalExaminationProcessPage), typeof(MedicalExaminationProcessPage));
             Routing.RegisterRoute(nameof(TermsOfServicePage), typeof(TermsOfServicePage));
             Routing.RegisterRoute(nameof(SecurityPolicyPage), typeof(SecurityPolicyPage));
+            Routing.RegisterRoute(nameof(TermsOfUsePage), typeof(TermsOfUsePage));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -109,6 +110,12 @@ namespace AppActivityIndicator
         {
             Current.FlyoutIsPresented = false;
             await Current.GoToAsync($"{nameof(SecurityPolicyPage)}");
+        }
+
+        private async void TermsOfUse_Button_Clicked(object sender, EventArgs e)
+        {
+            Current.FlyoutIsPresented = false;
+            await Current.GoToAsync($"{nameof(TermsOfUsePage)}");
         }
 
     }

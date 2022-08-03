@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppActivityIndicator.Views.TermsOfUsePage"
+             Title="Quy định sử dụng"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="QUY ĐỊNH SỬ DỤNG"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand" 
+                TextColor="Black"/>
+                <Label Text="Chào mừng bạn đến với phần mềm Đăng Ký Khám Bệnh Trực Tuyến tại Bệnh viện ĐẠI HỌC Y DƯỢC (gọi chung là &quot;Phần mềm&quot;). Vui lòng đọc kỹ các Quy Định Sử Dụng dưới đây trước khi tiếp tục truy cập hoặc sử dụng các dịch vụ của Phần mềm, để bạn biết được các quyền lợi và nghĩa vụ hợp pháp của mình liên quan đến các vấn đề về việc đăng ký khám bệnh, thanh toán, nhận phiếu khám bệnh, tạo hồ sơ bệnh nhân, quản lý và sử dụng thông tin trong hồ sơ bệnh nhân, quản lý phiếu khám bệnh, hoàn tiền, hủy phiếu khám bệnh, sửa thông tin phiếu khám bệnh, cách giải quyết các sự cố.... trong quá trình sử dụng Phần mềm." />
+                <Label Text="Các định nghĩa:" />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Chúng tôi: theo ngữ cảnh có thể là Bệnh viện ĐẠI HỌC Y DƯỢC, và/hoặc công ty cổ phần ứng dụng PKH, và/hoặc các bên thứ ba khác có liên kết trên Phần mềm." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Dịch vụ: là một hoặc một phần hoặc tất cả các tính năng và tiện ích được triển khai trên Phần mềm." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Bạn: theo ngữ cảnh có thể là người dùng, hoặc bệnh nhân, hoặc người được bệnh nhân đã ủy quyền bằng văn bản, lời nói hoặc một hình thức khác, để truy cập Phần mềm hoặc đăng ký sử dụng các Dịch Vụ trên Phần mềm giúp cho bệnh nhân." />
+                </StackLayout>
+                <Label Text="ĐĂNG NHẬP" FontSize="20" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Bạn phải đăng nhập mới có thể sử dụng đầy đủ các Dịch vụ của Phần mềm." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Phần mềm định danh tài khoản của bạn bằng số điện thoại di động bạn đang sử dụng, vì vậy trong trường hợp bạn không còn hoặc mất quyền kiểm soát hay sở hữu đối với số điện thoại di động của mình, bạn hãy liên hệ ngay với chúng tôi qua tổng đài 1900 2115 hoặc email hotro@medpro.com.vn, chúng tôi sẽ hỗ trợ bạn." />
+                </StackLayout>
+                <Label Text="THÔNG TIN BỆNH NHÂN" FontSize="20" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Bạn phải cung cấp thông tin bệnh nhân trước khi thực hiện đặt hẹn khám bệnh:" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0">
+                    <Label Text="&#x25E6; " />
+                    <Label Text="Nếu đã từng khám tại bệnh viện: Bạn phải chọn &quot;đã từng khám&quot; > nhập mã số bệnh nhân (hay còn gọi là số hồ sơ) > bấm Xác nhận." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0">
+                    <Label Text="&#x25E6; " />
+                    <Label Text="Nếu Bạn chưa từng khám tại bệnh viện: Bạn phải chọn &quot;chưa từng khám&quot; &gt; điền đầy đủ, chính xác các thông tin &gt; bấm Xác nhận." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Địa chỉ email và số điện thoại di động: Bạn nên nhập đầy đủ và chính xác để Phần mềm gửi thông báo, hoặc thông tin phiếu khám bệnh cho bạn qua hình thức email và tin nhắn sms." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Bệnh viện sẽ từ chối khám chữa bệnh và không hoàn tiền nếu Thông tin bệnh nhân khi đăng ký không đúng với thực tế, vì vậy vui lòng kiểm tra thật kỹ các thông tin trước khi bấm tiếp tục. " />
+                </StackLayout>
+                <Label Text="TÍNH NĂNG &quot;NHẬP VÀ TÌM LẠI MÃ SỐ BỆNH NHÂN&quot;" FontSize="20" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Chúng tôi cho phép bạn có thể nhập và tra cứu hoặc tìm lại mã số bệnh nhân (hay còn gọi &quot;số hồ sơ&quot;) của mình, để xem được các thông tin tương ứng với số hồ sơ vừa nhập hoặc vừa tra cứu được." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Tính năng này chỉ giới hạn ở một mục đích duy nhất là: để bạn xem, kiểm tra và xác định được chính xác hồ sơ bệnh nhân của mình khi đăng ký khám bệnh hoặc xem lịch hẹn tái khám của bản thân." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Bạn sẽ chịu hoàn toàn trách nhiệm và trách nhiệm pháp lý nếu có hành vi sử dụng tính năng nhập và tìm lại mã số bệnh nhân không đúng với mục đích nêu trên." />
+                </StackLayout>
+                <Label Text="THỜI GIAN ĐĂNG KÝ" FontSize="20" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Thời gian đăng ký trước ngày khám đến 30 ngày." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Nếu muốn chọn khám vào ngày hôm sau, Bạn phải thực hiện việc đăng ký và hoàn tất thanh toán trước 16h của ngày hôm nay, sau 16h Bạn không thể đăng ký khám vào ngày hôm sau được nữa." />
+                </StackLayout>
+                <Label Text="TIỀN VÀ PHÍ ĐĂNG KÝ KHÁM" FontSize="20" TextColor="Black"/>
+                <Label Text="Khi đăng ký khám trên Phần mềm, bạn sẽ trả các khoản tiền và phí bao gồm:" />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Tiền khám bệnh: là tiền bạn trả cho việc sử dụng dịch vụ khám chữa bệnh của bệnh viện. Giá khám bệnh sẽ thay đổi tùy theo chuyên khoa và do bệnh viện quy định." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Phí tiện ích: là tiền hỗ trợ cho việc sử dụng dịch vụ đăng ký khám bệnh trực tuyến (đã bao gồm phí các tin nhắn, email...). Bạn vui lòng kiểm tra Tổng tiền thanh toán trước khi thực hiện việc thanh toán." />
+                </StackLayout>
+                <Label Text="Khi bạn thực hiện việc thanh toán, đồng nghĩa với với việc bạn hoàn toàn đồng ý, tự nguyện và không có bất kỳ khiếu nại hoặc khiếu kiện nào về bất kỳ một khoản tiền hoặc phí nào trong quá trình sử dụng phần mềm về sau." Margin="0,0,0,20"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
