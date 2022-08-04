@@ -106,11 +106,11 @@
     </MenuItem>
     <MenuItem Text="Quy định sử dụng" IconImageSource="{AppThemeBinding Light=usage_rule_icon.png, Dark=usage_rule_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="TermsOfUse_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Các vấn đề thường gặp" IconImageSource="{AppThemeBinding Light=common_problem_icon.png, Dark=common_problem_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Các vấn đề thường gặp" IconImageSource="{AppThemeBinding Light=common_problem_icon.png, Dark=common_problem_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="CommonQuestions_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Góp ý" IconImageSource="{AppThemeBinding Light=contact_mail_icon.png, Dark=contact_mail_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="FeedBack_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle">
+    <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Introduction_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Đăng xuất" IconImageSource="{AppThemeBinding Light=logout_icon.png, Dark=logout_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Logout">
     </MenuItem>
