@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace AppActivityIndicator.Droid
 {
-    [Activity(Label = "AppActivityIndicator")]
+    [Activity(Label = "BKHospital")]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

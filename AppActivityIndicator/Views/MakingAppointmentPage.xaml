@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppActivityIndicator.Views.MakingAppointmentPage"
              xmlns:custom="clr-namespace:AppActivityIndicator.CustomControls;assembly=AppActivityIndicator" xmlns:vm="clr-namespace:AppActivityIndicator.ViewModels"
-             xmlns:datepicker="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
-             Title="Đặt lịch khám">
+             Title="Đặt lịch khám"
+             Shell.FlyoutBehavior="Disabled">
     <ContentPage.BindingContext>
         <vm:MakingAppointmentViewModel />
     </ContentPage.BindingContext>
@@ -13,7 +13,7 @@
     </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <StackLayout>
-            <Grid RowDefinitions="0.4*, 0.1*, 0.3*, 0.2*"  BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
+            <Grid RowDefinitions="0.4*, 0.1*, 0.3*, 0.2*" BackgroundColor="{AppThemeBinding Light={StaticResource BackgroundColorLight}, Dark={StaticResource BackgroundColorDark}}">
                 <TableView Grid.Row="0" Margin="0,20,0,0">
                     <TableRoot>
                         <TableSection >
@@ -21,7 +21,7 @@
                                 <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.7*, 0.3*" Margin="5">
                                     <Image Source="{AppThemeBinding Light=profile_icon.png, Dark=profile_icon_dark.png}" Grid.Column="0"/>
                                     <Label Text="XEM LẠI THÔNG TIN CÁ NHÂN" Grid.Column="1"
-                                       VerticalOptions="Center"/>
+                                       VerticalOptions="Center" FontSize="Default"/>
                                     <Image Source="{AppThemeBinding Light=arrow_forward.png, Dark=arrow_forward_dark.png}" Grid.Column="2"/>
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
@@ -32,7 +32,7 @@
                                 <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                     <Image Source="{AppThemeBinding Light=calendar_v2.png, Dark=calendar_v2_dark.png}" Grid.Column="0"/>
                                     <custom:DatePickerCtrl x:Name="datePicker" Placeholder="Chọn ngày khám" 
-                                                       HeightRequest="45"  HorizontalOptions="FillAndExpand"
+                                                       HeightRequest="45" HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1" Format="dd/MM/yyyy"
                                                        DateSelected="DatePicker_DateSelected"
                                                        Date="{Binding Date, Mode=TwoWay}"
@@ -42,8 +42,8 @@
                             <ViewCell>
                                 <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                     <Image Source="{AppThemeBinding Light=medication.png, Dark=medication_dark.png}" Grid.Column="0"/>
-                                    <custom:PickerCtrl x:Name="Specialty"  Placeholder="Chọn chuyên khoa" 
-                                                       HeightRequest="45"  HorizontalOptions="FillAndExpand"
+                                    <custom:PickerCtrl x:Name="Specialty" Placeholder="Chọn chuyên khoa" 
+                                                       HeightRequest="45" HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Specialty_SelectedIndexChanged"
                                                        SelectedIndex="{Binding Specialty, Mode=TwoWay}"
@@ -53,8 +53,8 @@
                             <ViewCell>
                                 <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                     <Image Source="{AppThemeBinding Light=doctor.png, Dark=doctor_dark.png}" Grid.Column="0"/>
-                                    <custom:PickerCtrl x:Name="Doctor"  Placeholder="Chọn bác sĩ" 
-                                                       HeightRequest="45"  HorizontalOptions="FillAndExpand"
+                                    <custom:PickerCtrl x:Name="Doctor" Placeholder="Chọn bác sĩ" 
+                                                       HeightRequest="45" HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Doctor_SelectedIndexChanged"
                                                        SelectedItem="{Binding DoctorName, Mode=TwoWay}"/>
@@ -64,7 +64,7 @@
                                 <Grid RowDefinitions="1*" ColumnDefinitions="0.2*, 0.8*" Margin="5">
                                     <Image Source="{AppThemeBinding Light=schedule.png, Dark=schedule_dark.png}" Grid.Column="0"/>
                                     <custom:PickerCtrl x:Name="Time" Placeholder="Chọn giờ khám" 
-                                                       HeightRequest="45"  HorizontalOptions="FillAndExpand"
+                                                       HeightRequest="45" HorizontalOptions="FillAndExpand"
                                                        Grid.Column="1"
                                                        SelectedIndexChanged="Time_SelectedIndexChanged"
                                                        SelectedItem="{Binding Time, Mode=TwoWay}" />
@@ -79,7 +79,7 @@
                                 TextColor="White" 
                                 Command="{Binding MACommand}"/>
                 </StackLayout>
-                <Label Text="*Lưu ý: Số tiền cho một lần khám là 150.000đ" Grid.Row="2" Margin="20"/>
+                <Label Text="*Lưu ý: Số tiền cho một lần khám là 150.000đ" Grid.Row="2" Margin="20" FontAttributes="Bold"/>
                 <StackLayout Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                     <Label Text="Hỗ trợ" FontSize="Medium" HorizontalOptions="Center"/>
                     <Label Text="1945724833" FontSize="Large" TextColor="{StaticResource Primary}"/>

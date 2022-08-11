@@ -26,13 +26,7 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <!--<ActivityIndicator IsRunning="true" Grid.Row="1"/>-->
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0" VerticalOptions="FillAndExpand">
-                    <Image Source="doctors.png" VerticalOptions="Center" HeightRequest="200"/>
-                </ContentView>
-            </StackLayout>-->
             <Grid ColumnDefinitions="1*" RowDefinitions="1*, 1*, 1*, 1*, 1*" HeightRequest="200">
                 <CarouselView x:Name="Carousel"
                           ItemsSource="{Binding Images}"
@@ -82,6 +76,12 @@
                         <StackLayout>
                             <Image Source="creditcard.png" HeightRequest="40"/>
                             <Label Text="Thanh toán viện phí nội trú" HorizontalTextAlignment="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    NumberOfTapsRequired="1"
+                                    Command="{Binding GoToPayFeePage}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Frame>
                 </Grid>

@@ -23,6 +23,16 @@ namespace AppActivityIndicator.ViewModels
             }
         }
 
+        private string state;
+        public string State
+        {
+            get => state;
+            set
+            {
+                _ = SetProperty(ref state, value);
+            }
+        }
+
         private string doctorName;
         public string DoctorName
         {
@@ -96,6 +106,7 @@ namespace AppActivityIndicator.ViewModels
                 Specialty = m.SpecialtyName;
                 Time = m.Time;
                 Date = m.Date.ToString("dd/MM/yyyy");
+                State = m.State;
             }
             catch (Exception ex)
             {

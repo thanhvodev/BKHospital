@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppActivityIndicator.Views.CommonQuestionsPage"
+             Shell.FlyoutBehavior="Disabled"
+             Title="Các vấn đề thường gặp">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Label Text="Giải đáp các vấn đề thường gặp với App Hiến máu"
+                    HorizontalOptions="CenterAndExpand" TextColor="Black" FontSize="Large" />
+                <Label Text="Tại sao tôi không thể đặt lịch qua App Hiến máu? Tại sao lịch sử hiến máu của tôi không hiển thị đầy đủ? Đó chỉ là 2 trong số những câu hỏi phổ biến với người sử dụng ứng dụng di động – App Hiến máu. Bài viết dưới đây sẽ giúp các bạn giải đáp thắc mắc này và thuận tiện hơn khi sử dụng App." />
+                <Image Source="GiaiDap.jpg" />
+                <Label Text="1. CÁC BƯỚC ĐẶT LỊCH TRÊN APP HIẾN MÁU" TextColor="Black" />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Cài đặt ứng dụng và cập nhật đầy đủ thông tin cá nhân." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Vào mục Đặt lịch." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Chọn ngày sẽ hiến máu." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Chọn địa điểm hiến máu thuận tiện, nhấn Đặt lịch." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Xác nhận đặt lịch." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="&#x2022; " />
+                    <Label Text="Xem lại chi tiết lịch đã đặt trong mục Thông báo." />
+                </StackLayout>
+                <Label Text="2. LÝ DO VÀ CÁCH XỬ LÝ KHI KHÔNG ĐẶT ĐƯỢC LỊCH" TextColor="Black" />
+                <Label Text="– Người hiến máu chưa đủ ngày đăng ký hiến máu." />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="■ " />
+                    <Label Text="Người hiến máu cần chờ đủ ngày hiến máu nhắc lại để đặt lịch." />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="■ " />
+                    <Label Text="Thời gian để hiến máu nhắc lại là sau hiến máu toàn phần 12 tuần và sau hiến tiểu cầu 3 tuần." />
+                </StackLayout>
+                <Label Text="– Lần đăng ký hiến máu gần nhất trước đó, người hiến máu bị huyết sắc tố thấp, huyết tương đục hoặc các yếu tố trì hoãn khác." />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="■ " />
+                    <Label Text="Liên hệ qua Zalo &quot;Trung tâm Máu Quốc gia&quot; (zalo.me/hienmau) để được nhận link đăng ký hiến máu online." />
+                </StackLayout>
+                <Label Text="– Người hiến máu từng có phản ứng với một trong những bệnh lây truyền qua đường máu trong lần hiến máu trước đó." />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="■ " />
+                    <Label Text="Liên hệ qua Tổng đài Chăm sóc người hiến máu 0976 99 00 66 để được tư vấn, hỗ trợ." />
+                </StackLayout>
+                <Label Text="– Điểm hiến máu hiện thông báo đã đủ người." />
+                <StackLayout Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Label Text="■ " />
+                    <Label Text="Người hiến máu vui lòng chọn điểm hiến máu khác để đặt lịch." />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

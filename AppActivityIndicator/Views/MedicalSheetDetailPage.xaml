@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:MedicalSheetDetailViewModel"
              x:Class="AppActivityIndicator.Views.MedicalSheetDetailPage"
-             Title="{Binding MId}">
+             Title="{Binding MId}"
+             Shell.FlyoutBehavior="Disabled">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
     </Shell.BackButtonBehavior>
@@ -74,7 +75,7 @@
                         <ViewCell>
                             <Grid ColumnDefinitions="0.3*, 0.7*" RowDefinitions="*">
                                 <Label Text="Tình trạng" Grid.Column="0" VerticalOptions="Center" Margin="5"/>
-                                <Label Text="Chưa khám" Grid.Column="1" VerticalOptions="Center" />
+                                <Label Text="{Binding State}" Grid.Column="1" VerticalOptions="Center" />
                             </Grid>
                         </ViewCell>
                     </TableSection>

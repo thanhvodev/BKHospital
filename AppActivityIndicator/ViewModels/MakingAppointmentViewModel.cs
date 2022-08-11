@@ -49,7 +49,7 @@ namespace AppActivityIndicator.ViewModels
 
         public MakingAppointmentViewModel()
         {
-            CallSupportCommand = new Command(() => PhoneDialer.Open("1945724833"));
+            CallSupportCommand = new Command(() => PhoneDialer.Open(Constants.SUPPORT_PHONE_NUMBER));
             BackBehavior = new Command(async () =>
             {
                 try

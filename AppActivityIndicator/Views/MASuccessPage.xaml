@@ -4,7 +4,8 @@
              x:Class="AppActivityIndicator.Views.MASuccessPage"
              BackgroundColor="{StaticResource PageBackground}"
              xmlns:constants="clr-namespace:AppActivityIndicator.Helper"
-             Title="Đặt khám thành công">
+             Title="Đặt khám thành công"
+             Shell.FlyoutBehavior="Disabled">
     <Shell.BackButtonBehavior>
         <BackButtonBehavior Command="{Binding BackToHomeCommand}" />
     </Shell.BackButtonBehavior>

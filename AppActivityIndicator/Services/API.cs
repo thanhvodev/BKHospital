@@ -1,5 +1,7 @@
-﻿using AppActivityIndicator.Models;
+﻿using AppActivityIndicator.Helper;
+using AppActivityIndicator.Models;
 using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,7 +31,60 @@ namespace AppActivityIndicator.Services
 
         private API()
         {
-                _client = new HttpClient();
+            _client = new HttpClient();
+        }
+
+        public void SendEmail(string content)
+        {
+            var client = new RestClient("https://api.mailjet.com/v3.1/send");
+            var request = new RestRequest()
+            {
+                Method = Method.Post
+            };
+            request.AddHeader("Authorization", Constants.EMAIL_AUTHORIZATION_TOKEN);
+            request.AddHeader("Content-Type", Constants.APPLICATION_TYPE);
+            var body = @"{
+" + "\n" +
+            @"    ""Messages"": [
+" + "\n" +
+            @"        {
+" + "\n" +
+            @"            ""From"": {
+" + "\n" +
+            @"                ""Email"": ""vodinhthanh123@gmail.com"",
+" + "\n" +
+            @"                ""Name"": ""Thanh""
+" + "\n" +
+            @"            },
+" + "\n" +
+            @"            ""To"": [
+" + "\n" +
+            @"                {
+" + "\n" +
+            @"                    ""Email"": ""vodinhthanh123@gmail.com"",
+" + "\n" +
+            @"                    ""Name"": ""Thanh""
+" + "\n" +
+            @"                }
+" + "\n" +
+            @"            ],
+" + "\n" +
+            @"            ""Subject"": ""Góp ý"",
+" + "\n" +
+            @"            ""TextPart"": ""Greetings from BKHospital."",
+" + "\n" +
+            @"            ""HTMLPart"": ""<h3>" + content + @"</h3>"",
+" + "\n" +
+            @"            ""CustomID"": ""AppGettingStartedTest""
+" + "\n" +
+            @"        }
+" + "\n" +
+            @"    ]
+" + "\n" +
+            @"}";
+            request.AddParameter(Constants.APPLICATION_TYPE, body, ParameterType.RequestBody);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
         }
 
         public async Task<List<Province>> GetProvincesAsync(string uri)

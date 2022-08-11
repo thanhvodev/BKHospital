@@ -49,6 +49,7 @@ namespace AppActivityIndicator.ViewModels
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Alert", ex.Message, "OK");
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
         }
         #endregion

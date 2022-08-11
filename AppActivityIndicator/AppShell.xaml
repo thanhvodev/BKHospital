@@ -94,21 +94,23 @@
     </MenuItem>
     <MenuItem Text="CMND/CCCD" IconImageSource="{AppThemeBinding Light=fingerprint.png, Dark=fingerprint_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Fingerprint_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Hướng dẫn sử dụng" IconImageSource="{AppThemeBinding Light=instruction_icon.png, Dark=instruction_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Hóa đơn" IconImageSource="{AppThemeBinding Light=bill.png, Dark=bill_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Bill_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Quy trính khám bệnh" IconImageSource="{AppThemeBinding Light=process_icon.png, Dark=process_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Hướng dẫn sử dụng" IconImageSource="{AppThemeBinding Light=instruction_icon.png, Dark=instruction_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="UserManual_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Điều khoản dịch vụ" IconImageSource="{AppThemeBinding Light=service_policy_icon.png, Dark=service_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Quy trính khám bệnh" IconImageSource="{AppThemeBinding Light=process_icon.png, Dark=process_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MedicalExaminationProcess_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Chính sách bảo mật" IconImageSource="{AppThemeBinding Light=security_policy_icon.png, Dark=security_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Điều khoản dịch vụ" IconImageSource="{AppThemeBinding Light=service_policy_icon.png, Dark=service_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="TermsOfService_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Quy định sử dụng" IconImageSource="{AppThemeBinding Light=usage_rule_icon.png, Dark=usage_rule_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Chính sách bảo mật" IconImageSource="{AppThemeBinding Light=security_policy_icon.png, Dark=security_policy_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="SecurityPolicy_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Các vấn đề thường gặp" IconImageSource="{AppThemeBinding Light=common_problem_icon.png, Dark=common_problem_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Quy định sử dụng" IconImageSource="{AppThemeBinding Light=usage_rule_icon.png, Dark=usage_rule_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="TermsOfUse_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Liên hệ" IconImageSource="{AppThemeBinding Light=contact_mail_icon.png, Dark=contact_mail_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">
+    <MenuItem Text="Các vấn đề thường gặp" IconImageSource="{AppThemeBinding Light=common_problem_icon.png, Dark=common_problem_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="CommonQuestions_Button_Clicked">
     </MenuItem>
-    <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle">
+    <MenuItem Text="Góp ý" IconImageSource="{AppThemeBinding Light=contact_mail_icon.png, Dark=contact_mail_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="FeedBack_Button_Clicked">
+    </MenuItem>
+    <MenuItem Text="Giới thiệu" IconImageSource="{AppThemeBinding Light=intro_icon.png, Dark=intro_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Introduction_Button_Clicked">
     </MenuItem>
     <MenuItem Text="Đăng xuất" IconImageSource="{AppThemeBinding Light=logout_icon.png, Dark=logout_icon_dark.png}" StyleClass="MenuItemLayoutStyle" Clicked="Logout">
     </MenuItem>

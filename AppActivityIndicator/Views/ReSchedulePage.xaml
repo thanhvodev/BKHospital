@@ -2,17 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:AppActivityIndicator.ViewModels" x:DataType="viewmodels:ReSheduleViewModel"
              x:Class="AppActivityIndicator.Views.ReSchedulePage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             Shell.FlyoutBehavior="Disabled">
     <ContentPage.Content>
         <StackLayout>
             <Grid ColumnDefinitions="0.7*, 0.3*" RowDefinitions="1*, 1*" Margin="5">
                 <Label Text="Vui lòng nhập đúng số hồ sơ" FontSize="Medium" VerticalOptions="Center"/>
                 <Frame Grid.Row="1" Padding="0" BorderColor="Black">
-                    <Entry Placeholder="ví dụ: AS-XXXXXXXX" x:Name="MedicalSheetId" Text="{Binding MedicalSheetId, Mode=TwoWay}" />
+                    <Entry Placeholder="ví dụ: AS-XXXXXXXX" x:Name="MedicalSheetId" Text="{Binding MedicalSheetId, Mode=TwoWay}" TextChanged="MedicalSheetId_TextChanged" TextTransform="Uppercase" />
                 </Frame>
-                <Button Text="Tìm" Grid.Row="1" Grid.Column="1" Command="{Binding FindMedicalSheetCommand}"/>
+                <Button x:Name="FindButton" Text="Tìm" Grid.Row="1" Grid.Column="1" Command="{Binding FindMedicalSheetCommand}" />
             </Grid>
+            <Label x:Name="InfoLabel" IsVisible="{Binding IsShowReSchedule, Mode=TwoWay}" LineBreakMode="WordWrap" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="30, 0, 30, 0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Phiếu khám " />
+                        <Span Text="{Binding MedicalSheetId}" TextColor="Black"/>
+                        <Span Text=" có lịch tái khám vào ngày " />
+                        <Span x:Name="DateLabel" Text="{Binding Date, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                        <Span Text=" chuyên khoa "/>
+                        <Span Text="{Binding Specialty}" TextColor="Black"/>
+                        <Span Text="." TextColor="Black"/>
+                        <Span Text=" Vui lòng đến trang hẹn khám và đặt lịch vào thời gian này." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label x:Name="NotHaveLabel" IsVisible="{Binding IsNotHaveSchedule, Mode=TwoWay}" LineBreakMode="WordWrap" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="30, 0, 30, 0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Phiếu khám " />
+                        <Span Text="{Binding MedicalSheetId}" TextColor="Black" />
+                        <Span Text=" không tồn tại hoặc không có lịch tái khám." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

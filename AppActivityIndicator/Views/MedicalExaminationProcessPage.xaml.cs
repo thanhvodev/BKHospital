@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AppActivityIndicator.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Notifications : ContentPage
+    public partial class MedicalExaminationProcessPage : ContentPage
     {
-        public Notifications()
+        public MedicalExaminationProcessPage()
         {
             InitializeComponent();
         }

@@ -28,7 +28,10 @@ namespace AppActivityIndicator.Services
             sqlDB.CreateTableAsync<Room>().Wait();
             sqlDB.CreateTableAsync<MedicalSheet>().Wait();
             sqlDB.CreateTableAsync<Models.Image>().Wait();
-
+            sqlDB.CreateTableAsync<ReShedule>().Wait();
+            sqlDB.CreateTableAsync<PayFee>().Wait();
+            sqlDB.CreateTableAsync<Fee>().Wait();
+            sqlDB.CreateTableAsync<Bill>().Wait();
         }
 
         public Task<List<User>> GetUsersAsync()
@@ -87,7 +90,7 @@ namespace AppActivityIndicator.Services
         {
             Random rnd = new Random();
             int num = rnd.Next();
-            User user = new User() { Id = $"Ns-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "Vietnam", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
+            User user = new User() { Id = $"NS-{num}", Email = email, Name = "", Sex = "", Street = "", CMND = "", DateOfBirth = DateTime.MinValue, Career = "", Nation = "Vietnam", Ethic = "", PhoneNo = "", DistrictInx = 0, ProvinceInx = 0, WardInx = 0 };
             _ = sqlDB.InsertAsync(user);
             return await client.Child("Users").PostAsync(user);
         }
@@ -126,17 +129,17 @@ namespace AppActivityIndicator.Services
             }
 
 
-            List<Specialty> specialties = (await client.Child("specialty").OnceAsync<Specialty>()).Select(s => new Specialty()
+            List<Specialty> specialties = (await client.Child ("specialty").OnceAsync<Specialty> ()).Select (s => new Specialty ()
             {
                 Id = s.Object.Id,
                 Name = s.Object.Name
             }).ToList();
             foreach (var specialty in specialties)
             {
-                _ = sqlDB.InsertAsync(specialty);
+                _ = sqlDB.InsertAsync (specialty);
             }
 
-            List<MedicalSheet> medicalSheets = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).Select(m => new MedicalSheet()
+            List<MedicalSheet> medicalSheets = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet> ()).Select(m => new MedicalSheet ()
             {
                 Id = m.Object.Id,
                 Address = m.Object.Address,
@@ -152,10 +155,10 @@ namespace AppActivityIndicator.Services
             }).ToList();
             foreach (var medicalSheet in medicalSheets)
             {
-                _ = sqlDB.InsertAsync(medicalSheet);
+                _ = sqlDB.InsertAsync (medicalSheet);
             }
 
-            List<Room> rooms = (await client.Child("Room").OnceAsync<Room>()).Select(m => new Room()
+            List<Room> rooms = (await client.Child ("Room").OnceAsync<Room> ()).Select(m => new Room ()
             {
                 Id = m.Object.Id,
                 Name = m.Object.Name,
@@ -166,7 +169,7 @@ namespace AppActivityIndicator.Services
                 _ = sqlDB.InsertAsync(room);
             }
 
-            List<Models.Image> images = (await client.Child("Images").OnceAsync<Models.Image>()).Select(i => new Models.Image()
+            List<Models.Image> images = (await client.Child ("Images").OnceAsync<Models.Image> ()).Select(i => new Models.Image ()
             {
                 Id = i.Object.Id,
                 Email = i.Object.Email,
@@ -178,6 +181,25 @@ namespace AppActivityIndicator.Services
                 _ = sqlDB.InsertAsync(image);
             }
 
+            List<ReShedule> res = (await client.Child ("ReShedule").OnceAsync<ReShedule> ()).Select (r => new ReShedule()
+            {
+                Id = r.Object.Id,
+                For = r.Object.For,
+                Specialty = r.Object.Specialty,
+                Date = r.Object.Date
+            }).ToList();
+            foreach (var re in res)
+            {
+                try
+                {
+                    await sqlDB.InsertAsync (re);
+
+                }
+                catch (Exception ex)
+                {
+                    await Application.Current.MainPage.DisplayAlert ("Oops", ex.Message, "OK");
+                }
+            }
 
             List<User> users = (await client.Child("Users").OnceAsync<User>()).Select(u => new User()
             {
@@ -200,6 +222,43 @@ namespace AppActivityIndicator.Services
             {
                 _ = sqlDB.InsertAsync(user);
             }
+
+            List<PayFee> payFees = (await client.Child("PayFee").OnceAsync<PayFee>()).Select(p => new PayFee()
+            {
+                Id = p.Object.Id,
+                ProfileNumber = p.Object.ProfileNumber,
+                HospitalizationNumber = p.Object.HospitalizationNumber,
+                FeeId = p.Object.FeeId
+            }).ToList();
+            foreach (var payFee in payFees)
+            {
+                _ = sqlDB.InsertAsync(payFee);
+            }
+
+            List<Fee> fees = (await client.Child("Fee").OnceAsync<Fee>()).Select(f => new Fee()
+            {
+                Id = f.Object.Id,
+                StartTime = f.Object.StartTime,
+                EndTime = f.Object.EndTime,
+                PhiAnUong = f.Object.PhiAnUong,
+                PhiDieuDuong = f.Object.PhiDieuDuong,
+                PhiKhamBenh = f.Object.PhiKhamBenh,
+                PhiONoiTru = f.Object.PhiONoiTru,
+                PhiPhauThuat = f.Object.PhiPhauThuat,
+                PhiThuoc = f.Object.PhiThuoc
+            }).ToList();
+            foreach (var fee in fees)
+            {
+                _ = sqlDB.InsertAsync(fee);
+            }
+
+            List<Bill> bills = (await client.Child("Bill").OnceAsync<Bill>()).Select(b => new Bill()
+            {
+                Id = b.Object.Id,
+                DatePayed = b.Object.DatePayed,
+                PayFeeId = b.Object.PayFeeId,
+            }).ToList();
+            _ = sqlDB.InsertAllAsync(bills);
         }
 
         public async Task<int> ClearLocal()
@@ -211,6 +270,10 @@ namespace AppActivityIndicator.Services
             await sqlDB.DeleteAllAsync<MedicalSheet>();
             await sqlDB.DeleteAllAsync<Room>();
             await sqlDB.DeleteAllAsync<Models.Image>();
+            await sqlDB.DeleteAllAsync<ReShedule>();
+            await sqlDB.DeleteAllAsync<PayFee>();
+            await sqlDB.DeleteAllAsync<Fee>();
+            await sqlDB.DeleteAllAsync<Bill>();
             return 1;
         }
 
@@ -279,12 +342,12 @@ namespace AppActivityIndicator.Services
             {
                 foreach (MedicalSheet medicalSheet in result)
                 {
-                    if (DateTime.Compare(today, medicalSheet.Date) > 0)
+                    if (DateTime.Compare (today, medicalSheet.Date) > 0)
                     {
-                        var toUpdateMS = (await client.Child("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
+                        var toUpdateMS = (await client.Child ("MedicalSheet").OnceAsync<MedicalSheet>()).FirstOrDefault(u => u.Object.Id == medicalSheet.Id);
                         medicalSheet.State = "Đã khám";
                         _ = sqlDB.UpdateAsync(medicalSheet);
-                        await client.Child("MedicalSheet").Child(toUpdateMS.Key).PutAsync(medicalSheet);
+                        await client.Child("MedicalSheet").Child (toUpdateMS.Key).PutAsync(medicalSheet);
                     }
                 }
             }
@@ -300,6 +363,54 @@ namespace AppActivityIndicator.Services
         {
             List<Models.Image> images = await sqlDB.Table<Models.Image>().ToListAsync();
             return images.FindLast(i => i.Email == email && i.IsFront == isFront).Src;
+        }
+
+        public async Task<(DateTime, string)> GetReShedule(string msId)
+        {
+            List<ReShedule> res = await sqlDB.Table<ReShedule>().ToListAsync();
+            ReShedule re = res.Find(r => r.For == msId);
+            return (re.Date, re.Specialty);
+        }
+        public async Task<int?> GetFeeId(string profileId, string hospitalizationId)
+        {
+            PayFee payFee = await sqlDB.Table<PayFee>().Where(p => p.HospitalizationNumber == hospitalizationId && p.ProfileNumber == profileId).FirstOrDefaultAsync();
+            return payFee?.FeeId;
+        }
+
+        public async Task<Fee> GetFeeAsync(int feeId)
+        {
+            Fee fee = await sqlDB.Table<Fee>().Where(p => p.Id == feeId).FirstOrDefaultAsync();
+            return fee;
+        }
+
+        public async Task<List<Bill>> GetAllBillsAsync()
+        {
+            List<Bill> bills = await sqlDB.Table<Bill>().ToListAsync();
+            return bills;
+        }
+
+        public async Task<string> GetMedicalSheetIdAsync(string billId)
+        {
+            int payFeeId = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == billId).PayFeeId;
+            return (await sqlDB.Table<PayFee>().ToListAsync()).Find(p => p.Id == payFeeId).ProfileNumber;
+        }
+
+        public async Task<string> GetHospitalizationIdAsync(string billId)
+        {
+            int payFeeId = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == billId).PayFeeId;
+            return (await sqlDB.Table<PayFee>().ToListAsync()).Find(p => p.Id == payFeeId).HospitalizationNumber;
+        }
+
+        public async Task<Bill> GetBillAsync(string pBillId)
+        {
+            Bill bill = (await sqlDB.Table<Bill>().ToListAsync()).Find(b => b.Id == pBillId);
+            return bill;
+        }
+
+        public async Task<PayFee> GetPayFeeAsync(int pPayFeeId)
+        {
+            PayFee payFee = await sqlDB.Table<PayFee>().Where(p => p.Id == pPayFeeId).FirstOrDefaultAsync();
+            return payFee;
         }
     }
 }

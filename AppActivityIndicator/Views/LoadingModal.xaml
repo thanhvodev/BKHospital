@@ -23,6 +23,6 @@
         VerticalOptions="Center" 
         HorizontalOptions="Center" 
         Padding="20, 20, 20, 20">
-        <ActivityIndicator IsRunning="true" />
+        <ActivityIndicator IsRunning="true" Color="{StaticResource Primary}"/>
     </StackLayout>
 </pages:PopupPage>
