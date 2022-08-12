@@ -44,7 +44,7 @@ namespace AppActivityIndicator.ViewModels
             {
                 try
                 {
-                    await Shell.Current.GoToAsync("..");
+                    await Shell.Current.GoToAsync("//LoginPage");
                 }
                 catch (Exception ex)
                 {
